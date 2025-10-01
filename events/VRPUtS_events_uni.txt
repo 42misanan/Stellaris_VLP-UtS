@@ -272,7 +272,7 @@ planet_event = {
     }
 }
 
-country_event = {
+planet_event = {
     #あと少し！
 	id = VRPUtS_event.513
 	title = "VRPUtS_event.513"
@@ -304,7 +304,9 @@ country_event = {
 			}
         }
         hidden_effect = {
-            country_event = { id = VRPUtS_event.521 days = 1 }
+			owner = {
+           		country_event = { id = VRPUtS_event.521 days = 1 }
+			}
         }
 	}
 	option = { #ちょっと待ってくれ！
