@@ -1,0 +1,7 @@
+VRPUtS_portrait_cats = {
+	name = VRPUtS
+
+	sets = {
+		VRPUtS_portrait_sets
+	}
+}

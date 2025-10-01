@@ -1,0 +1,9 @@
+VRPUtS_portrait_sets = {
+    species_class = VRPUtS
+    non_randomized_portraits = {
+        "rei"
+        "fee"
+        "uta"
+        "teto"
+        }
+    }

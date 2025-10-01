@@ -1,0 +1,12 @@
+VRPUtS = {
+	archetype = BIOLOGICAL
+	playable = {
+		always = no
+	}
+	randomized = no
+	gender = no
+	trait = "trait_organic"
+	graphical_culture = ai_01
+	move_pop_sound_effect = "moving_pop_confirmation"
+	resources = {}
+}

@@ -1,0 +1,139 @@
+###足立レイ
+VRPUtS_site_rei = {
+ 	desc = VRPUtS_site_rei.desc
+ 	picture = GFX_evt_city_ruins
+ 	stages = 4
+ 	max_instances = 1
+    weight = 0
+ 	allow = {
+		is_ship_class = shipclass_science_ship
+		exists = leader
+	}
+
+	visible = {
+		is_ai = no
+		default_site_visible_trigger = yes
+	}
+
+	stage = {
+		difficulty = 4
+		icon = GFX_archaeology_runes_C1
+		event = VRPUtS_event.111
+	}
+	stage = {
+		difficulty = 5
+		icon = GFX_archaeology_runes_C2
+		event = VRPUtS_event.112
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_archaeology_runes_C3
+		event = VRPUtS_event.113
+	}
+	stage = {
+		difficulty = 3
+		icon = GFX_archaeology_runes_C4
+		event = VRPUtS_event.114
+	}
+	
+	on_roll_failed = {
+		from = {
+			standard_archaeological_site_on_roll_failed = { RANDOM_EVENTS = no_events }
+		}
+	}
+}
+
+###フィーちゃん
+VRPUtS_site_fee = {
+ 	desc = VRPUtS_site_fee.desc
+ 	picture = GFX_evt_gray_goo
+ 	stages = 5
+ 	max_instances = 1
+    weight = 0
+ 	allow = {
+		is_ship_class = shipclass_science_ship
+		exists = leader
+	}
+
+	visible = {
+		is_ai = no
+		default_site_visible_trigger = yes
+	}
+
+	stage = {
+		difficulty = 1 #1
+		icon = GFX_archaeology_runes_C1
+		event = VRPUtS_event.211
+	}
+	stage = {
+		difficulty = 2 #2
+		icon = GFX_archaeology_runes_C2
+		event = VRPUtS_event.212
+	}
+	stage = {
+		difficulty = 3 #3
+		icon = GFX_archaeology_runes_C3
+		event = VRPUtS_event.213
+	}
+	stage = {
+		difficulty = 5 #5
+		icon = GFX_archaeology_runes_C4
+		event = VRPUtS_event.214
+	}
+	stage = {
+		difficulty = 8 #8
+		icon = GFX_archaeology_runes_C1
+		event = VRPUtS_event.215
+	}
+	
+	on_roll_failed = {
+		from = {
+			standard_archaeological_site_on_roll_failed = { RANDOM_EVENTS = no_events }
+		}
+	}
+}
+
+#デフォ子
+VRPUtS_site_uta = {
+ 	desc = VRPUtS_site_uta.desc
+ 	picture = GFX_evt_city_ruins
+ 	stages = 4
+ 	max_instances = 1
+    weight = 0
+ 	allow = {
+		is_ship_class = shipclass_science_ship
+		exists = leader
+	}
+
+	visible = {
+		is_ai = no
+		default_site_visible_trigger = yes
+	}
+
+	stage = {
+		difficulty = 3 #3
+		icon = GFX_archaeology_runes_C1
+		event = VRPUtS_event.311
+	}
+	stage = {
+		difficulty = 5 #5
+		icon = GFX_archaeology_runes_C2
+		event = VRPUtS_event.312
+	}
+	stage = {
+		difficulty = 6 #6
+		icon = GFX_archaeology_runes_C3
+		event = VRPUtS_event.313
+	}
+	stage = {
+		difficulty = 8 #8
+		icon = GFX_archaeology_runes_C4
+		event = VRPUtS_event.314
+	}
+	
+	on_roll_failed = {
+		from = {
+			standard_archaeological_site_on_roll_failed = { RANDOM_EVENTS = no_events }
+		}
+	}
+}

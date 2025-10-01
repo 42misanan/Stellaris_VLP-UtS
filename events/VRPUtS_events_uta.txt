@@ -1,0 +1,313 @@
+namespace = VRPUtS_event
+##### イベント、トリガー元：アノマリー
+ship_event = {
+    #この小惑星は兵器試験場だったらしい
+    id = VRPUtS_event.301
+    title = "VRPUtS_event.301"
+    desc = "VRPUtS_event.301.desc"
+    picture = GFX_evt_small_space_battle
+    show_sound = event_ship_explosion
+    location = FROM
+
+    is_triggered_only = yes
+
+    option = {
+		name = VRPUtS_event.301.a #派生
+		trigger = { owner = { NOR = {
+					has_ethic = ethic_fanatic_pacifist
+					has_ethic = ethic_pacifist
+					is_gestalt = yes
+				}}}
+		fromfrom = {
+            prevent_anomaly = yes
+			create_archaeological_site = VRPUtS_site_uta
+		}
+	}
+    option = {
+		name = VRPUtS_event.301.b #放棄
+		trigger = { owner = { NOR = {
+					has_ethic = ethic_fanatic_pacifist
+					has_ethic = ethic_pacifist
+					is_gestalt = yes
+				}}}
+		FROM = {
+			add_deposit = d_minerals_3
+		}
+	}
+
+    option = {
+		name = VRPUtS_event.301.c #強制放棄 - 平和主義
+		trigger = { owner = { OR = {
+					has_ethic = ethic_fanatic_pacifist
+					has_ethic = ethic_pacifist
+				}}}
+		FROM = {
+			add_deposit = d_minerals_3
+		}
+	}
+	option = {
+		name = VRPUtS_event.301.d #強制放棄 - ゲシュタルト意識
+		trigger = { owner = { 
+				is_gestalt = yes 
+				}}
+		FROM = {
+			add_deposit = d_minerals_3
+		}
+	}
+}
+
+##### 考古学調査地点、参照元：考古学調査地点
+fleet_event = {
+    #まだ何かが兵器を実験している？
+	id = VRPUtS_event.311
+	title = "VRPUtS_event.311"
+	desc = "VRPUtS_event.311.desc"
+	picture = GFX_evt_glitchy_matrix
+	show_sound = event_super_explosion
+
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+	option = {
+		name = UNDERSTOOD
+	}
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+}
+fleet_event = {
+    #見つけた。気を付けて対話しないと……
+	id = VRPUtS_event.312
+	title = "VRPUtS_event.312"
+	desc = "VRPUtS_event.312.desc"
+	picture = GFX_evt_arc_crucible
+	show_sound = event_yellow_alert_01
+
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+	option = {
+		name = VRPUtS_event.312.a
+	}
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+}
+fleet_event = {
+    #我々は敵意あるものではありません！どうか！
+	id = VRPUtS_event.313
+	title = "VRPUtS_event.313"
+	desc = "VRPUtS_event.313.desc"
+	picture = GFX_evt_ancient_databank
+	show_sound = event_red_alert
+
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+	option = {
+		name = VRPUtS_event.313.a
+	}
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+}
+fleet_event = {
+    #わかってくれた……でも実験を手伝わないといけないっぽい。
+	id = VRPUtS_event.314
+	title = "VRPUtS_event.314"
+	desc = "VRPUtS_event.314.desc"
+	picture = GFX_evt_burning_city
+	show_sound = event_mystic_reveal_light
+
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+
+	option = {
+		name = VRPUtS_event.314.a
+        from = {
+			enable_special_project = {
+				name = VRPUtS_project_uta #スペシャルプロジェクト派生
+				location = FROM
+				owner = root
+			}
+		}
+	}
+	option = {
+		name = VRPUtS_event.314.b
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier3unityreward
+				min = @tier3unitymin
+				max = @tier3unitymax
+			}
+		}
+	}
+
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+}
+
+##### パラゴン招致イベント
+country_event = {
+    #デフォ子、今度はウチで兵器を実験しないか？
+    id = VRPUtS_event.321
+    title = "VRPUtS_event.321"
+	desc = "VRPUtS_event.321.desc"
+	picture = GFX_evt_cargoship_caravan
+	show_sound = event_radio_chatter_04
+    location = FROM
+    
+	is_triggered_only = yes
+
+    option = {
+		name = VRPUtS_event.321.a #司令官
+		root = {
+			country_event = { id = VRPUtS_event.331 days = 1 }
+		}
+	}
+    option = {
+		name = VRPUtS_event.321.b #置いてく
+        owner = { add_monthly_resource_mult = {
+				resource = unity
+				value = @tier5unityreward
+				min = @tier5unitymin
+				max = @tier5unitymax
+			}}
+		}
+	}
+
+
+##### しょうがないな。いいよ。
+########## 司令官 - 提督
+country_event = {
+	id = VRPUtS_event.331
+	title = "VRPUtS_event.331"
+	desc = "VRPUtS_event.331.desc"
+	show_sound = event_ai_started_01
+	location = fromfrom
+	is_triggered_only = yes
+
+    picture = GFX_leader_recruitment_bg_renowned
+	event_window_type = leader_recruit
+	notification_event_icon = GFX_message_leader_recruitment_stplus_yukari
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = VRPUtS
+			LEADER_PORTRAIT = uta_01
+			CLASS = commander
+			TIER = leader_tier_legendary
+			NAME = VRPUtS_NAME_uta
+			LEVEL = 6
+			GENDER = indeterminable
+			IMMORTAL = yes
+			ETHIC = pacifist
+			DESC = VRPUtS_uta_leader_desc
+			CATCH_PHRASE = VRPUtS_uta_leader_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_commander_admiral }
+			add_trait = { trait = leader_trait_cyborg }
+			add_trait = { trait = leader_trait_master_gunner }
+			add_trait = { trait = leader_trait_aggressive }
+			add_trait = { trait = leader_trait_engineer }
+			add_trait = { trait = leader_trait_wrecker }
+			add_trait = { trait = leader_trait_artillerist }
+			set_age = 3092
+			set_leader_flag = immune_to_negative_traits
+			set_leader_flag = leader_death_events_blocked
+			save_global_event_target_as = uta_leader
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = VRPUtS_event.331.a
+		response_text = VRPUtS_event.331.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.331.b
+		response_text = VRPUtS_event.331.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.331.c
+		response_text = VRPUtS_event.331.c.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.331.d
+		response_text = VRPUtS_event.331.d.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.331.e
+		response_text = VRPUtS_event.331.e.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.331.f
+		response_text = VRPUtS_event.331.f.response
+		is_dialog_only = yes
+	}
+	option = { #もしかしてそれって……
+		name = VRPUtS_event.331.g
+		trigger = {
+			root = {
+				has_country_flag = teto_recruited
+			}
+		}
+		response_text = VRPUtS_event.331.g.response
+		is_dialog_only = yes
+	}
+
+	option = { # DISMISS
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			set_country_flag = uta_dismissed
+			event_target:uta_leader = {
+				kill_leader = { show_notification = no }
+			}
+		}
+	}
+	option = { # HIRE
+		name = HIRE
+		tag = hire_leader
+		hidden_effect = {
+			set_country_flag = uta_recruited
+			if = {
+				limit = {
+					is_variable_set = paragon_memory_vault
+				}
+				change_variable = {
+					which = paragon_memory_vault
+					value = 1
+				}
+			}
+			hire_event_leader_effect = {
+				LEADER = uta_leader
+			}
+		}
+	}
+}

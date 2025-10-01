@@ -1,0 +1,497 @@
+namespace = VRPUtS_event
+##### イベント、トリガー元：アノマリー
+ship_event = {
+    id = VRPUtS_event.101
+    title = "VRPUtS_event.101"
+    desc = "VRPUtS_event.101.desc"
+    picture = GFX_evt_ship_in_orbit
+    show_sound = event_ship_bridge
+    location = FROM
+
+    is_triggered_only = yes
+
+    option = {
+		name = VRPUtS_event.101.a #派生
+		trigger = { owner = { NOR = {
+					has_ethic = ethic_fanatic_spiritualist
+					has_ethic = ethic_spiritualist
+					is_gestalt = yes
+				}}}
+		fromfrom = {
+            prevent_anomaly = yes
+			create_archaeological_site = VRPUtS_site_rei
+		}
+	}
+    option = {
+		name = VRPUtS_event.101.b #放棄
+		trigger = { owner = { NOR = {
+					has_ethic = ethic_fanatic_spiritualist
+					has_ethic = ethic_spiritualist
+					is_gestalt = yes
+				}}}
+		FROM = {
+			add_deposit = d_minerals_3
+		}
+	}
+
+    option = {
+		name = VRPUtS_event.101.c #強制放棄 - 精神主義
+		trigger = { owner = { OR = {
+					has_ethic = ethic_fanatic_spiritualist
+					has_ethic = ethic_spiritualist
+				}}}
+		FROM = {
+			add_deposit = d_minerals_3
+		}
+	}
+	option = {
+		name = VRPUtS_event.101.d #強制放棄 - ゲシュタルト意識
+		trigger = { owner = { 
+				is_gestalt = yes 
+				}}
+		FROM = {
+			add_deposit = d_minerals_3
+		}
+	}
+}
+
+##### 考古学調査地点、参照元：考古学調査地点
+fleet_event = {
+	id = VRPUtS_event.111
+	title = "VRPUtS_event.111"
+	desc = "VRPUtS_event.111.desc"
+	picture = GFX_evt_glitchy_matrix
+	show_sound = evn_ove_scientific_experiments
+
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+	option = {
+		name = UNDERSTOOD
+	}
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+}
+fleet_event = {
+	id = VRPUtS_event.112
+	title = "VRPUtS_event.112"
+	desc = "VRPUtS_event.112.desc"
+	picture = GFX_evt_debris
+	show_sound = event_whispering
+
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+	option = {
+		name = VRPUtS_event.112.a
+	}
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+}
+fleet_event = {
+	id = VRPUtS_event.113
+	title = "VRPUtS_event.113"
+	desc = "VRPUtS_event.113.desc"
+	picture = GFX_evt_city_ruins
+	show_sound = evn_ove_scientific_experiments
+
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+	option = {
+		name = VRPUtS_event.113.a
+	}
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+}
+fleet_event = {
+	id = VRPUtS_event.114
+	title = "VRPUtS_event.114"
+	desc = "VRPUtS_event.114.desc"
+	picture = GFX_evt_communication_event
+	show_sound = event_red_alert
+
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+
+	option = {
+		name = VRPUtS_event.114.a
+        from = {
+			enable_special_project = {
+				name = VRPUtS_project_rei #スペシャルプロジェクト派生
+				location = FROM
+				owner = root
+			}
+		}
+	}
+	option = {
+		name = VRPUtS_event.114.b
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier2unityreward
+				min = @tier2unitymin
+				max = @tier2unitymax
+			}
+		}
+	}
+
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+}
+
+##### パラゴン招致イベント
+country_event = {
+    id = VRPUtS_event.121
+    title = "VRPUtS_event.121"
+	desc = "VRPUtS_event.121.desc"
+	picture = GFX_evt_sapient_AI
+	show_sound = evn_ove_scientific_experiments
+    location = FROM
+    
+	is_triggered_only = yes
+
+    option = {
+		name = VRPUtS_event.121.a #科学者
+		root = {
+			country_event = { id = VRPUtS_event.131 days = 1 }
+		}
+	}
+    option = {
+		name = VRPUtS_event.121.b #司令官
+		root = {
+			country_event = { id = VRPUtS_event.132 days = 1 }
+		}
+	}
+    option = {
+		name = VRPUtS_event.121.c #役人
+		root = {
+			country_event = { id = VRPUtS_event.133 days = 1 }
+		}
+	}
+}
+
+##### 足立レイ、起動しました。
+########## 足立レイ - 科学者
+country_event = {
+	id = VRPUtS_event.131
+	title = "VRPUtS_event.131"
+	desc = "VRPUtS_event.131.desc"
+	show_sound = event_ai_started_01
+	location = fromfrom
+	is_triggered_only = yes
+
+    picture = GFX_leader_recruitment_bg_renowned
+	event_window_type = leader_recruit
+	notification_event_icon = GFX_message_leader_recruitment_stplus_yukari
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = VRPUtS
+			LEADER_PORTRAIT = rei_02
+			CLASS = scientist
+			TIER = leader_tier_legendary
+			NAME = VRPUtS_NAME_rei
+			LEVEL = 5
+			GENDER = indeterminable
+			IMMORTAL = yes
+			ETHIC = gestalt_consciousness
+			DESC = VRPUtS_rei_leader_desc
+			CATCH_PHRASE = VRPUtS_rei_leader_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_scientist_governor }
+			add_trait = { trait = leader_trait_ancient_knowledge }
+			add_trait = { trait = leader_trait_synthetic }
+			add_trait = { trait = leader_trait_architectural_interest }
+			add_trait = { trait = leader_trait_adaptable }
+			add_trait = { trait = leader_trait_collaborator }
+			set_age = 302
+			set_leader_flag = immune_to_negative_traits
+			set_leader_flag = leader_death_events_blocked
+			save_global_event_target_as = rei_leader
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = VRPUtS_event.131.a
+		response_text = VRPUtS_event.131.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.131.b
+		response_text = VRPUtS_event.131.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.131.c
+		response_text = VRPUtS_event.131.c.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.131.d
+		response_text = VRPUtS_event.131.d.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.131.e
+		response_text = VRPUtS_event.131.e.response
+		is_dialog_only = yes
+	}
+
+	option = { # DISMISS
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			set_country_flag = rei_dismissed
+			event_target:rei_leader = {
+				kill_leader = { show_notification = no }
+			}
+		}
+	}
+	option = { # HIRE
+		name = HIRE
+		tag = hire_leader
+		hidden_effect = {
+			set_country_flag = rei_recruited
+			if = {
+				limit = {
+					is_variable_set = paragon_memory_vault
+				}
+				change_variable = {
+					which = paragon_memory_vault
+					value = 1
+				}
+			}
+			hire_event_leader_effect = {
+				LEADER = rei_leader
+			}
+		}
+	}
+}
+########## 足立レイ - 司令官
+country_event = {
+	id = VRPUtS_event.132
+	title = "VRPUtS_event.131"
+	desc = "VRPUtS_event.131.desc"
+	show_sound = event_ai_started_01
+	location = fromfrom
+	is_triggered_only = yes
+
+    picture = GFX_leader_recruitment_bg_renowned
+	event_window_type = leader_recruit
+	notification_event_icon = GFX_message_leader_recruitment_stplus_yukari
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = VRPUtS
+			LEADER_PORTRAIT = rei_03
+			CLASS = commander
+			TIER = leader_tier_legendary
+			NAME = VRPUtS_NAME_rei
+			LEVEL = 5
+			GENDER = indeterminable
+			IMMORTAL = yes
+			ETHIC = gestalt_consciousness
+			DESC = VRPUtS_rei_leader_desc
+			CATCH_PHRASE = VRPUtS_rei_leader_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_commander_admiral }
+			add_trait = { trait = leader_trait_ancient_knowledge }
+			add_trait = { trait = leader_trait_synthetic }
+			add_trait = { trait = leader_trait_adaptable }
+			add_trait = { trait = leader_trait_aggressive }
+			add_trait = { trait = leader_trait_artillerist }
+			set_age = 302
+			set_leader_flag = immune_to_negative_traits
+			set_leader_flag = leader_death_events_blocked
+			save_global_event_target_as = rei_leader
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = VRPUtS_event.131.a
+		response_text = VRPUtS_event.131.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.131.b
+		response_text = VRPUtS_event.131.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.131.c
+		response_text = VRPUtS_event.131.c.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.131.d
+		response_text = VRPUtS_event.131.d.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.131.e
+		response_text = VRPUtS_event.131.e.response
+		is_dialog_only = yes
+	}
+
+	option = { # DISMISS
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			set_country_flag = rei_dismissed
+			event_target:rei_leader = {
+				kill_leader = { show_notification = no }
+			}
+		}
+	}
+	option = { # HIRE
+		name = HIRE
+		tag = hire_leader
+		hidden_effect = {
+			set_country_flag = rei_recruited
+			if = {
+				limit = {
+					is_variable_set = paragon_memory_vault
+				}
+				change_variable = {
+					which = paragon_memory_vault
+					value = 1
+				}
+			}
+			hire_event_leader_effect = {
+				LEADER = rei_leader
+			}
+		}
+	}
+}
+########## 足立レイ - 役人
+country_event = {
+	id = VRPUtS_event.133
+	title = "VRPUtS_event.131"
+	desc = "VRPUtS_event.131.desc"
+	show_sound = event_ai_started_01
+	location = fromfrom
+	is_triggered_only = yes
+
+    picture = GFX_leader_recruitment_bg_renowned
+	event_window_type = leader_recruit
+	notification_event_icon = GFX_message_leader_recruitment_stplus_yukari
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = VRPUtS
+			LEADER_PORTRAIT = rei_04
+			CLASS = official
+			TIER = leader_tier_legendary
+			NAME = VRPUtS_NAME_rei
+			LEVEL = 5
+			GENDER = indeterminable
+			IMMORTAL = yes
+			ETHIC = gestalt_consciousness
+			DESC = VRPUtS_rei_leader_desc
+			CATCH_PHRASE = VRPUtS_rei_leader_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_official_governor }
+			add_trait = { trait = leader_trait_ancient_knowledge }
+			add_trait = { trait = leader_trait_synthetic }
+			add_trait = { trait = leader_trait_architectural_interest }
+			add_trait = { trait = leader_trait_adaptable }
+			add_trait = { trait = leader_trait_pop_focused }
+			set_age = 302
+			set_leader_flag = immune_to_negative_traits
+			set_leader_flag = leader_death_events_blocked
+			save_global_event_target_as = rei_leader
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = VRPUtS_event.131.a
+		response_text = VRPUtS_event.131.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.131.b
+		response_text = VRPUtS_event.131.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.131.c
+		response_text = VRPUtS_event.131.c.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.131.d
+		response_text = VRPUtS_event.131.d.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.131.e
+		response_text = VRPUtS_event.131.e.response
+		is_dialog_only = yes
+	}
+
+	option = { # DISMISS
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			set_country_flag = rei_dismissed
+			event_target:rei_leader = {
+				kill_leader = { show_notification = no }
+			}
+		}
+	}
+	option = { # HIRE
+		name = HIRE
+		tag = hire_leader
+		hidden_effect = {
+			set_country_flag = rei_recruited
+			if = {
+				limit = {
+					is_variable_set = paragon_memory_vault
+				}
+				change_variable = {
+					which = paragon_memory_vault
+					value = 1
+				}
+			}
+			hire_event_leader_effect = {
+				LEADER = rei_leader
+			}
+		}
+	}
+}

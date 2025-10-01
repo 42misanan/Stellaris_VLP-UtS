@@ -1,0 +1,28 @@
+namespace = VRPUtS_event
+country_event = {
+    #デフォテトはいいぞ
+    id = VRPUtS_event.9901
+    title = "VRPUtS_event.9901.name"
+    desc = "VRPUtS_event.9901.desc"
+    show_sound = event_airlock_03
+    picture = GFX_evt_legendary_leader
+    event_window_type = leader_story
+
+    mean_time_to_happen = { days = 10 }
+    
+	picture_event_data = {
+		portrait = teto_02
+		room = ethic_spaceship_room
+	}
+
+    fire_only_once = yes
+
+	trigger = {
+		has_country_flag = teto_recruited
+        has_country_flag = uta_recruited
+	}
+
+	option = {
+		name = VRPUtS_event.9901.a
+	}
+}

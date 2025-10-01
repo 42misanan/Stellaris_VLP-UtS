@@ -1,0 +1,68 @@
+portraits = {
+	teto_01 = { texturefile = "gfx/models/portraits/teto/teto_01.dds" }
+	teto_02 = { texturefile = "gfx/models/portraits/teto/teto_02.dds" }
+	#teto_03 = { texturefile = "gfx/models/portraits/teto/teto_03.dds" }
+	#teto_04 = { texturefile = "gfx/models/portraits/teto/teto_04.dds" }
+}
+
+portrait_groups = {
+	teto = {
+		default = teto_02
+		game_setup = { #will run with a limited country scope. species and government is set but the country does not actually exist
+			add = {
+				portraits = {
+					teto_01
+					teto_02
+					#teto_03
+					#teto_04
+				}
+			}
+		}
+		species = { #generic portrait for a species
+			add = {
+				portraits = {
+					teto_01
+					teto_02
+					#teto_03
+					#teto_04
+				}
+			}
+		}		
+		
+		pop = { #for a specific pop
+			add = {
+				portraits = {
+					teto_01
+					teto_02
+					#teto_03
+					#teto_04
+				}
+			}
+		}
+		
+		#leader scope
+		leader = { #scientists, generals, admirals, governor
+			add = {
+				portraits = {
+					teto_01
+					teto_02
+					#teto_03
+					#teto_04
+				}
+			}
+		}
+
+			
+		#leader scope 
+		ruler = {
+			add = {
+				portraits = {
+					teto_01
+					teto_02
+					#teto_03
+					#teto_04
+				}
+			}
+		}
+	}
+}

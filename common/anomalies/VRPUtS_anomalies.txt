@@ -1,0 +1,71 @@
+@distar_weight = 1
+###足立レイ
+VRPUtS_rei_anomaly = {
+
+    desc = VRPUtS_rei_anomaly_desc
+    picture = GFX_evt_asteroid_approaching_planet
+    level = 4
+
+    spawn_chance = {
+        modifier = {
+            add = 6
+            OR = {
+            is_planet_class = pc_barren
+            is_planet_class = pc_molten
+            }
+        }
+    }
+
+    on_success = {
+        fire_only_once = yes
+		1 = VRPUtS_event.101
+    }
+}
+
+###フィーちゃん
+VRPUtS_fee_anomaly = {
+    #滅亡した文明の予備的文化調査を行ったらなんかドロイドがやることやってる
+
+    desc = VRPUtS_fee_anomaly_desc
+    picture = GFX_evt_space_debris
+    level = 1
+
+    spawn_chance = {
+        modifier = {
+            add = 6
+            OR = {
+            is_planet_class = pc_arctic
+            is_planet_class = pc_barren_cold
+            is_planet_class = pc_frozen
+            }
+        }
+    }
+
+    on_success = {
+        fire_only_once = yes
+		1 = VRPUtS_event.201
+    }
+}
+
+###デフォ子
+VRPUtS_uta_anomaly = {
+    #この小惑星には不可解なクレーターが多すぎる
+
+    desc = VRPUtS_uta_anomaly_desc
+    picture = GFX_evt_asteroid_field
+    level = 3
+
+    spawn_chance = {
+        modifier = {
+            add = 6
+            OR = {
+            is_asteroid = yes
+            }
+        }
+    }
+
+    on_success = {
+        fire_only_once = yes
+		1 = VRPUtS_event.301
+    }
+}

@@ -1,0 +1,7 @@
+VRPUtS_teto_chain = {
+	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
+	picture = GFX_evt_tradestation_interior
+	counter = {
+		VRPUtS_teto_rise = { max = 3 }
+	}
+}

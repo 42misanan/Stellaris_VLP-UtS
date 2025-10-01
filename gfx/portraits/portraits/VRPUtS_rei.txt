@@ -1,0 +1,68 @@
+portraits = {
+	rei_01 = { texturefile = "gfx/models/portraits/rei/rei_01.dds" }
+	rei_02 = { texturefile = "gfx/models/portraits/rei/rei_02.dds" }
+	rei_03 = { texturefile = "gfx/models/portraits/rei/rei_03.dds" }
+	rei_04 = { texturefile = "gfx/models/portraits/rei/rei_04.dds" }
+}
+
+portrait_groups = {
+	rei = {
+		default = rei_01
+		game_setup = { #will run with a limited country scope. species and government is set but the country does not actually exist
+			add = {
+				portraits = {
+					rei_01
+					rei_02
+					rei_03
+					rei_04
+				}
+			}
+		}
+		species = { #generic portrait for a species
+			add = {
+				portraits = {
+					rei_01
+					rei_02
+					rei_03
+					rei_04
+				}
+			}
+		}		
+		
+		pop = { #for a specific pop
+			add = {
+				portraits = {
+					rei_01
+					rei_02
+					rei_03
+					rei_04
+				}
+			}
+		}
+		
+		#leader scope
+		leader = { #scientists, generals, admirals, governor
+			add = {
+				portraits = {
+					rei_01
+					rei_02
+					rei_03
+					rei_04
+				}
+			}
+		}
+
+			
+		#leader scope 
+		ruler = {
+			add = {
+				portraits = {
+					rei_01
+					rei_02
+					rei_03
+					rei_04
+				}
+			}
+		}
+	}
+}

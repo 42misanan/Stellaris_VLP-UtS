@@ -1,0 +1,318 @@
+namespace = VRPUtS_event
+##### イベント、トリガー元：アノマリー
+ship_event = {
+    #なんだか送電網が生きてるみたいだし発掘作業しない？
+    id = VRPUtS_event.201
+    title = "VRPUtS_event.201"
+    desc = "VRPUtS_event.201.desc"
+    picture = GFX_evt_ship_in_orbit
+    show_sound = event_ghost_town
+    location = FROM
+
+    is_triggered_only = yes
+
+    option = {
+		name = VRPUtS_event.201.a #派生
+		trigger = { owner = { NOR = {
+					has_ethic = ethic_fanatic_egalitarian
+					has_ethic = ethic_egalitarian
+					is_gestalt = yes
+				}}}
+		fromfrom = {
+            prevent_anomaly = yes
+			create_archaeological_site = VRPUtS_site_fee
+		}
+	}
+    option = {
+		name = VRPUtS_event.201.b #放棄
+		trigger = { owner = { NOR = {
+					has_ethic = ethic_fanatic_egalitarian
+					has_ethic = ethic_egalitarian
+					is_gestalt = yes
+				}}}
+		FROM = {
+			add_deposit = d_minerals_3
+		}
+	}
+
+    option = {
+		name = VRPUtS_event.201.c #強制放棄 - 平等主義
+		trigger = { owner = { OR = {
+					has_ethic = ethic_fanatic_egalitarian
+					has_ethic = ethic_egalitarian
+				}}}
+		FROM = {
+			add_deposit = d_minerals_3
+		}
+	}
+	option = {
+		name = VRPUtS_event.201.d #強制放棄 - ゲシュタルト意識
+		trigger = { owner = { 
+				is_gestalt = yes 
+				}}
+		FROM = {
+			add_deposit = d_minerals_3
+		}
+	}
+}
+
+##### 考古学調査地点、参照元：考古学調査地点
+fleet_event = {
+    #地下ネットワークでっか
+	id = VRPUtS_event.211
+	title = "VRPUtS_event.211"
+	desc = "VRPUtS_event.211.desc"
+	picture = GFX_evt_glitchy_matrix
+	show_sound = event_construction
+
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+	option = {
+		name = UNDERSTOOD
+	}
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+}
+fleet_event = {
+    #中枢ユニットに近づいていくべきじゃないか？
+	id = VRPUtS_event.212
+	title = "VRPUtS_event.212"
+	desc = "VRPUtS_event.212.desc"
+	picture = GFX_evt_unplugged_opus_nexus
+	show_sound = event_construction_02
+
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+	option = {
+		name = VRPUtS_event.212.a
+	}
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+}
+fleet_event = {
+    #電源ユニットを繋ぎ直す必要が出てきちゃった
+	id = VRPUtS_event.213
+	title = "VRPUtS_event.213"
+	desc = "VRPUtS_event.213.desc"
+	picture = GFX_evt_derelict_interior
+	show_sound = event_construction_03
+
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+	option = {
+		name = VRPUtS_event.213.a
+	}
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+}
+fleet_event = {
+    #ついに中枢を見つけた……んだけど、雁字搦めにロックされてる
+	id = VRPUtS_event.214
+	title = "VRPUtS_event.214"
+	desc = "VRPUtS_event.214.desc"
+	picture = GFX_evt_ship_offloading_cargo
+	show_sound = event_radio_chatter_02
+
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+	option = {
+		name = VRPUtS_event.214.a
+	}
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+}
+fleet_event = {
+    #解除＆こんにちは
+	id = VRPUtS_event.215
+	title = "VRPUtS_event.215"
+	desc = "VRPUtS_event.215.desc"
+	picture = GFX_evt_the_last_stormshelter
+	show_sound = event_conversation
+
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+
+	option = {
+		name = VRPUtS_event.215.a
+        from = {
+			enable_special_project = {
+				name = VRPUtS_project_fee #スペシャルプロジェクト派生
+				location = FROM
+				owner = root
+			}
+		}
+	}
+	option = {
+		name = VRPUtS_event.215.b
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier3unityreward
+				min = @tier3unitymin
+				max = @tier3unitymax
+			}
+		}
+	}
+
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+}
+
+##### パラゴン招致イベント
+country_event = {
+    #フィーちゃんを招致しよう
+    id = VRPUtS_event.221
+    title = "VRPUtS_event.221"
+	desc = "VRPUtS_event.221.desc"
+	picture = GFX_evt_throne_room
+	show_sound = event_ai_started_01
+    location = FROM
+    
+	is_triggered_only = yes
+
+    option = {
+		name = VRPUtS_event.221.a #役人
+		root = {
+			country_event = { id = VRPUtS_event.231 days = 1 }
+		}
+	}
+    option = {
+		name = VRPUtS_event.221.b #置いてく
+        owner = { add_monthly_resource_mult = {
+				resource = unity
+				value = @tier5unityreward
+				min = @tier5unitymin
+				max = @tier5unitymax
+			}}
+		}
+	}
+
+
+##### フィー、起動しました。
+########## 役人 - 事業家
+country_event = {
+	id = VRPUtS_event.231
+	title = "VRPUtS_event.231"
+	desc = "VRPUtS_event.231.desc"
+	show_sound = event_ai_started_01
+	location = fromfrom
+	is_triggered_only = yes
+
+    picture = GFX_leader_recruitment_bg_renowned
+	event_window_type = leader_recruit
+	notification_event_icon = GFX_message_leader_recruitment_stplus_yukari
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = VRPUtS
+			LEADER_PORTRAIT = fee_01
+			CLASS = official
+			TIER = leader_tier_legendary
+			NAME = VRPUtS_NAME_fee
+			LEVEL = 7
+			GENDER = indeterminable
+			IMMORTAL = yes
+			ETHIC = egalitarian
+			DESC = VRPUtS_fee_leader_desc
+			CATCH_PHRASE = VRPUtS_fee_leader_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_official_governor }
+			add_trait = { trait = leader_trait_zealot }
+			add_trait = { trait = leader_trait_synthetic }
+			add_trait = { trait = trait_ruler_fertility_preacher }
+			add_trait = { trait = leader_trait_adaptable }
+			add_trait = { trait = leader_trait_pop_focused_2 }
+			set_age = 1874
+			set_leader_flag = immune_to_negative_traits
+			set_leader_flag = leader_death_events_blocked
+			save_global_event_target_as = fee_leader
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = VRPUtS_event.231.a
+		response_text = VRPUtS_event.231.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.231.b
+		response_text = VRPUtS_event.231.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.231.c
+		response_text = VRPUtS_event.231.c.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.231.d
+		response_text = VRPUtS_event.231.d.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.231.e
+		response_text = VRPUtS_event.231.e.response
+		is_dialog_only = yes
+	}
+
+	option = { # DISMISS
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			set_country_flag = fee_dismissed
+			event_target:fee_leader = {
+				kill_leader = { show_notification = no }
+			}
+		}
+	}
+	option = { # HIRE
+		name = HIRE
+		tag = hire_leader
+		hidden_effect = {
+			set_country_flag = fee_recruited
+			if = {
+				limit = {
+					is_variable_set = paragon_memory_vault
+				}
+				change_variable = {
+					which = paragon_memory_vault
+					value = 1
+				}
+			}
+			hire_event_leader_effect = {
+				LEADER = fee_leader
+			}
+		}
+	}
+}

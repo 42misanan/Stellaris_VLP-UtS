@@ -1,0 +1,68 @@
+portraits = {
+	fee_01 = { texturefile = "gfx/models/portraits/fee/fee_01.dds" }
+	fee_02 = { texturefile = "gfx/models/portraits/fee/fee_02.dds" }
+	#fee_03 = { texturefile = "gfx/models/portraits/fee/fee_03.dds" }
+	#fee_04 = { texturefile = "gfx/models/portraits/fee/fee_04.dds" }
+}
+
+portrait_groups = {
+	fee = {
+		default = fee_01
+		game_setup = { #will run with a limited country scope. species and government is set but the country does not actually exist
+			add = {
+				portraits = {
+					fee_01
+					fee_02
+					#fee_03
+					#fee_04
+				}
+			}
+		}
+		species = { #generic portrait for a species
+			add = {
+				portraits = {
+					fee_01
+					fee_02
+					#fee_03
+					#fee_04
+				}
+			}
+		}		
+		
+		pop = { #for a specific pop
+			add = {
+				portraits = {
+					fee_01
+					fee_02
+					#fee_03
+					#fee_04
+				}
+			}
+		}
+		
+		#leader scope
+		leader = { #scientists, generals, admirals, governor
+			add = {
+				portraits = {
+					fee_01
+					fee_02
+					#fee_03
+					#fee_04
+				}
+			}
+		}
+
+			
+		#leader scope 
+		ruler = {
+			add = {
+				portraits = {
+					fee_01
+					fee_02
+					#fee_03
+					#fee_04
+				}
+			}
+		}
+	}
+}

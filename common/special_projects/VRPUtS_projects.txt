@@ -1,0 +1,55 @@
+##### 足立レイ
+special_project = {
+	key = "VRPUtS_project_rei"
+	desc = "VRPUtS_project_rei_desc"
+	cost = 15000
+	tech_department = physics_technology
+	picture = GFX_evt_habitat
+	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
+
+	event_scope = country_event
+
+	on_success = {
+    owner = {
+        country_event = { id = VRPUtS_event.121 }
+		}
+	}
+}
+
+##### フィーちゃん
+special_project = {
+	key = "VRPUtS_project_fee"
+	desc = "VRPUtS_project_fee_desc"
+	cost = 15000 #15000
+	tech_department = society_technology
+	picture = GFX_evt_exhibition_grand_archive
+	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
+
+	event_scope = country_event
+
+	on_success = {
+    owner = {
+        country_event = { id = VRPUtS_event.221 }
+		}
+	}
+}
+
+##### デフォ子
+special_project = {
+	key = "VRPUtS_project_uta"
+	desc = "VRPUtS_project_uta_desc"
+	cost = 15000 #15000
+	tech_department = engineering_technology
+	picture = GFX_evt_archaeology_camp
+	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
+
+	event_scope = country_event
+
+	on_success = {
+    owner = {
+        country_event = { id = VRPUtS_event.321 }
+		}
+	}
+}
+
+
