@@ -1,0 +1,68 @@
+portraits = {
+	uni_01 = { texturefile = "gfx/models/portraits/uni/uni_01.dds" }
+	uni_02 = { texturefile = "gfx/models/portraits/uni/uni_02.dds" }
+	#uni_03 = { texturefile = "gfx/models/portraits/uni/uni_03.dds" }
+	#uni_04 = { texturefile = "gfx/models/portraits/uni/uni_04.dds" }
+}
+
+portrait_groups = {
+	uni = {
+		default = uni_02
+		game_setup = { #will run with a limited country scope. species and government is set but the country does not actually exist
+			add = {
+				portraits = {
+					uni_01
+					uni_02
+					#uni_03
+					#uni_04
+				}
+			}
+		}
+		species = { #generic portrait for a species
+			add = {
+				portraits = {
+					uni_01
+					uni_02
+					#uni_03
+					#uni_04
+				}
+			}
+		}		
+		
+		pop = { #for a specific pop
+			add = {
+				portraits = {
+					uni_01
+					uni_02
+					#uni_03
+					#uni_04
+				}
+			}
+		}
+		
+		#leader scope
+		leader = { #scientists, generals, admirals, governor
+			add = {
+				portraits = {
+					uni_01
+					uni_02
+					#uni_03
+					#uni_04
+				}
+			}
+		}
+
+			
+		#leader scope 
+		ruler = {
+			add = {
+				portraits = {
+					uni_01
+					uni_02
+					#uni_03
+					#uni_04
+				}
+			}
+		}
+	}
+}

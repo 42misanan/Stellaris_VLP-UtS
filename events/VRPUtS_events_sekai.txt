@@ -1,0 +1,400 @@
+namespace = VRPUtS_event
+
+##### イベント、トリガー元：ランダムなコロニーを選択して発生させる、イベントクラスはplanet_eventに直す
+
+country_event = {
+    #公式には存在しない何かに人々は胸を躍らせているらしい
+    id = VRPUtS_event.601
+    title = "VRPUtS_event.601"
+    desc = "VRPUtS_event.601.desc"
+    picture = GFX_evt_alien_hieroglyphics
+    show_sound = event_planetary_riot
+    event_chain = VRPUtS_sekai_chain
+
+    trigger = {
+        any_country = {
+            NOR = { 
+                has_country_flag = sekai_chance
+                has_country_flag = sekai_recruited
+            }
+        }
+        NOR = { 
+            has_country_flag = sekai_abandoned
+            has_country_flag = sekai_chance
+            has_country_flag = sekai_recruited
+            }
+        has_situation_flag = divination_occuring
+        is_ai = no
+    }
+
+    option = {
+		name = VRPUtS_event.601.a #派生
+		trigger = {
+            NOR = {
+                has_ethic = ethic_fanatic_militarist
+                has_ethic = ethic_militarist
+                is_gestalt = yes
+            }
+            any_country = { NOR = {
+                has_country_flag = sekai_recruited
+                has_country_flag = sekai_chance
+            }}
+        }
+        set_country_flag = sekai_chance
+        begin_event_chain = {
+            event_chain = VRPUtS_sekai_chain
+            target = this
+        }
+        hidden_effect = {
+            country_event = { id = VRPUtS_event.611 days = 90 }
+        }
+	}
+    option = {
+		name = VRPUtS_event.601.b #放棄
+		trigger = { NOR = {
+					has_ethic = ethic_fanatic_militarist
+					has_ethic = ethic_militarist
+					is_gestalt = yes
+				}}
+		add_monthly_resource_mult = {
+			resource = sekaity
+			value = @tier1sekaityreward
+			min = @tier1sekaitymin
+			max = @tier1sekaitymax
+		}
+        set_country_flag = sekai_abandoned
+	}
+
+    option = {
+		name = VRPUtS_event.601.c #強制放棄 - 軍国主義
+		trigger = { OR = {
+					has_ethic = ethic_fanatic_militarist
+					has_ethic = ethic_militarist
+				}}
+		add_monthly_resource_mult = {
+			resource = sekaity
+			value = @tier1sekaityreward
+			min = @tier1sekaitymin
+			max = @tier1sekaitymax
+		}
+        set_country_flag = sekai_abandoned
+	}
+	option = {
+		name = VRPUtS_event.601.d #強制放棄 - ゲシュタルト意識
+		trigger = { 
+				is_gestalt = yes 
+				}
+		add_monthly_resource_mult = {
+			resource = sekaity
+			value = @tier1sekaityreward
+			min = @tier1sekaitymin
+			max = @tier1sekaitymax
+		}
+        set_country_flag = sekai_abandoned
+	}
+}
+
+##### 連鎖イベント - テトさんをつかまえろ！
+country_event = {
+    #この運動が激化しないようにしつつ、何かするべきだ
+	id = VRPUtS_event.611
+	title = "VRPUtS_event.611"
+	desc = "VRPUtS_event.611.desc"
+	picture = GFX_evt_alien_planet
+	show_sound = event_solar_fusion
+    event_chain = VRPUtS_sekai_chain
+
+	is_triggered_only = yes
+
+	option = { #継続
+		name = VRPUtS_event.611.a
+        allow = {
+            root = {
+                resource_stockpile_compare = {
+                    resource = sekaity
+                    value >= 1000
+                }
+                resource_stockpile_compare = {
+                    resource = influence
+                    value >= 50
+                }
+            }
+        }
+        root = {
+            add_resource = {
+                sekaity = -1000
+                influence = -50
+            }
+            add_event_chain_counter = {
+                event_chain = "VRPUtS_sekai_chain"
+				counter = "VRPUtS_sekai_rise"
+				amount = 1
+			}
+        }
+        hidden_effect = {
+            country_event = { id = VRPUtS_event.612 days = 80 }
+        }
+	}
+    option = { #放棄
+        name = VRPUtS_event.611.b
+        end_event_chain = VRPUtS_sekai_chain
+        remove_country_flag = sekai_chance
+        set_country_flag = sekai_abandoned
+    }
+}
+
+country_event = {
+    #みな口をそろえてある場所を指し示している - 見つけに行くぞ。
+	id = VRPUtS_event.612
+	title = "VRPUtS_event.612"
+	desc = "VRPUtS_event.612.desc"
+	picture = GFX_evt_satellite_in_orbit
+	show_sound = event_administrative_work_04
+    event_chain = VRPUtS_sekai_chain
+
+	is_triggered_only = yes
+
+	option = { #継続
+		name = VRPUtS_event.612.a
+        allow = {
+            root = {
+                resource_stockpile_compare = {
+                    resource = alloys
+                    value >= 200
+                }
+                resource_stockpile_compare = {
+                    resource = energy
+                    value >= 1000
+                }
+            }
+        }
+        root = {
+            add_resource = {
+                alloys = -200
+                energy = -1000
+            }
+            add_event_chain_counter = {
+                event_chain = "VRPUtS_sekai_chain"
+				counter = "VRPUtS_sekai_rise"
+				amount = 1
+			}
+        }
+        hidden_effect = {
+            country_event = { id = VRPUtS_event.613 days = 80 }
+        }
+	}
+    option = { #放棄
+        name = VRPUtS_event.612.b
+        end_event_chain = VRPUtS_sekai_chain
+        remove_country_flag = sekai_chance
+        set_country_flag = sekai_abandoned
+    }
+}
+
+country_event = {
+    #それらしい場所を見つけた。掘り起こすぞ。
+	id = VRPUtS_event.613
+	title = "VRPUtS_event.613"
+	desc = "VRPUtS_event.613.desc"
+	picture = GFX_evt_relic_shipyard
+	show_sound = event_activating_unknown_technology
+    event_chain = VRPUtS_sekai_chain
+
+	is_triggered_only = yes
+
+	option = { #継続
+		name = VRPUtS_event.613.a
+        allow = {
+            root = {
+                resource_stockpile_compare = {
+                    resource = energy
+                    value >= 500
+                }
+            }
+        }
+        root = {
+            add_resource = {
+                energy = -500
+            }
+            add_event_chain_counter = {
+                event_chain = "VRPUtS_sekai_chain"
+				counter = "VRPUtS_sekai_rise"
+				amount = 1
+			}
+        }
+        hidden_effect = {
+            country_event = { id = VRPUtS_event.621 days = 1 }
+        }
+	}
+    option = { #放棄
+        name = VRPUtS_event.613.b
+        end_event_chain = VRPUtS_sekai_chain
+        remove_country_flag = sekai_chance
+        set_country_flag = sekai_abandoned
+    }
+}
+
+##### diplomatic インターフェースにつなぐ
+country_event = {
+    #いた！お前かッ！
+    id = VRPUtS_event.621
+    title = "VRPUtS_event.621"
+	desc = "VRPUtS_event.621.desc"
+	picture = GFX_evt_ship_travel
+	show_sound = event_super_explosion
+    location = capital_scope
+    
+	is_triggered_only = yes
+
+    option = {
+		name = VRPUtS_event.621.a #捕まえた！
+		root = {
+			country_event = { id = VRPUtS_event.631 days = 1 }
+            end_event_chain = VRPUtS_sekai_chain
+		}
+	}
+}
+
+##### 待てコラッ！
+country_event = {
+	id = VRPUtS_event.631
+	title = "VRPUtS_event.631.name"
+	desc = "VRPUtS_event.631.desc"
+	location = FROM
+	diplomatic_title = BLANK_STRING
+
+	diplomatic = yes
+
+	is_triggered_only = yes
+
+	picture_event_data = {
+		portrait = sekai_01
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = "VRPUtS_event.631.a"
+		response_text = "VRPUtS_event.631.a.response"
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = "VRPUtS_event.631.b"
+		response_text = "VRPUtS_event.631.b.response"
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = "VRPUtS_event.631.c"
+        root = { 
+            country_event = { id = VRPUtS_event.641 days = 1 }
+        }
+	}
+
+	option = {
+		name = "VRPUtS_event.631.d"
+	}
+}
+
+########## 科学者 - 研究者
+country_event = {
+	id = VRPUtS_event.641
+	title = "VRPUtS_event.641"
+	desc = "VRPUtS_event.641.desc"
+	show_sound = event_ai_started_01
+	location = fromfrom
+	is_triggered_only = yes
+
+    picture = GFX_leader_recruitment_bg_renowned
+	event_window_type = leader_recruit
+	notification_event_icon = GFX_message_leader_recruitment_stplus_yukari
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = VRPUtS
+			LEADER_PORTRAIT = sekai_02
+			CLASS = scientist
+			TIER = leader_tier_legendary
+			NAME = VRPUtS_NAME_sekai
+			LEVEL = 5
+			GENDER = indeterminable
+			IMMORTAL = yes
+			ETHIC = pacifist
+			DESC = VRPUtS_sekai_leader_desc
+			CATCH_PHRASE = VRPUtS_sekai_leader_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_scientist_explorer }
+			add_trait = { trait = leader_trait_erudite }
+			add_trait = { trait = leader_trait_slippery_2 }
+			add_trait = { trait = leader_trait_explorer_cloaking_focus }
+			add_trait = { trait = leader_trait_tuner }
+			add_trait = { trait = leader_trait_adaptable }
+			set_age = 31
+			set_leader_flag = immune_to_negative_traits
+			set_leader_flag = leader_death_events_blocked
+			save_global_event_target_as = sekai_leader
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = VRPUtS_event.641.a
+		response_text = VRPUtS_event.641.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.641.b
+		response_text = VRPUtS_event.641.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.641.c
+		response_text = VRPUtS_event.641.c.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.641.d
+		response_text = VRPUtS_event.641.d.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.641.e
+		response_text = VRPUtS_event.641.e.response
+		is_dialog_only = yes
+	}
+
+	option = { # DISMISS
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			set_country_flag = sekai_dismissed
+			event_target:sekai_leader = {
+				kill_leader = { show_notification = no }
+			}
+		}
+	}
+	option = { # HIRE
+		name = HIRE
+		tag = hire_leader
+		hidden_effect = {
+			set_country_flag = sekai_recruited
+			if = {
+				limit = {
+					is_variable_set = paragon_memory_vault
+				}
+				change_variable = {
+					which = paragon_memory_vault
+					value = 1
+				}
+			}
+			hire_event_leader_effect = {
+				LEADER = sekai_leader
+			}
+		}
+	}
+}

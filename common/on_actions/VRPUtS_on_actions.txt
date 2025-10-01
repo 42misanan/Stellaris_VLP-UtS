@@ -1,0 +1,8 @@
+#5年周期のユニちゃんトリガーイベント。確率15%
+#ここでtrigger使ったらダメっぽい
+on_colony_5_year_pulse = {
+	random_events = {
+		15 = VRPUtS_event.501
+		85 = 0
+	}
+}

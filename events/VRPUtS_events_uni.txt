@@ -1,9 +1,9 @@
 namespace = VRPUtS_event
 
 ##### イベント、トリガー元：ランダムなコロニーを選択して発生させる、イベントクラスはplanet_eventに直す
-##### 使えそうなのは 5_year_pulse とかかな？
-country_event = {
-    #公式には存在しない何かに人々は胸を躍らせているらしい
+##### on_actions から引っ張ってくる
+planet_event = {
+    #なぜか異常に食糧が減る
     id = VRPUtS_event.501
     title = "VRPUtS_event.501"
     desc = "VRPUtS_event.501.desc"
@@ -11,30 +11,44 @@ country_event = {
     show_sound = event_planetary_riot
     event_chain = VRPUtS_uni_chain
 
-    mean_time_to_happen = { days = 2 }
+	pre_triggers = {
+		has_owner = yes
+		is_occupied_flag = no
+	}
 
     trigger = {
+		years_passed > 20 #20年以内には発生しない
         any_country = {
             NOR = { 
                 has_country_flag = uni_chance
                 has_country_flag = uni_recruited
             }
         }
-        NOR = { 
-            has_country_flag = uni_abandoned
-            has_country_flag = uni_chance
-            has_country_flag = uni_recruited
-            }
-        has_situation_flag = divination_occuring
-        is_ai = no
+		owner = {
+			NOR = { 
+				has_country_flag = uni_abandoned
+				has_country_flag = uni_chance
+				has_country_flag = uni_recruited
+				}
+			is_at_war = no
+			is_ai = no
+		}
+		OR = {
+			has_building = building_holo_theatres
+			has_building = building_hyper_entertainment_forum
+			has_building = building_autochthon_monument
+			has_building = building_corporate_monument
+			has_building = building_noble_estates
+			has_building = building_commercial_zone
+		}
     }
 
     option = {
-		name = VRPUtS_event.501.a #派生
+		name = VRPUtS_event.501.a #派生 - 泳がしておいて犯人捜しを始める
 		trigger = {
             NOR = {
-                has_ethic = ethic_fanatic_militarist
-                has_ethic = ethic_militarist
+                has_ethic = ethic_fanatic_authoritarian
+                has_ethic = ethic_authoritarian
                 is_gestalt = yes
             }
             any_country = { NOR = {
@@ -42,20 +56,37 @@ country_event = {
                 has_country_flag = uni_chance
             }}
         }
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+                    resource = food
+                    value >= 1000
+                }
+				has_monthly_income = {
+					resource = food
+					value > 0
+				}
+			}
+		}
+		owner = {
+			add_resource = {
+				food = -1000
+			}
+		}
         set_country_flag = uni_chance
         begin_event_chain = {
             event_chain = VRPUtS_uni_chain
-            target = this
+            target = owner
         }
         hidden_effect = {
-            country_event = { id = VRPUtS_event.511 days = 90 }
+            planet_event = { id = VRPUtS_event.511 days = 90 }
         }
 	}
     option = {
-		name = VRPUtS_event.501.b #放棄
+		name = VRPUtS_event.501.b #放棄 - 補填して終わり
 		trigger = { NOR = {
-					has_ethic = ethic_fanatic_militarist
-					has_ethic = ethic_militarist
+					has_ethic = ethic_fanatic_authoritarian
+					has_ethic = ethic_authoritarian
 					is_gestalt = yes
 				}}
 		add_monthly_resource_mult = {
@@ -70,8 +101,8 @@ country_event = {
     option = {
 		name = VRPUtS_event.501.c #強制放棄 - 軍国主義
 		trigger = { OR = {
-					has_ethic = ethic_fanatic_militarist
-					has_ethic = ethic_militarist
+					has_ethic = ethic_fanatic_authoritarian
+					has_ethic = ethic_authoritarian
 				}}
 		add_monthly_resource_mult = {
 			resource = unity
@@ -96,57 +127,92 @@ country_event = {
 	}
 }
 
-##### 連鎖イベント - テトさんをつかまえろ！
-country_event = {
-    #この運動が激化しないようにしつつ、何かするべきだ
+##### 連鎖イベント - ユニちゃんを探せ！
+planet_event = {
+    #当局を投入しろ
 	id = VRPUtS_event.511
 	title = "VRPUtS_event.511"
 	desc = "VRPUtS_event.511.desc"
 	picture = GFX_evt_alien_planet
 	show_sound = event_solar_fusion
     event_chain = VRPUtS_uni_chain
+	location = root
 
 	is_triggered_only = yes
 
 	option = { #継続
 		name = VRPUtS_event.511.a
         allow = {
-            root = {
+            owner = {
                 resource_stockpile_compare = {
                     resource = unity
-                    value >= 1000
+                    value >= 1500
                 }
                 resource_stockpile_compare = {
                     resource = influence
-                    value >= 50
+                    value >= 75
                 }
             }
         }
-        root = {
+        owner = {
             add_resource = {
-                unity = -1000
-                influence = -50
+                unity = -1500
+                influence = -75
             }
-            add_event_chain_counter = {
-                event_chain = "VRPUtS_uni_chain"
-				counter = "VRPUtS_uni_rise"
-				amount = 1
+		}
+		random_list = {
+			30 = {
+				planet_event = { id = VRPUtS_event.511 days = 50 }
 			}
-        }
-        hidden_effect = {
-            country_event = { id = VRPUtS_event.512 days = 80 }
-        }
+			70 = {
+				add_event_chain_counter = {
+					event_chain = "VRPUtS_uni_chain"
+					counter = "VRPUtS_uni_rise"
+					amount = 1
+				}
+				planet_event = { id = VRPUtS_event.512 days = 80 }
+			}
+		}
 	}
-    option = { #放棄
+	option = { #最小限の労力で継続
         name = VRPUtS_event.511.b
+		allow = {
+            owner = {
+                resource_stockpile_compare = {
+                    resource = food
+                    value >= 1000
+                }
+            }
+        }
+        owner = {
+            add_resource = {
+                food = -1000
+            }
+		}
+        random_list = {
+			66 = {
+				planet_event = { id = VRPUtS_event.511 days = 50 }
+			}
+			33 = {
+				add_event_chain_counter = {
+					event_chain = "VRPUtS_uni_chain"
+					counter = "VRPUtS_uni_rise"
+					amount = 1
+				}
+				planet_event = { id = VRPUtS_event.512 days = 80 }
+			}
+		}
+    }
+    option = { #放棄
+        name = VRPUtS_event.511.c
         end_event_chain = VRPUtS_uni_chain
         remove_country_flag = uni_chance
         set_country_flag = uni_abandoned
     }
 }
 
-country_event = {
-    #みな口をそろえてある場所を指し示している - 見つけに行くぞ。
+planet_event = {
+    # ハンバーガー食いまくりの気配アリ
 	id = VRPUtS_event.512
 	title = "VRPUtS_event.512"
 	desc = "VRPUtS_event.512.desc"
@@ -159,21 +225,16 @@ country_event = {
 	option = { #継続
 		name = VRPUtS_event.512.a
         allow = {
-            root = {
+            owner = {
                 resource_stockpile_compare = {
-                    resource = alloys
-                    value >= 200
-                }
-                resource_stockpile_compare = {
-                    resource = energy
-                    value >= 1000
+                    resource = trade
+                    value >= 3000
                 }
             }
         }
-        root = {
+        owner = {
             add_resource = {
-                alloys = -200
-                energy = -1000
+                trade = -3000
             }
             add_event_chain_counter = {
                 event_chain = "VRPUtS_uni_chain"
@@ -182,11 +243,29 @@ country_event = {
 			}
         }
         hidden_effect = {
-            country_event = { id = VRPUtS_event.513 days = 80 }
+            planet_event = { id = VRPUtS_event.513 days = 80 }
         }
 	}
-    option = { #放棄
+	option = { #ちょっと待ってくれ！
         name = VRPUtS_event.512.b
+		allow = {
+            owner = {
+                resource_stockpile_compare = {
+                    resource = food
+                    value >= 1000
+                }
+            }
+        }
+        owner = {
+            add_resource = {
+                food = -1000
+            }
+		}
+        custom_tooltip = VRPUtS_event.512.b.tt
+		planet_event = { id = VRPUtS_event.512 days = 180 }
+    }
+    option = { #放棄
+        name = VRPUtS_event.512.c
         end_event_chain = VRPUtS_uni_chain
         remove_country_flag = uni_chance
         set_country_flag = uni_abandoned
@@ -194,7 +273,7 @@ country_event = {
 }
 
 country_event = {
-    #それらしい場所を見つけた。掘り起こすぞ。
+    #あと少し！
 	id = VRPUtS_event.513
 	title = "VRPUtS_event.513"
 	desc = "VRPUtS_event.513.desc"
@@ -209,14 +288,14 @@ country_event = {
         allow = {
             root = {
                 resource_stockpile_compare = {
-                    resource = energy
-                    value >= 500
+                    resource = trade
+                    value >= 5000
                 }
             }
         }
         root = {
             add_resource = {
-                energy = -500
+                trade = -5000
             }
             add_event_chain_counter = {
                 event_chain = "VRPUtS_uni_chain"
@@ -228,8 +307,26 @@ country_event = {
             country_event = { id = VRPUtS_event.521 days = 1 }
         }
 	}
-    option = { #放棄
+	option = { #ちょっと待ってくれ！
         name = VRPUtS_event.513.b
+		allow = {
+            owner = {
+                resource_stockpile_compare = {
+                    resource = food
+                    value >= 1000
+                }
+            }
+        }
+        owner = {
+            add_resource = {
+                food = -1000
+            }
+		}
+        custom_tooltip = VRPUtS_event.513.b.tt
+		planet_event = { id = VRPUtS_event.513 days = 180 }
+    }
+    option = { #放棄
+        name = VRPUtS_event.513.c
         end_event_chain = VRPUtS_uni_chain
         remove_country_flag = uni_chance
         set_country_flag = uni_abandoned
@@ -271,7 +368,7 @@ country_event = {
 
 	picture_event_data = {
 		portrait = uni_01
-		room = ethic_spaceship_room
+		room = default_room
 	}
 
 	option = {
@@ -289,20 +386,21 @@ country_event = {
 	option = {
 		name = "VRPUtS_event.531.c"
         root = { 
-            country_event = { id = VRPUtS_event.441 days = 1 }
+            country_event = { id = VRPUtS_event.541 days = 1 }
         }
 	}
 
 	option = {
 		name = "VRPUtS_event.531.d"
+		set_country_flag = uni_abandoned
 	}
 }
 
-########## 科学者 - 研究者
+########## 役人 - 顧問
 country_event = {
-	id = VRPUtS_event.441
-	title = "VRPUtS_event.441"
-	desc = "VRPUtS_event.441.desc"
+	id = VRPUtS_event.541
+	title = "VRPUtS_event.541"
+	desc = "VRPUtS_event.541.desc"
 	show_sound = event_ai_started_01
 	location = fromfrom
 	is_triggered_only = yes
@@ -315,24 +413,26 @@ country_event = {
 		ethic_leader_creator = {
 			SPECIES_CLASS = VRPUtS
 			LEADER_PORTRAIT = uni_02
-			CLASS = scientist
+			CLASS = official
 			TIER = leader_tier_legendary
 			NAME = VRPUtS_NAME_uni
 			LEVEL = 5
 			GENDER = indeterminable
 			IMMORTAL = yes
-			ETHIC = pacifist
+			ETHIC = egalitarian
 			DESC = VRPUtS_uni_leader_desc
 			CATCH_PHRASE = VRPUtS_uni_leader_catch_phrase
 		}
 		last_created_leader = {
-			add_trait = { trait = subclass_scientist_explorer }
-			add_trait = { trait = leader_trait_erudite }
-			add_trait = { trait = leader_trait_slippery_2 }
-			add_trait = { trait = leader_trait_explorer_cloaking_focus }
-			add_trait = { trait = leader_trait_tuner }
+			add_trait = { trait = subclass_official_economy_councilor }
+			add_trait = { trait = trait_ruler_deep_connections }
+			add_trait = { trait = leader_trait_synthetic }
+			add_trait = { trait = leader_trait_ambassador_extra_envoys }
+			add_trait = { trait = leader_trait_trade_focus_2 }
+			add_trait = { trait = leader_trait_galvanizer }
 			add_trait = { trait = leader_trait_adaptable }
-			set_age = 31
+			add_trait = { trait = leader_trait_procrastinator }
+			set_age = 1895
 			set_leader_flag = immune_to_negative_traits
 			set_leader_flag = leader_death_events_blocked
 			save_global_event_target_as = uni_leader
@@ -345,28 +445,38 @@ country_event = {
 	}
 
 	option = {
-		name = VRPUtS_event.441.a
-		response_text = VRPUtS_event.441.a.response
+		name = VRPUtS_event.541.a
+		response_text = VRPUtS_event.541.a.response
 		is_dialog_only = yes
 	}
 	option = {
-		name = VRPUtS_event.441.b
-		response_text = VRPUtS_event.441.b.response
+		name = VRPUtS_event.541.b
+		response_text = VRPUtS_event.541.b.response
 		is_dialog_only = yes
 	}
 	option = {
-		name = VRPUtS_event.441.c
-		response_text = VRPUtS_event.441.c.response
+		name = VRPUtS_event.541.c
+		response_text = VRPUtS_event.541.c.response
 		is_dialog_only = yes
 	}
 	option = {
-		name = VRPUtS_event.441.d
-		response_text = VRPUtS_event.441.d.response
+		name = VRPUtS_event.541.d
+		response_text = VRPUtS_event.541.d.response
 		is_dialog_only = yes
 	}
 	option = {
-		name = VRPUtS_event.441.e
-		response_text = VRPUtS_event.441.e.response
+		name = VRPUtS_event.541.e
+		response_text = VRPUtS_event.541.e.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.541.f
+		trigger = {
+			root = {
+				has_country_flag = fee_recruited
+			}
+		}
+		response_text = VRPUtS_event.541.f.response
 		is_dialog_only = yes
 	}
 
