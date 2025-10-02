@@ -8,7 +8,7 @@ VRPUtS_rei_anomaly = {
 
     spawn_chance = {
         modifier = {
-            add = 6
+            add = 8
             OR = {
             is_planet_class = pc_barren
             is_planet_class = pc_molten
@@ -32,7 +32,7 @@ VRPUtS_fee_anomaly = {
 
     spawn_chance = {
         modifier = {
-            add = 6
+            add = 8
             OR = {
             is_planet_class = pc_arctic
             is_planet_class = pc_barren_cold
@@ -57,7 +57,7 @@ VRPUtS_uta_anomaly = {
 
     spawn_chance = {
         modifier = {
-            add = 6
+            add = 8
             OR = {
             is_asteroid = yes
             }

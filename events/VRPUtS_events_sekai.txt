@@ -3,7 +3,7 @@ namespace = VRPUtS_event
 ##### イベント、トリガー元：ランダムなコロニーを選択して発生させる、イベントクラスはplanet_eventに直す
 
 country_event = {
-    #公式には存在しない何かに人々は胸を躍らせているらしい
+    #何かが降臨したらしい？
     id = VRPUtS_event.601
     title = "VRPUtS_event.601"
     desc = "VRPUtS_event.601.desc"
@@ -31,8 +31,8 @@ country_event = {
 		name = VRPUtS_event.601.a #派生
 		trigger = {
             NOR = {
-                has_ethic = ethic_fanatic_militarist
-                has_ethic = ethic_militarist
+                has_ethic = ethic_fanatic_xenophobe
+                has_ethic = ethic_xenophobe
                 is_gestalt = yes
             }
             any_country = { NOR = {
@@ -52,8 +52,8 @@ country_event = {
     option = {
 		name = VRPUtS_event.601.b #放棄
 		trigger = { NOR = {
-					has_ethic = ethic_fanatic_militarist
-					has_ethic = ethic_militarist
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_xenophobe
 					is_gestalt = yes
 				}}
 		add_monthly_resource_mult = {
@@ -66,13 +66,13 @@ country_event = {
 	}
 
     option = {
-		name = VRPUtS_event.601.c #強制放棄 - 軍国主義
+		name = VRPUtS_event.601.c #強制放棄 - 排他主義
 		trigger = { OR = {
-					has_ethic = ethic_fanatic_militarist
-					has_ethic = ethic_militarist
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_xenophobe
 				}}
 		add_monthly_resource_mult = {
-			resource = sekaity
+			resource = unity
 			value = @tier1sekaityreward
 			min = @tier1sekaitymin
 			max = @tier1sekaitymax
@@ -85,7 +85,7 @@ country_event = {
 				is_gestalt = yes 
 				}
 		add_monthly_resource_mult = {
-			resource = sekaity
+			resource = unity
 			value = @tier1sekaityreward
 			min = @tier1sekaitymin
 			max = @tier1sekaitymax
@@ -94,9 +94,9 @@ country_event = {
 	}
 }
 
-##### 連鎖イベント - テトさんをつかまえろ！
+##### 連鎖イベント - せかちゃんを観察
 country_event = {
-    #この運動が激化しないようにしつつ、何かするべきだ
+    #素性を調べる
 	id = VRPUtS_event.611
 	title = "VRPUtS_event.611"
 	desc = "VRPUtS_event.611.desc"
@@ -111,7 +111,7 @@ country_event = {
         allow = {
             root = {
                 resource_stockpile_compare = {
-                    resource = sekaity
+                    resource = unity
                     value >= 1000
                 }
                 resource_stockpile_compare = {
@@ -122,7 +122,7 @@ country_event = {
         }
         root = {
             add_resource = {
-                sekaity = -1000
+                unity = -1000
                 influence = -50
             }
             add_event_chain_counter = {
@@ -132,9 +132,16 @@ country_event = {
 			}
         }
         hidden_effect = {
-            country_event = { id = VRPUtS_event.612 days = 80 }
+            country_event = { id = VRPUtS_event.612 days = 60 }
         }
 	}
+	option = { #ちょっと待ってくれ！
+        name = VRPUtS_event.612.b
+        custom_tooltip = VRPUtS_event.612.b.tt
+		root = {
+			country_event = { id = VRPUtS_event.611 days = 360 }
+		}
+    }
     option = { #放棄
         name = VRPUtS_event.611.b
         end_event_chain = VRPUtS_sekai_chain
@@ -144,7 +151,7 @@ country_event = {
 }
 
 country_event = {
-    #みな口をそろえてある場所を指し示している - 見つけに行くぞ。
+    #せかちゃんの人気ヤバすぎ　人民の庇護者？
 	id = VRPUtS_event.612
 	title = "VRPUtS_event.612"
 	desc = "VRPUtS_event.612.desc"
@@ -159,19 +166,19 @@ country_event = {
         allow = {
             root = {
                 resource_stockpile_compare = {
-                    resource = alloys
-                    value >= 200
+                    resource = unity
+                    value >= 2000
                 }
                 resource_stockpile_compare = {
-                    resource = energy
-                    value >= 1000
+                    resource = influence
+                    value >= 75
                 }
             }
         }
         root = {
             add_resource = {
-                alloys = -200
-                energy = -1000
+                unity = -2000
+                influence = -75
             }
             add_event_chain_counter = {
                 event_chain = "VRPUtS_sekai_chain"
@@ -180,7 +187,7 @@ country_event = {
 			}
         }
         hidden_effect = {
-            country_event = { id = VRPUtS_event.613 days = 80 }
+            country_event = { id = VRPUtS_event.613 days = 30 }
         }
 	}
     option = { #放棄
@@ -192,7 +199,7 @@ country_event = {
 }
 
 country_event = {
-    #それらしい場所を見つけた。掘り起こすぞ。
+    #そろそろやばいので接触しようか……
 	id = VRPUtS_event.613
 	title = "VRPUtS_event.613"
 	desc = "VRPUtS_event.613.desc"
@@ -207,14 +214,19 @@ country_event = {
         allow = {
             root = {
                 resource_stockpile_compare = {
-                    resource = energy
-                    value >= 500
+                    resource = unity
+                    value >= 4000
+                }
+                resource_stockpile_compare = {
+                    resource = influence
+                    value >= 100
                 }
             }
         }
         root = {
             add_resource = {
-                energy = -500
+                unity = -4000
+                influence = -100
             }
             add_event_chain_counter = {
                 event_chain = "VRPUtS_sekai_chain"
@@ -226,6 +238,13 @@ country_event = {
             country_event = { id = VRPUtS_event.621 days = 1 }
         }
 	}
+	option = { #ちょっと待ってくれ！
+        name = VRPUtS_event.613.b
+        custom_tooltip = VRPUtS_event.613.b.tt
+		root = {
+			country_event = { id = VRPUtS_event.613 days = 360 }
+		}
+    }
     option = { #放棄
         name = VRPUtS_event.613.b
         end_event_chain = VRPUtS_sekai_chain
@@ -247,7 +266,7 @@ country_event = {
 	is_triggered_only = yes
 
     option = {
-		name = VRPUtS_event.621.a #捕まえた！
+		name = VRPUtS_event.621.a #こんにちは。
 		root = {
 			country_event = { id = VRPUtS_event.631 days = 1 }
             end_event_chain = VRPUtS_sekai_chain
