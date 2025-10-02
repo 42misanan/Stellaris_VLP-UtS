@@ -2,12 +2,12 @@ namespace = VRPUtS_event
 
 ##### イベント、トリガー元：ランダムなコロニーを選択して発生させる、イベントクラスはplanet_eventに直す
 
-country_event = {
+planet_event = {
     #何かが降臨したらしい？
     id = VRPUtS_event.601
     title = "VRPUtS_event.601"
     desc = "VRPUtS_event.601.desc"
-    picture = GFX_evt_alien_hieroglyphics
+    picture = GFX_evt_busy_spaceport
     show_sound = event_planetary_riot
     event_chain = VRPUtS_sekai_chain
 
@@ -46,7 +46,7 @@ country_event = {
             target = this
         }
         hidden_effect = {
-            country_event = { id = VRPUtS_event.611 days = 90 }
+            planet_event = { id = VRPUtS_event.611 days = 90 }
         }
 	}
     option = {
@@ -95,12 +95,12 @@ country_event = {
 }
 
 ##### 連鎖イベント - せかちゃんを観察
-country_event = {
+planet_event = {
     #素性を調べる
 	id = VRPUtS_event.611
 	title = "VRPUtS_event.611"
 	desc = "VRPUtS_event.611.desc"
-	picture = GFX_evt_alien_planet
+	picture = GFX_evt_city_planet
 	show_sound = event_solar_fusion
     event_chain = VRPUtS_sekai_chain
 
@@ -132,25 +132,25 @@ country_event = {
 			}
         }
         hidden_effect = {
-            country_event = { id = VRPUtS_event.612 days = 60 }
+            planet_event = { id = VRPUtS_event.612 days = 60 }
         }
 	}
 	option = { #ちょっと待ってくれ！
-        name = VRPUtS_event.612.b
-        custom_tooltip = VRPUtS_event.612.b.tt
+        name = VRPUtS_event.611.b
+        custom_tooltip = VRPUtS_event.611.b.tt
 		root = {
-			country_event = { id = VRPUtS_event.611 days = 360 }
+			planet_event = { id = VRPUtS_event.611 days = 360 }
 		}
     }
     option = { #放棄
-        name = VRPUtS_event.611.b
+        name = VRPUtS_event.611.c
         end_event_chain = VRPUtS_sekai_chain
         remove_country_flag = sekai_chance
         set_country_flag = sekai_abandoned
     }
 }
 
-country_event = {
+planet_event = {
     #せかちゃんの人気ヤバすぎ　人民の庇護者？
 	id = VRPUtS_event.612
 	title = "VRPUtS_event.612"
@@ -187,18 +187,25 @@ country_event = {
 			}
         }
         hidden_effect = {
-            country_event = { id = VRPUtS_event.613 days = 30 }
+            planet_event = { id = VRPUtS_event.613 days = 30 }
         }
 	}
-    option = { #放棄
+	option = { #ちょっと待ってくれ！
         name = VRPUtS_event.612.b
+        custom_tooltip = VRPUtS_event.611.b.tt
+		owner = {
+			country_event = { id = VRPUtS_event.612 days = 360 }
+		}
+    }
+    option = { #放棄
+        name = VRPUtS_event.612.c
         end_event_chain = VRPUtS_sekai_chain
         remove_country_flag = sekai_chance
         set_country_flag = sekai_abandoned
     }
 }
 
-country_event = {
+planet_event = {
     #そろそろやばいので接触しようか……
 	id = VRPUtS_event.613
 	title = "VRPUtS_event.613"
@@ -235,18 +242,18 @@ country_event = {
 			}
         }
         hidden_effect = {
-            country_event = { id = VRPUtS_event.621 days = 1 }
+            planet_event = { id = VRPUtS_event.621 days = 1 }
         }
 	}
 	option = { #ちょっと待ってくれ！
         name = VRPUtS_event.613.b
-        custom_tooltip = VRPUtS_event.613.b.tt
-		root = {
+        custom_tooltip = VRPUtS_event.611.b.tt
+		owner = {
 			country_event = { id = VRPUtS_event.613 days = 360 }
 		}
     }
     option = { #放棄
-        name = VRPUtS_event.613.b
+        name = VRPUtS_event.613.c
         end_event_chain = VRPUtS_sekai_chain
         remove_country_flag = sekai_chance
         set_country_flag = sekai_abandoned
@@ -260,8 +267,8 @@ country_event = {
     title = "VRPUtS_event.621"
 	desc = "VRPUtS_event.621.desc"
 	picture = GFX_evt_ship_travel
-	show_sound = event_super_explosion
-    location = capital_scope
+	show_sound = event_cityscape
+    location = FROM
     
 	is_triggered_only = yes
 
@@ -274,7 +281,6 @@ country_event = {
 	}
 }
 
-##### 待てコラッ！
 country_event = {
 	id = VRPUtS_event.631
 	title = "VRPUtS_event.631.name"
@@ -293,25 +299,82 @@ country_event = {
 
 	option = {
 		name = "VRPUtS_event.631.a"
-		response_text = "VRPUtS_event.631.a.response"
-		is_dialog_only = yes
+        root = { 
+            country_event = { id = VRPUtS_event.632 }
+        }
 	}
 
 	option = {
 		name = "VRPUtS_event.631.b"
-		response_text = "VRPUtS_event.631.b.response"
+	}
+}
+
+country_event = {
+	id = VRPUtS_event.632
+	title = "VRPUtS_event.632.name"
+	desc = "VRPUtS_event.632.desc"
+	location = FROM
+	diplomatic_title = BLANK_STRING
+
+	diplomatic = yes
+
+	is_triggered_only = yes
+
+	picture_event_data = {
+		portrait = sekai_02
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = "VRPUtS_event.632.a"
+        root = { 
+            country_event = { id = VRPUtS_event.633 }
+        }
+	}
+
+	option = {
+		name = "VRPUtS_event.632.b"
+	}
+}
+
+##### 待てコラッ！
+country_event = {
+	id = VRPUtS_event.633
+	title = "VRPUtS_event.633.name"
+	desc = "VRPUtS_event.633.desc"
+	location = FROM
+	diplomatic_title = BLANK_STRING
+
+	diplomatic = yes
+
+	is_triggered_only = yes
+
+	picture_event_data = {
+		portrait = sekai_03
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = "VRPUtS_event.633.a"
+		response_text = "VRPUtS_event.633.a.response"
 		is_dialog_only = yes
 	}
 
 	option = {
-		name = "VRPUtS_event.631.c"
+		name = "VRPUtS_event.633.b"
+		response_text = "VRPUtS_event.633.b.response"
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = "VRPUtS_event.633.c"
         root = { 
             country_event = { id = VRPUtS_event.641 days = 1 }
         }
 	}
 
 	option = {
-		name = "VRPUtS_event.631.d"
+		name = "VRPUtS_event.633.d"
 	}
 }
 
@@ -331,25 +394,25 @@ country_event = {
 	immediate = {
 		ethic_leader_creator = {
 			SPECIES_CLASS = VRPUtS
-			LEADER_PORTRAIT = sekai_02
+			LEADER_PORTRAIT = sekai_04
 			CLASS = scientist
 			TIER = leader_tier_legendary
 			NAME = VRPUtS_NAME_sekai
 			LEVEL = 5
 			GENDER = indeterminable
 			IMMORTAL = yes
-			ETHIC = pacifist
+			ETHIC = xenophile
 			DESC = VRPUtS_sekai_leader_desc
 			CATCH_PHRASE = VRPUtS_sekai_leader_catch_phrase
 		}
 		last_created_leader = {
 			add_trait = { trait = subclass_scientist_explorer }
-			add_trait = { trait = leader_trait_erudite }
-			add_trait = { trait = leader_trait_slippery_2 }
-			add_trait = { trait = leader_trait_explorer_cloaking_focus }
-			add_trait = { trait = leader_trait_tuner }
+			add_trait = { trait = leader_trait_collaborator_3 }
+			add_trait = { trait = trait_ruler_champion_of_the_people_2 }
+			add_trait = { trait = trait_ruler_charismatic }
+			add_trait = { trait = leader_trait_spark_of_genius }
 			add_trait = { trait = leader_trait_adaptable }
-			set_age = 31
+			set_age = 16
 			set_leader_flag = immune_to_negative_traits
 			set_leader_flag = leader_death_events_blocked
 			save_global_event_target_as = sekai_leader

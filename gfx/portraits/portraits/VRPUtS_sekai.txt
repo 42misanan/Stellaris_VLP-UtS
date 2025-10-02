@@ -1,0 +1,68 @@
+portraits = {
+	sekai_01 = { texturefile = "gfx/models/portraits/sekai/sekai_01.dds" }
+	sekai_02 = { texturefile = "gfx/models/portraits/sekai/sekai_02.dds" }
+	sekai_03 = { texturefile = "gfx/models/portraits/sekai/sekai_03.dds" }
+	sekai_04 = { texturefile = "gfx/models/portraits/sekai/sekai_04.dds" }
+}
+
+portrait_groups = {
+	sekai = {
+		default = sekai_01
+		game_setup = { #will run with a limited country scope. species and government is set but the country does not actually exist
+			add = {
+				portraits = {
+					sekai_01
+					sekai_02
+					sekai_03
+					sekai_04
+				}
+			}
+		}
+		species = { #generic portrait for a species
+			add = {
+				portraits = {
+					sekai_01
+					sekai_02
+					sekai_03
+					sekai_04
+				}
+			}
+		}		
+		
+		pop = { #for a specific pop
+			add = {
+				portraits = {
+					sekai_01
+					sekai_02
+					sekai_03
+					sekai_04
+				}
+			}
+		}
+		
+		#leader scope
+		leader = { #scientists, generals, admirals, governor
+			add = {
+				portraits = {
+					sekai_01
+					sekai_02
+					sekai_03
+					sekai_04
+				}
+			}
+		}
+
+			
+		#leader scope 
+		ruler = {
+			add = {
+				portraits = {
+					sekai_01
+					sekai_02
+					sekai_03
+					sekai_04
+				}
+			}
+		}
+	}
+}

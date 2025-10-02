@@ -4,7 +4,7 @@ country_event = {
     id = VRPUtS_event.9901
     title = "VRPUtS_event.9901.name"
     desc = "VRPUtS_event.9901.desc"
-    show_sound = event_airlock_03
+    show_sound = event_airlock
     picture = GFX_evt_legendary_leader
     event_window_type = leader_story
 

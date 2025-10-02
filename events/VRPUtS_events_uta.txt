@@ -84,7 +84,7 @@ fleet_event = {
 	title = "VRPUtS_event.312"
 	desc = "VRPUtS_event.312.desc"
 	picture = GFX_evt_arc_crucible
-	show_sound = event_yellow_alert_01
+	show_sound = event_yellow_alert
 
 	archaeology = yes
 	is_triggered_only = yes
@@ -198,7 +198,7 @@ country_event = {
 	id = VRPUtS_event.331
 	title = "VRPUtS_event.331"
 	desc = "VRPUtS_event.331.desc"
-	show_sound = event_ai_started_01
+	show_sound = event_ai_started
 	location = fromfrom
 	is_triggered_only = yes
 

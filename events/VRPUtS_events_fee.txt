@@ -190,7 +190,7 @@ country_event = {
     title = "VRPUtS_event.221"
 	desc = "VRPUtS_event.221.desc"
 	picture = GFX_evt_throne_room
-	show_sound = event_ai_started_01
+	show_sound = event_ai_started
     location = FROM
     
 	is_triggered_only = yes
@@ -219,7 +219,7 @@ country_event = {
 	id = VRPUtS_event.231
 	title = "VRPUtS_event.231"
 	desc = "VRPUtS_event.231.desc"
-	show_sound = event_ai_started_01
+	show_sound = event_ancient_drone
 	location = fromfrom
 	is_triggered_only = yes
 

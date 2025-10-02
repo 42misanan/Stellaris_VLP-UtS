@@ -7,7 +7,7 @@ planet_event = {
     id = VRPUtS_event.501
     title = "VRPUtS_event.501"
     desc = "VRPUtS_event.501.desc"
-    picture = GFX_evt_alien_hieroglyphics
+    picture = GFX_evt_archaeological_dig
     show_sound = event_planetary_riot
     event_chain = VRPUtS_uni_chain
 
@@ -133,7 +133,7 @@ planet_event = {
 	id = VRPUtS_event.511
 	title = "VRPUtS_event.511"
 	desc = "VRPUtS_event.511.desc"
-	picture = GFX_evt_alien_planet
+	picture = GFX_evt_announcement
 	show_sound = event_solar_fusion
     event_chain = VRPUtS_uni_chain
 	location = root
@@ -216,7 +216,7 @@ planet_event = {
 	id = VRPUtS_event.512
 	title = "VRPUtS_event.512"
 	desc = "VRPUtS_event.512.desc"
-	picture = GFX_evt_satellite_in_orbit
+	picture = GFX_evt_arena
 	show_sound = event_administrative_work_04
     event_chain = VRPUtS_uni_chain
 
@@ -341,7 +341,7 @@ country_event = {
     id = VRPUtS_event.521
     title = "VRPUtS_event.521"
 	desc = "VRPUtS_event.521.desc"
-	picture = GFX_evt_ship_travel
+	picture = GFX_evt_barren_dig_site
 	show_sound = event_super_explosion
     location = capital_scope
     
@@ -361,7 +361,7 @@ country_event = {
 	id = VRPUtS_event.531
 	title = "VRPUtS_event.531.name"
 	desc = "VRPUtS_event.531.desc"
-	location = FROM
+	location = fromfrom
 	diplomatic_title = BLANK_STRING
 
 	diplomatic = yes
@@ -403,7 +403,7 @@ country_event = {
 	id = VRPUtS_event.541
 	title = "VRPUtS_event.541"
 	desc = "VRPUtS_event.541.desc"
-	show_sound = event_ai_started_01
+	show_sound = event_ancient_drone
 	location = fromfrom
 	is_triggered_only = yes
 
