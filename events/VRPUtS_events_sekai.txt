@@ -23,7 +23,7 @@ planet_event = {
             has_country_flag = sekai_chance
             has_country_flag = sekai_recruited
             }
-        has_situation_flag = divination_occuring
+        has_situation_flag = divination_occurring
         is_ai = no
     }
 
