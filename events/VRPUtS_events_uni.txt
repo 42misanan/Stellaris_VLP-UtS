@@ -17,7 +17,7 @@ planet_event = {
 	}
 
     trigger = {
-		years_passed > 20 #20年以内には発生しない
+		years_passed > 40 #40年以内には発生しない
         any_country = {
             NOR = { 
                 has_country_flag = uni_chance
@@ -289,13 +289,13 @@ planet_event = {
             owner = {
                 resource_stockpile_compare = {
                     resource = trade
-                    value >= 3000
+                    value >= 5000
                 }
             }
         }
         owner = {
             add_resource = {
-                trade = -3000
+                trade = -5000
             }
             add_event_chain_counter = {
                 event_chain = "VRPUtS_uni_chain"

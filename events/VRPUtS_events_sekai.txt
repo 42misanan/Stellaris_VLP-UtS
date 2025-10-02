@@ -1,7 +1,44 @@
 namespace = VRPUtS_event
 
-##### イベント、トリガー元：ランダムなコロニーを選択して発生させる、イベントクラスはplanet_eventに直す
+planet_event = { #救済措置用イベント、on_actionsからコール
+	id = VRPUtS_event.600
+	hide_window = yes
+	is_triggered_only = yes
 
+	trigger = {
+		any_country = {
+            NOR = { 
+                has_country_flag = sekai_chance
+                has_country_flag = sekai_recruited
+            }
+        }
+		owner = {
+			NOR = { #せかちゃんに関連するイベントを引いた国家ではない
+				has_country_flag = sekai_abandoned
+				has_country_flag = sekai_chance
+				has_country_flag = sekai_recruited
+				}
+			}
+		}
+		is_ai = no
+		years_passed > 40 # 50年経過後にチャンス発生ロール開始（救済措置）
+		OR = { #以下の建造物があればロール対象に追加
+			has_building = building_holo_theatres
+			has_building = building_hyper_entertainment_forum
+			has_building = building_autochthon_monument
+			has_building = building_corporate_monument
+			has_building = building_noble_estates
+			has_building = building_commercial_zone
+		}
+	}
+	hidden_effect = {
+		owner = {
+			set_country_flag = sekai_rolled
+		}
+	}
+}
+			
+##### イベント、トリガー元：↑か状況。イベントクラスはcountry_event
 country_event = {
     #何かが降臨したらしい？
     id = VRPUtS_event.601
@@ -23,8 +60,16 @@ country_event = {
             has_country_flag = sekai_chance
             has_country_flag = sekai_recruited
             }
-        has_situation_flag = divination_occurring
+		OR = {
+			if = {
+				limit = { has_overlord_dlc = yes } # 意味ないけどリマインダ
+	        	has_situation_flag = divination_occurring #実はOverlordないと動かない
+			} 
+			has_country_flag = kafu_recruited #可不ちゃんがいれば即時トリガー
+			has_country_flag = sekai_rolled #ロール当てたら即時トリガー
+		}
         is_ai = no
+		is_at_war = no
     }
 
     option = {
@@ -268,7 +313,7 @@ country_event = {
 	desc = "VRPUtS_event.621.desc"
 	picture = GFX_evt_ship_travel
 	show_sound = event_cityscape
-    location = FROM
+    location = capital_scope
     
 	is_triggered_only = yes
 
@@ -299,9 +344,11 @@ country_event = {
 
 	option = {
 		name = "VRPUtS_event.631.a"
-        root = { 
-            country_event = { id = VRPUtS_event.632 }
-        }
+		hidden_effect = {
+	        root = { 
+    	        country_event = { id = VRPUtS_event.632 }
+        	}
+		}
 	}
 
 	option = {
@@ -313,7 +360,7 @@ country_event = {
 	id = VRPUtS_event.632
 	title = "VRPUtS_event.632.name"
 	desc = "VRPUtS_event.632.desc"
-	location = FROM
+	location = FROMFROM
 	diplomatic_title = BLANK_STRING
 
 	diplomatic = yes
@@ -327,9 +374,11 @@ country_event = {
 
 	option = {
 		name = "VRPUtS_event.632.a"
-        root = { 
-            country_event = { id = VRPUtS_event.633 }
-        }
+		hidden_effect = {
+	        root = { 
+    	        country_event = { id = VRPUtS_event.633 }
+        	}
+		}
 	}
 
 	option = {
@@ -342,7 +391,7 @@ country_event = {
 	id = VRPUtS_event.633
 	title = "VRPUtS_event.633.name"
 	desc = "VRPUtS_event.633.desc"
-	location = FROM
+	location = FROMFROMFROM
 	diplomatic_title = BLANK_STRING
 
 	diplomatic = yes
