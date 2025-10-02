@@ -2,7 +2,7 @@ namespace = VRPUtS_event
 
 ##### イベント、トリガー元：ランダムなコロニーを選択して発生させる、イベントクラスはplanet_eventに直す
 
-planet_event = {
+country_event = {
     #何かが降臨したらしい？
     id = VRPUtS_event.601
     title = "VRPUtS_event.601"
@@ -46,7 +46,7 @@ planet_event = {
             target = this
         }
         hidden_effect = {
-            planet_event = { id = VRPUtS_event.611 days = 90 }
+            country_event = { id = VRPUtS_event.611 days = 90 }
         }
 	}
     option = {
@@ -57,10 +57,10 @@ planet_event = {
 					is_gestalt = yes
 				}}
 		add_monthly_resource_mult = {
-			resource = sekaity
-			value = @tier1sekaityreward
-			min = @tier1sekaitymin
-			max = @tier1sekaitymax
+			resource = unity
+			value = @tier1unityreward
+			min = @tier1unitymin
+			max = @tier1unitymax
 		}
         set_country_flag = sekai_abandoned
 	}
@@ -73,9 +73,9 @@ planet_event = {
 				}}
 		add_monthly_resource_mult = {
 			resource = unity
-			value = @tier1sekaityreward
-			min = @tier1sekaitymin
-			max = @tier1sekaitymax
+			value = @tier1unityreward
+			min = @tier1unitymin
+			max = @tier1unitymax
 		}
         set_country_flag = sekai_abandoned
 	}
@@ -86,16 +86,16 @@ planet_event = {
 				}
 		add_monthly_resource_mult = {
 			resource = unity
-			value = @tier1sekaityreward
-			min = @tier1sekaitymin
-			max = @tier1sekaitymax
+			value = @tier1unityreward
+			min = @tier1unitymin
+			max = @tier1unitymax
 		}
         set_country_flag = sekai_abandoned
 	}
 }
 
 ##### 連鎖イベント - せかちゃんを観察
-planet_event = {
+country_event = {
     #素性を調べる
 	id = VRPUtS_event.611
 	title = "VRPUtS_event.611"
@@ -132,14 +132,14 @@ planet_event = {
 			}
         }
         hidden_effect = {
-            planet_event = { id = VRPUtS_event.612 days = 60 }
+            country_event = { id = VRPUtS_event.612 days = 60 }
         }
 	}
 	option = { #ちょっと待ってくれ！
         name = VRPUtS_event.611.b
         custom_tooltip = VRPUtS_event.611.b.tt
 		root = {
-			planet_event = { id = VRPUtS_event.611 days = 360 }
+			country_event = { id = VRPUtS_event.611 days = 360 }
 		}
     }
     option = { #放棄
@@ -150,7 +150,7 @@ planet_event = {
     }
 }
 
-planet_event = {
+country_event = {
     #せかちゃんの人気ヤバすぎ　人民の庇護者？
 	id = VRPUtS_event.612
 	title = "VRPUtS_event.612"
@@ -187,13 +187,13 @@ planet_event = {
 			}
         }
         hidden_effect = {
-            planet_event = { id = VRPUtS_event.613 days = 30 }
+            country_event = { id = VRPUtS_event.613 days = 30 }
         }
 	}
 	option = { #ちょっと待ってくれ！
         name = VRPUtS_event.612.b
         custom_tooltip = VRPUtS_event.611.b.tt
-		owner = {
+		root = {
 			country_event = { id = VRPUtS_event.612 days = 360 }
 		}
     }
@@ -205,7 +205,7 @@ planet_event = {
     }
 }
 
-planet_event = {
+country_event = {
     #そろそろやばいので接触しようか……
 	id = VRPUtS_event.613
 	title = "VRPUtS_event.613"
@@ -242,13 +242,13 @@ planet_event = {
 			}
         }
         hidden_effect = {
-            planet_event = { id = VRPUtS_event.621 days = 1 }
+        	country_event = { id = VRPUtS_event.621 days = 1 }
         }
 	}
 	option = { #ちょっと待ってくれ！
         name = VRPUtS_event.613.b
         custom_tooltip = VRPUtS_event.611.b.tt
-		owner = {
+		root = {
 			country_event = { id = VRPUtS_event.613 days = 360 }
 		}
     }
@@ -406,7 +406,7 @@ country_event = {
 			CATCH_PHRASE = VRPUtS_sekai_leader_catch_phrase
 		}
 		last_created_leader = {
-			add_trait = { trait = subclass_scientist_explorer }
+			add_trait = { trait = subclass_scientist_councilor }
 			add_trait = { trait = leader_trait_collaborator_3 }
 			add_trait = { trait = trait_ruler_champion_of_the_people_2 }
 			add_trait = { trait = trait_ruler_charismatic }
