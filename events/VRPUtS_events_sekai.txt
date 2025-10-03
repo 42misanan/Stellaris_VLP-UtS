@@ -1,5 +1,21 @@
 namespace = VRPUtS_event
 
+country_event = {
+	id = VRPUtS_event.699
+	hide_window = yes
+
+	trigger = {
+		if = {
+			limit = { has_overlord_dlc = yes } # 意味ないけどリマインダ
+			has_situation_flag = divination_occurring #実はOverlordないと動かない
+		}
+		NOT = { has_country_flag = sekai_rolled }
+	} 
+	hidden_effect = {
+		set_country_flag = sekai_rolled
+	}
+}
+
 planet_event = { #救済措置用イベント、on_actionsからコール
 	id = VRPUtS_event.600
 	hide_window = yes
@@ -10,6 +26,7 @@ planet_event = { #救済措置用イベント、on_actionsからコール
             NOR = { 
                 has_country_flag = sekai_chance
                 has_country_flag = sekai_recruited
+				has_country_flag = sekai_rolled
             }
         }
 		owner = {
@@ -17,11 +34,12 @@ planet_event = { #救済措置用イベント、on_actionsからコール
 				has_country_flag = sekai_abandoned
 				has_country_flag = sekai_chance
 				has_country_flag = sekai_recruited
+				has_country_flag = sekai_rolled
 				}
 			}
 		}
 		is_ai = no
-		years_passed > 40 # 50年経過後にチャンス発生ロール開始（救済措置）
+		years_passed > 40 # 40年経過後にチャンス発生ロール開始（救済措置）
 		OR = { #以下の建造物があればロール対象に追加
 			has_building = building_holo_theatres
 			has_building = building_hyper_entertainment_forum
@@ -48,6 +66,8 @@ country_event = {
     show_sound = event_planetary_riot
     event_chain = VRPUtS_sekai_chain
 
+	is_triggered_only = yes
+
     trigger = {
         any_country = {
             NOR = { 
@@ -60,14 +80,7 @@ country_event = {
             has_country_flag = sekai_chance
             has_country_flag = sekai_recruited
             }
-		OR = {
-			if = {
-				limit = { has_overlord_dlc = yes } # 意味ないけどリマインダ
-	        	has_situation_flag = divination_occurring #実はOverlordないと動かない
-			} 
-			has_country_flag = kafu_recruited #可不ちゃんがいれば即時トリガー
-			has_country_flag = sekai_rolled #ロール当てたら即時トリガー
-		}
+		has_country_flag = sekai_rolled #↑からトリガー
         is_ai = no
 		is_at_war = no
     }

@@ -11,6 +11,8 @@ planet_event = {
     show_sound = event_planetary_riot
     event_chain = VRPUtS_uni_chain
 
+	is_triggered_only = yes
+
 	pre_triggers = {
 		has_owner = yes
 		is_occupied_flag = no
