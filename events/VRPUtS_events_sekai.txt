@@ -3,7 +3,7 @@ namespace = VRPUtS_event
 country_event = {
 	id = VRPUtS_event.699
 	hide_window = yes
-	mean_time_to_happen = { days = 1 } #本当は良くない処理
+	mean_time_to_happen = { days = 180 } #本当は良くない処理
 
 	trigger = {
 		has_country_flag = divination_purchase #実はOverlordないと動かない
