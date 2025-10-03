@@ -48,11 +48,11 @@ planet_event = {
     option = {
 		name = VRPUtS_event.501.a #派生 - 泳がしておいて犯人捜しを始める
 		trigger = {
-            NOR = {
+            owner = { NOR = {
                 has_ethic = ethic_fanatic_authoritarian
                 has_ethic = ethic_authoritarian
                 is_gestalt = yes
-            }
+            }}
             any_country = { NOR = {
                 has_country_flag = uni_recruited
                 has_country_flag = uni_chance
@@ -74,8 +74,8 @@ planet_event = {
 			add_resource = {
 				food = -1000
 			}
+			set_country_flag = uni_chance
 		}
-        set_country_flag = uni_chance
         begin_event_chain = {
             event_chain = VRPUtS_uni_chain
             target = owner
@@ -86,46 +86,52 @@ planet_event = {
 	}
     option = {
 		name = VRPUtS_event.501.b #放棄 - 補填して終わり
-		trigger = { NOR = {
+		trigger = { owner = { NOR = {
 					has_ethic = ethic_fanatic_authoritarian
 					has_ethic = ethic_authoritarian
 					is_gestalt = yes
-				}}
-		add_monthly_resource_mult = {
-			resource = unity
-			value = @tier1unityreward
-			min = @tier1unitymin
-			max = @tier1unitymax
+				}}}
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier1unityreward
+				min = @tier1unitymin
+				max = @tier1unitymax
+			}
+	        set_country_flag = uni_abandoned
 		}
-        set_country_flag = uni_abandoned
 	}
 
     option = {
 		name = VRPUtS_event.501.c #強制放棄 - 軍国主義
-		trigger = { OR = {
+		trigger = { owner = { OR = {
 					has_ethic = ethic_fanatic_authoritarian
 					has_ethic = ethic_authoritarian
-				}}
-		add_monthly_resource_mult = {
-			resource = unity
-			value = @tier1unityreward
-			min = @tier1unitymin
-			max = @tier1unitymax
+				}}}
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier1unityreward
+				min = @tier1unitymin
+				max = @tier1unitymax
+			}
+	        set_country_flag = uni_abandoned
 		}
-        set_country_flag = uni_abandoned
 	}
 	option = {
 		name = VRPUtS_event.501.d #強制放棄 - ゲシュタルト意識
-		trigger = { 
+		trigger = { owner = {
 				is_gestalt = yes 
-				}
-		add_monthly_resource_mult = {
-			resource = unity
-			value = @tier1unityreward
-			min = @tier1unitymin
-			max = @tier1unitymax
+				}}
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier1unityreward
+				min = @tier1unitymin
+				max = @tier1unitymax
+			}
+	        set_country_flag = uni_abandoned
 		}
-        set_country_flag = uni_abandoned
 	}
 }
 
@@ -147,7 +153,7 @@ planet_event = {
         allow = {
             owner = {
                 resource_stockpile_compare = {
-                    resource = unity
+                    resource = trade
                     value >= 1500
                 }
                 resource_stockpile_compare = {
@@ -158,7 +164,7 @@ planet_event = {
         }
         owner = {
             add_resource = {
-                unity = -1500
+                trade = -1500
                 influence = -75
             }
 		}
@@ -167,10 +173,12 @@ planet_event = {
 				planet_event = { id = VRPUtS_event.511 days = 50 }
 			}
 			70 = {
-				add_event_chain_counter = {
-					event_chain = "VRPUtS_uni_chain"
-					counter = "VRPUtS_uni_rise"
-					amount = 1
+				owner = {
+					add_event_chain_counter = {
+						event_chain = "VRPUtS_uni_chain"
+						counter = "VRPUtS_uni_rise"
+						amount = 1
+					}
 				}
 				planet_event = { id = VRPUtS_event.512 days = 80 }
 			}
@@ -196,10 +204,12 @@ planet_event = {
 				planet_event = { id = VRPUtS_event.511 days = 50 }
 			}
 			33 = {
-				add_event_chain_counter = {
-					event_chain = "VRPUtS_uni_chain"
-					counter = "VRPUtS_uni_rise"
-					amount = 1
+				owner = {
+					add_event_chain_counter = {
+						event_chain = "VRPUtS_uni_chain"
+						counter = "VRPUtS_uni_rise"
+						amount = 1
+					}
 				}
 				planet_event = { id = VRPUtS_event.512 days = 80 }
 			}
@@ -207,9 +217,11 @@ planet_event = {
     }
     option = { #放棄
         name = VRPUtS_event.511.c
-        end_event_chain = VRPUtS_uni_chain
-        remove_country_flag = uni_chance
-        set_country_flag = uni_abandoned
+		owner = {
+			end_event_chain = VRPUtS_uni_chain
+			remove_country_flag = uni_chance
+			set_country_flag = uni_abandoned
+		}
     }
 }
 
@@ -268,9 +280,11 @@ planet_event = {
     }
     option = { #放棄
         name = VRPUtS_event.512.c
-        end_event_chain = VRPUtS_uni_chain
-        remove_country_flag = uni_chance
-        set_country_flag = uni_abandoned
+		owner = {
+			end_event_chain = VRPUtS_uni_chain
+			remove_country_flag = uni_chance
+			set_country_flag = uni_abandoned
+		}
     }
 }
 
@@ -331,9 +345,11 @@ planet_event = {
     }
     option = { #放棄
         name = VRPUtS_event.513.c
-        end_event_chain = VRPUtS_uni_chain
-        remove_country_flag = uni_chance
-        set_country_flag = uni_abandoned
+		owner = {
+			end_event_chain = VRPUtS_uni_chain
+			remove_country_flag = uni_chance
+			set_country_flag = uni_abandoned
+		}
     }
 }
 

@@ -169,7 +169,7 @@ country_event = {
     title = "VRPUtS_event.321"
 	desc = "VRPUtS_event.321.desc"
 	picture = GFX_evt_cargoship_caravan
-	show_sound = event_radio_chatter_04
+	show_sound = event_radio_chatter
     location = FROM
     
 	is_triggered_only = yes

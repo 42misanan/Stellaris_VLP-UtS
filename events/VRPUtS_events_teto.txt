@@ -151,7 +151,7 @@ country_event = {
 	title = "VRPUtS_event.412"
 	desc = "VRPUtS_event.412.desc"
 	picture = GFX_evt_satellite_in_orbit
-	show_sound = event_administrative_work_04
+	show_sound = event_administrative_work
     event_chain = VRPUtS_teto_chain
 
 	is_triggered_only = yes

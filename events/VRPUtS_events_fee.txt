@@ -84,7 +84,7 @@ fleet_event = {
 	title = "VRPUtS_event.212"
 	desc = "VRPUtS_event.212.desc"
 	picture = GFX_evt_unplugged_opus_nexus
-	show_sound = event_construction_02
+	show_sound = event_construction
 
 	archaeology = yes
 	is_triggered_only = yes
@@ -105,7 +105,7 @@ fleet_event = {
 	title = "VRPUtS_event.213"
 	desc = "VRPUtS_event.213.desc"
 	picture = GFX_evt_derelict_interior
-	show_sound = event_construction_03
+	show_sound = event_construction
 
 	archaeology = yes
 	is_triggered_only = yes

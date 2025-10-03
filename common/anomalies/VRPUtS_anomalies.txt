@@ -17,7 +17,6 @@ VRPUtS_rei_anomaly = {
     }
 
     on_success = {
-        fire_only_once = yes
 		1 = VRPUtS_event.101
     }
 }
@@ -42,7 +41,6 @@ VRPUtS_fee_anomaly = {
     }
 
     on_success = {
-        fire_only_once = yes
 		1 = VRPUtS_event.201
     }
 }
@@ -65,7 +63,6 @@ VRPUtS_uta_anomaly = {
     }
 
     on_success = {
-        fire_only_once = yes
 		1 = VRPUtS_event.301
     }
 }
