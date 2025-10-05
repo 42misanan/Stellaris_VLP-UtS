@@ -13,11 +13,20 @@ ship_event = {
 
     option = {
 		name = VRPUtS_event.301.a #派生
-		trigger = { owner = { NOR = {
+		trigger = { 
+			owner = { 
+				NOR = {
 					has_ethic = ethic_fanatic_pacifist
 					has_ethic = ethic_pacifist
 					is_gestalt = yes
-				}}}
+				}
+			}
+			any_country = {
+				NOT = {
+					has_country_flag = uta_rolled
+				}
+			}
+		}
 		fromfrom = {
             prevent_anomaly = yes
 			create_archaeological_site = VRPUtS_site_uta

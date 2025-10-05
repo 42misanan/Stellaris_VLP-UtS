@@ -1,4 +1,4 @@
-version="0.9.1 uni & sekai - hotfix"
+version="0.9.2 uni & sekai - adjustment"
 tags={
 	"Leaders"
 	"Gameplay"
