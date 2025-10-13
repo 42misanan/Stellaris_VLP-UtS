@@ -29,11 +29,9 @@ planet_event = {
 		owner = {
 			NOR = { 
 				has_country_flag = uni_abandoned
-				has_country_flag = uni_chance
-				has_country_flag = uni_recruited
-				}
-			is_at_war = no
-			is_ai = no
+				is_at_war = yes
+				is_ai = yes
+			}
 		}
 		OR = {
 			has_building = building_holo_theatres
@@ -53,10 +51,12 @@ planet_event = {
                 has_ethic = ethic_authoritarian
                 is_gestalt = yes
             }}
-            any_country = { NOR = {
-                has_country_flag = uni_recruited
-                has_country_flag = uni_chance
-            }}
+			any_country = {
+				NOR = { 
+					has_country_flag = uni_chance
+					has_country_flag = uni_recruited
+				}
+			}
         }
 		allow = {
 			owner = {
@@ -219,8 +219,8 @@ planet_event = {
         name = VRPUtS_event.511.c
 		owner = {
 			end_event_chain = VRPUtS_uni_chain
-			remove_country_flag = uni_chance
 			set_country_flag = uni_abandoned
+			remove_country_flag = uni_chance
 		}
     }
 }
@@ -282,8 +282,8 @@ planet_event = {
         name = VRPUtS_event.512.c
 		owner = {
 			end_event_chain = VRPUtS_uni_chain
-			remove_country_flag = uni_chance
 			set_country_flag = uni_abandoned
+			remove_country_flag = uni_chance
 		}
     }
 }
@@ -347,8 +347,8 @@ planet_event = {
         name = VRPUtS_event.513.c
 		owner = {
 			end_event_chain = VRPUtS_uni_chain
-			remove_country_flag = uni_chance
 			set_country_flag = uni_abandoned
+			remove_country_flag = uni_chance
 		}
     }
 }

@@ -3,19 +3,27 @@ namespace = VRPUtS_event
 country_event = {
 	id = VRPUtS_event.699
 	hide_window = yes
-	mean_time_to_happen = { days = 180 } #本当は良くない処理
+	mean_time_to_happen = { days = 90 } #本当は良くない処理
 
 	trigger = {
+		any_country = {
+            NOR = { 
+                has_country_flag = sekai_chance
+                has_country_flag = sekai_recruited
+            }
+        }
 		has_country_flag = divination_purchase #実はOverlordないと動かない
 		NOT = { has_country_flag = sekai_rolled }
 		is_ai = no
 	}
 	immediate = {
 		set_country_flag = sekai_rolled
+		country_event = { id = VRPUtS_event.601 days = 1 }
 	}
 }
 
-planet_event = { #救済措置用イベント、on_actionsからコール
+planet_event = { 
+	#救済措置用イベント、on_actionsからコール
 	id = VRPUtS_event.600
 	hide_window = yes
 	is_triggered_only = yes
@@ -30,9 +38,6 @@ planet_event = { #救済措置用イベント、on_actionsからコール
         }
 		owner = {
 			NOR = {
-				has_country_flag = sekai_abandoned
-				has_country_flag = sekai_chance
-				has_country_flag = sekai_recruited
 				has_country_flag = sekai_rolled
 				is_ai = yes
 			}
@@ -49,6 +54,7 @@ planet_event = { #救済措置用イベント、on_actionsからコール
 	immediate = {
 		owner = {
 			set_country_flag = sekai_rolled
+			country_event = { id = VRPUtS_event.601 days = 1 }
 		}
 	}
 }
@@ -64,12 +70,6 @@ country_event = {
 	is_triggered_only = yes
 
     trigger = {
-        any_country = {
-            NOR = { 
-                has_country_flag = sekai_chance
-                has_country_flag = sekai_recruited
-            }
-        }
         NOR = { 
             has_country_flag = sekai_abandoned
             has_country_flag = sekai_chance

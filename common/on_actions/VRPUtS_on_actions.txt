@@ -1,15 +1,9 @@
-#5年周期のユニちゃんトリガーイベント。確率20%
+#5年周期のユニちゃん・せかちゃんトリガーイベント。それぞれ確率33%
 #ここでtrigger使ったらダメっぽい
 on_colony_5_year_pulse = {
 	random_events = {
-		20 = VRPUtS_event.501
-		80 = 0
-	}
-}
-#救済用せかちゃんガチャ
-on_colony_5_year_pulse = {
-	random_events = {
-		20 = VRPUtS_event.600
-		80 = 0
+		33 = VRPUtS_event.501
+		33 = VRPUtS_event.600
+		34 = 0
 	}
 }

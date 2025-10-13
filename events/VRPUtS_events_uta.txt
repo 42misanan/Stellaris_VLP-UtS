@@ -30,6 +30,7 @@ ship_event = {
 		fromfrom = {
             prevent_anomaly = yes
 			create_archaeological_site = VRPUtS_site_uta
+			set_country_flag = uta_rolled
 		}
 	}
     option = {

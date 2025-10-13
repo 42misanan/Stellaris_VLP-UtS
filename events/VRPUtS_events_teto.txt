@@ -3,6 +3,29 @@ namespace = VRPUtS_event
 ##### イベント、トリガー元：連鎖イベント「マニフェスティの隆盛」 id = manifesti.1
 ##### country_flag の manifesti_spawned を参照
 country_event = {
+	id = VRPUtS_event.400
+	hide_window = yes
+	mean_time_to_happen = { days = 180 } #本当は良くない処理
+
+	trigger = {
+		any_country = {
+            NOR = { 
+                has_country_flag = teto_chance
+                has_country_flag = teto_recruited
+            }
+        }
+		has_country_flag = manifesti_spawned 
+		NOT = { has_country_flag = teto_rolled }
+		is_ai = no
+	}
+	immediate = {
+		set_country_flag = teto_rolled
+		country_event = { id = VRPUtS_event.401 days = 1 }
+	}
+}
+
+
+country_event = {
     #公式には存在しない何かに人々は胸を躍らせているらしい
     id = VRPUtS_event.401
     title = "VRPUtS_event.401"
@@ -11,21 +34,15 @@ country_event = {
     show_sound = event_planetary_riot
     event_chain = VRPUtS_teto_chain
 
-    mean_time_to_happen = { days = 2 }
+	is_triggered_only = yes
 
     trigger = {
-        any_country = {
-            NOR = { 
-                has_country_flag = teto_chance
-                has_country_flag = teto_recruited
-            }
-        }
         NOR = { 
             has_country_flag = teto_abandoned
             has_country_flag = teto_chance
             has_country_flag = teto_recruited
             }
-        has_country_flag = manifesti_spawned
+        has_country_flag = teto_rolled
         is_ai = no
     }
 
