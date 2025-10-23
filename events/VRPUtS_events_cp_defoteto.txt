@@ -8,7 +8,7 @@ country_event = {
     picture = GFX_evt_legendary_leader
     event_window_type = leader_story
 
-    mean_time_to_happen = { days = 10 }
+    mean_time_to_happen = { months = 6 }
     
 	picture_event_data = {
 		portrait = teto_02
@@ -20,9 +20,17 @@ country_event = {
 	trigger = {
 		has_country_flag = teto_recruited
         has_country_flag = uta_recruited
+        NOT = { has_country_flag = defoteto_popped }
 	}
 
 	option = {
 		name = VRPUtS_event.9901.a
+        add_monthly_resource_mult = {
+			resource = unity
+			value = @tier3unityreward
+			min = @tier3unitymin
+			max = @tier3unitymax
+		}
+        set_country_flag = defoteto_popped
 	}
 }

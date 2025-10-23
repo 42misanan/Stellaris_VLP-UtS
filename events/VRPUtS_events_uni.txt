@@ -38,7 +38,7 @@ planet_event = {
 		root = {
 			planet_event = {
 				id = VRPUtS_event.501
-				days = 30
+				months = 1
 			}
 		}
 	}
@@ -95,7 +95,7 @@ planet_event = {
             target = owner
         }
         hidden_effect = {
-            planet_event = { id = VRPUtS_event.511 days = 90 }
+            planet_event = { id = VRPUtS_event.511 months = 3 }
         }
 	}
     option = {
@@ -184,7 +184,7 @@ planet_event = {
 		}
 		random_list = {
 			30 = {
-				planet_event = { id = VRPUtS_event.511 days = 50 }
+				planet_event = { id = VRPUtS_event.511 months = 2 }
 			}
 			70 = {
 				owner = {
@@ -194,7 +194,7 @@ planet_event = {
 						amount = 1
 					}
 				}
-				planet_event = { id = VRPUtS_event.512 days = 80 }
+				planet_event = { id = VRPUtS_event.512 months = 3 }
 			}
 		}
 	}
@@ -215,7 +215,7 @@ planet_event = {
 		}
         random_list = {
 			66 = {
-				planet_event = { id = VRPUtS_event.511 days = 50 }
+				planet_event = { id = VRPUtS_event.511 months = 2 }
 			}
 			33 = {
 				owner = {
@@ -225,7 +225,7 @@ planet_event = {
 						amount = 1
 					}
 				}
-				planet_event = { id = VRPUtS_event.512 days = 80 }
+				planet_event = { id = VRPUtS_event.512 months = 3 }
 			}
 		}
     }
@@ -271,7 +271,7 @@ planet_event = {
 			}
         }
         hidden_effect = {
-            planet_event = { id = VRPUtS_event.513 days = 80 }
+            planet_event = { id = VRPUtS_event.513 months = 3 }
         }
 	}
 	option = { #ちょっと待ってくれ！
@@ -290,7 +290,7 @@ planet_event = {
             }
 		}
         custom_tooltip = VRPUtS_event.512.b.tt
-		planet_event = { id = VRPUtS_event.512 days = 180 }
+		planet_event = { id = VRPUtS_event.512 months =  6 }
     }
     option = { #放棄
         name = VRPUtS_event.512.c
@@ -335,7 +335,7 @@ planet_event = {
         }
         hidden_effect = {
 			owner = {
-           		country_event = { id = VRPUtS_event.521 days = 1 }
+           		country_event = { id = VRPUtS_event.521 months =  1 }
 			}
         }
 	}
@@ -355,7 +355,7 @@ planet_event = {
             }
 		}
         custom_tooltip = VRPUtS_event.513.b.tt
-		planet_event = { id = VRPUtS_event.513 days = 180 }
+		planet_event = { id = VRPUtS_event.513 months =  6 }
     }
     option = { #放棄
         name = VRPUtS_event.513.c
@@ -382,7 +382,7 @@ country_event = {
     option = {
 		name = VRPUtS_event.521.a #捕まえた！
 		root = {
-			country_event = { id = VRPUtS_event.531 days = 1 }
+			country_event = { id = VRPUtS_event.531 months =  1 }
             end_event_chain = VRPUtS_uni_chain
 		}
 	}
@@ -420,7 +420,7 @@ country_event = {
 	option = {
 		name = "VRPUtS_event.531.c"
         root = { 
-            country_event = { id = VRPUtS_event.541 days = 1 }
+            country_event = { id = VRPUtS_event.541 months =  1 }
         }
 	}
 

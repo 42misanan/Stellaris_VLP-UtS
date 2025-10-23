@@ -181,19 +181,19 @@ country_event = {
     option = {
 		name = VRPUtS_event.121.a #科学者
 		root = {
-			country_event = { id = VRPUtS_event.131 days = 1 }
+			country_event = { id = VRPUtS_event.131 months = 1 }
 		}
 	}
     option = {
 		name = VRPUtS_event.121.b #司令官
 		root = {
-			country_event = { id = VRPUtS_event.132 days = 1 }
+			country_event = { id = VRPUtS_event.132 months = 1 }
 		}
 	}
     option = {
 		name = VRPUtS_event.121.c #役人
 		root = {
-			country_event = { id = VRPUtS_event.133 days = 1 }
+			country_event = { id = VRPUtS_event.133 months = 1 }
 		}
 	}
 }

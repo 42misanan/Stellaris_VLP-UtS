@@ -208,7 +208,7 @@ country_event = {
     option = {
 		name = VRPUtS_event.221.a #役人
 		root = {
-			country_event = { id = VRPUtS_event.231 days = 1 }
+			country_event = { id = VRPUtS_event.231 months = 1 }
 		}
 	}
     option = {
