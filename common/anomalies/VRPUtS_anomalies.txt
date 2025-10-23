@@ -8,7 +8,7 @@ VRPUtS_rei_category = {
 
     spawn_chance = {
         modifier = {
-            add = 8
+            add = 6
             OR = {
             is_planet_class = pc_barren
             is_planet_class = pc_molten
@@ -29,7 +29,7 @@ VRPUtS_fee_category = {
 
     spawn_chance = {
         modifier = {
-            add = 8
+            add = 6
             OR = {
             is_planet_class = pc_arctic
             is_planet_class = pc_barren_cold
@@ -51,7 +51,7 @@ VRPUtS_uta_category = {
 
     spawn_chance = {
         modifier = {
-            add = 8
+            add = 6
             OR = {
             is_asteroid = yes
             }
