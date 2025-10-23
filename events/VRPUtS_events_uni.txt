@@ -1,24 +1,12 @@
 namespace = VRPUtS_event
 
-##### イベント、トリガー元：ランダムなコロニーを選択して発生させる、イベントクラスはplanet_eventに直す
-##### on_actions から引っ張ってくる
-planet_event = {
-    #なぜか異常に食糧が減る
-    id = VRPUtS_event.501
-    title = "VRPUtS_event.501"
-    desc = "VRPUtS_event.501.desc"
-    picture = GFX_evt_archaeological_dig
-    show_sound = event_planetary_riot
-    event_chain = VRPUtS_uni_chain
-
+planet_event = { 
+	#救済措置用イベント、on_actionsからコール
+	id = VRPUtS_event.500
+	hide_window = yes
 	is_triggered_only = yes
 
-	pre_triggers = {
-		has_owner = yes
-		is_occupied_flag = no
-	}
-
-    trigger = {
+	trigger = {
 		years_passed > 40 #40年以内には発生しない
         any_country = {
             NOR = { 
@@ -29,6 +17,7 @@ planet_event = {
 		owner = {
 			NOR = { 
 				has_country_flag = uni_abandoned
+				has_country_flag = uni_rolled
 				is_at_war = yes
 				is_ai = yes
 			}
@@ -42,6 +31,31 @@ planet_event = {
 			has_building = building_commercial_zone
 		}
     }
+	immediate = {
+		owner = {
+			set_country_flag = uni_rolled
+		}
+		root = {
+			planet_event = {
+				id = VRPUtS_event.501
+				days = 30
+			}
+		}
+	}
+}
+
+##### イベント、トリガー元：ランダムなコロニーを選択して発生させる、イベントクラスはplanet_eventに直す
+##### on_actions から引っ張ってくる
+planet_event = {
+    #なぜか異常に食糧が減る
+    id = VRPUtS_event.501
+    title = "VRPUtS_event.501"
+    desc = "VRPUtS_event.501.desc"
+    picture = GFX_evt_archaeological_dig
+    show_sound = event_planetary_riot
+    event_chain = VRPUtS_uni_chain
+
+	is_triggered_only = yes
 
     option = {
 		name = VRPUtS_event.501.a #派生 - 泳がしておいて犯人捜しを始める

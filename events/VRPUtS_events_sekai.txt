@@ -3,7 +3,9 @@ namespace = VRPUtS_event
 country_event = {
 	id = VRPUtS_event.699
 	hide_window = yes
-	mean_time_to_happen = { days = 90 } #本当は良くない処理
+	mean_time_to_happen = {
+		months = 1
+	}
 
 	trigger = {
 		any_country = {
@@ -12,13 +14,19 @@ country_event = {
                 has_country_flag = sekai_recruited
             }
         }
-		has_country_flag = divination_purchase #実はOverlordないと動かない
-		NOT = { has_country_flag = sekai_rolled }
-		is_ai = no
+			has_country_flag = divination_purchase #実はOverlordないと動かない
+			NOT = { 
+				has_country_flag = sekai_rolled
+			}
+			is_ai = no
+		}
 	}
 	immediate = {
 		set_country_flag = sekai_rolled
-		country_event = { id = VRPUtS_event.601 days = 1 }
+		country_event = {
+			id = VRPUtS_event.601
+			months = 1
+		}
 	}
 }
 
@@ -29,20 +37,22 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		years_passed > 40 
-		any_country = {
+		years_passed > 40 #40年以内には発生しない
+        any_country = {
             NOR = { 
                 has_country_flag = sekai_chance
                 has_country_flag = sekai_recruited
             }
         }
 		owner = {
-			NOR = {
+			NOR = { 
+				has_country_flag = sekai_abandoned
 				has_country_flag = sekai_rolled
+				is_at_war = yes
 				is_ai = yes
 			}
 		}
-		OR = { #以下の建造物があればロール対象に追加
+		OR = {
 			has_building = building_holo_theatres
 			has_building = building_hyper_entertainment_forum
 			has_building = building_autochthon_monument
@@ -50,11 +60,14 @@ planet_event = {
 			has_building = building_noble_estates
 			has_building = building_commercial_zone
 		}
-	}
+    }
 	immediate = {
 		owner = {
 			set_country_flag = sekai_rolled
-			country_event = { id = VRPUtS_event.601 days = 1 }
+			planet_event = {
+				id = VRPUtS_event.601
+				months = 1
+			}
 		}
 	}
 }
@@ -69,53 +82,44 @@ country_event = {
 
 	is_triggered_only = yes
 
-    trigger = {
-        NOR = { 
-            has_country_flag = sekai_abandoned
-            has_country_flag = sekai_chance
-            has_country_flag = sekai_recruited
-        }
-		has_country_flag = sekai_rolled #↑からトリガー
-        is_ai = no
-		is_at_war = no
-    }
-
     option = {
 		name = VRPUtS_event.601.a #派生
 		trigger = {
-            NOR = {
-                has_ethic = ethic_fanatic_xenophobe
-                has_ethic = ethic_xenophobe
-                is_gestalt = yes
-            }
-            any_country = { NOR = {
-                has_country_flag = sekai_recruited
-                has_country_flag = sekai_chance
-            }}
-        }
-        set_country_flag = sekai_chance
+			NOR = {
+				has_ethic = ethic_fanatic_xenophobe
+				has_ethic = ethic_xenophobe
+				is_gestalt = yes
+			}
+			any_country = { NOR = {
+					has_country_flag = sekai_recruited
+					has_country_flag = sekai_chance
+			}}
+		}
+	    set_country_flag = sekai_chance
         begin_event_chain = {
             event_chain = VRPUtS_sekai_chain
-            target = this
+            target = owner
         }
         hidden_effect = {
-            country_event = { id = VRPUtS_event.611 days = 90 }
+            country_event = { id = VRPUtS_event.611 months = 3 }
         }
 	}
     option = {
 		name = VRPUtS_event.601.b #放棄
-		trigger = { NOR = {
-					has_ethic = ethic_fanatic_xenophobe
-					has_ethic = ethic_xenophobe
-					is_gestalt = yes
-				}}
+		trigger = { 
+			NOR = {
+				has_ethic = ethic_fanatic_xenophobe
+				has_ethic = ethic_xenophobe
+				is_gestalt = yes
+			}
+		}
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier1unityreward
 			min = @tier1unitymin
 			max = @tier1unitymax
 		}
-        set_country_flag = sekai_abandoned
+		set_country_flag = sekai_abandoned
 	}
 
     option = {
@@ -132,20 +136,20 @@ country_event = {
 			min = @tier1unitymin
 			max = @tier1unitymax
 		}
-        set_country_flag = sekai_abandoned
+		set_country_flag = sekai_abandoned
 	}
 	option = {
 		name = VRPUtS_event.601.d #強制放棄 - ゲシュタルト意識
 		trigger = { 
-				is_gestalt = yes 
-				}
+			is_gestalt = yes 
+		}
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier1unityreward
 			min = @tier1unitymin
 			max = @tier1unitymax
 		}
-        set_country_flag = sekai_abandoned
+		set_country_flag = sekai_abandoned
 	}
 }
 
@@ -186,14 +190,14 @@ country_event = {
 			}
         }
         hidden_effect = {
-            country_event = { id = VRPUtS_event.612 days = 60 }
+            country_event = { id = VRPUtS_event.612 months = 2 }
         }
 	}
 	option = { #ちょっと待ってくれ！
         name = VRPUtS_event.611.b
         custom_tooltip = VRPUtS_event.611.b.tt
 		root = {
-			country_event = { id = VRPUtS_event.611 days = 360 }
+			country_event = { id = VRPUtS_event.611 months = 12 }
 		}
     }
     option = { #放棄
@@ -240,14 +244,14 @@ country_event = {
 			}
         }
         hidden_effect = {
-            country_event = { id = VRPUtS_event.613 days = 30 }
+            country_event = { id = VRPUtS_event.613 months = 1 }
         }
 	}
 	option = { #ちょっと待ってくれ！
         name = VRPUtS_event.612.b
         custom_tooltip = VRPUtS_event.611.b.tt
 		root = {
-			country_event = { id = VRPUtS_event.612 days = 360 }
+			country_event = { id = VRPUtS_event.612 months = 12 }
 		}
     }
     option = { #放棄
@@ -294,14 +298,14 @@ country_event = {
 			}
         }
         hidden_effect = {
-        	country_event = { id = VRPUtS_event.621 days = 1 }
+        	country_event = { id = VRPUtS_event.621 months = 1 }
         }
 	}
 	option = { #ちょっと待ってくれ！
         name = VRPUtS_event.613.b
         custom_tooltip = VRPUtS_event.611.b.tt
 		root = {
-			country_event = { id = VRPUtS_event.613 days = 360 }
+			country_event = { id = VRPUtS_event.613 months = 12 }
 		}
     }
     option = { #放棄
@@ -327,7 +331,7 @@ country_event = {
     option = {
 		name = VRPUtS_event.621.a #こんにちは。
 		root = {
-			country_event = { id = VRPUtS_event.631 days = 1 }
+			country_event = { id = VRPUtS_event.631 months = 1 }
             end_event_chain = VRPUtS_sekai_chain
 		}
 	}
@@ -425,7 +429,7 @@ country_event = {
 	option = {
 		name = "VRPUtS_event.633.c"
         root = { 
-            country_event = { id = VRPUtS_event.641 days = 1 }
+            country_event = { id = VRPUtS_event.641 months = 1 }
         }
 	}
 
