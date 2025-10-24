@@ -3,9 +3,7 @@ namespace = VRPUtS_event
 country_event = {
 	id = VRPUtS_event.699
 	hide_window = yes
-	mean_time_to_happen = {
-		months = 1
-	}
+	mean_time_to_happen = { months = 6 }
 
 	trigger = {
 		any_country = {
@@ -23,10 +21,7 @@ country_event = {
 	}
 	immediate = {
 		set_country_flag = sekai_rolled
-		country_event = {
-			id = VRPUtS_event.601
-			months = 1
-		}
+		country_event = { id = VRPUtS_event.601 days = 1 }
 	}
 }
 
@@ -90,10 +85,12 @@ country_event = {
 				has_ethic = ethic_xenophobe
 				is_gestalt = yes
 			}
-			any_country = { NOR = {
+			any_country = {
+				NOR = {
 					has_country_flag = sekai_recruited
 					has_country_flag = sekai_chance
-			}}
+				}
+			}
 		}
 	    set_country_flag = sekai_chance
         begin_event_chain = {

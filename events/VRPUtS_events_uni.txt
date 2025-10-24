@@ -36,10 +36,7 @@ planet_event = {
 			set_country_flag = uni_rolled
 		}
 		root = {
-			planet_event = {
-				id = VRPUtS_event.501
-				months = 1
-			}
+			planet_event = { id = VRPUtS_event.501 days = 1 }
 		}
 	}
 }
@@ -60,11 +57,13 @@ planet_event = {
     option = {
 		name = VRPUtS_event.501.a #派生 - 泳がしておいて犯人捜しを始める
 		trigger = {
-            owner = { NOR = {
-                has_ethic = ethic_fanatic_authoritarian
-                has_ethic = ethic_authoritarian
-                is_gestalt = yes
-            }}
+            owner = { 
+				NOR = {
+					has_ethic = ethic_fanatic_authoritarian
+					has_ethic = ethic_authoritarian
+					is_gestalt = yes
+            	}
+			}
 			any_country = {
 				NOR = { 
 					has_country_flag = uni_chance
@@ -95,7 +94,7 @@ planet_event = {
             target = owner
         }
         hidden_effect = {
-            planet_event = { id = VRPUtS_event.511 months = 3 }
+            planet_event = { id = VRPUtS_event.511 days = 90 }
         }
 	}
     option = {
@@ -184,7 +183,7 @@ planet_event = {
 		}
 		random_list = {
 			30 = {
-				planet_event = { id = VRPUtS_event.511 months = 2 }
+				planet_event = { id = VRPUtS_event.511 days = 60 }
 			}
 			70 = {
 				owner = {
@@ -194,7 +193,7 @@ planet_event = {
 						amount = 1
 					}
 				}
-				planet_event = { id = VRPUtS_event.512 months = 3 }
+				planet_event = { id = VRPUtS_event.512 days = 90 }
 			}
 		}
 	}
@@ -215,7 +214,7 @@ planet_event = {
 		}
         random_list = {
 			66 = {
-				planet_event = { id = VRPUtS_event.511 months = 2 }
+				planet_event = { id = VRPUtS_event.511 days = 60 }
 			}
 			33 = {
 				owner = {
@@ -225,7 +224,7 @@ planet_event = {
 						amount = 1
 					}
 				}
-				planet_event = { id = VRPUtS_event.512 months = 3 }
+				planet_event = { id = VRPUtS_event.512 days = 90 }
 			}
 		}
     }
@@ -271,7 +270,7 @@ planet_event = {
 			}
         }
         hidden_effect = {
-            planet_event = { id = VRPUtS_event.513 months = 3 }
+            planet_event = { id = VRPUtS_event.513 days = 90 }
         }
 	}
 	option = { #ちょっと待ってくれ！
@@ -290,7 +289,7 @@ planet_event = {
             }
 		}
         custom_tooltip = VRPUtS_event.512.b.tt
-		planet_event = { id = VRPUtS_event.512 months =  6 }
+		planet_event = { id = VRPUtS_event.512 days = 120 }
     }
     option = { #放棄
         name = VRPUtS_event.512.c
@@ -335,7 +334,7 @@ planet_event = {
         }
         hidden_effect = {
 			owner = {
-           		country_event = { id = VRPUtS_event.521 months =  1 }
+           		country_event = { id = VRPUtS_event.521 days = 30 }
 			}
         }
 	}
@@ -355,7 +354,7 @@ planet_event = {
             }
 		}
         custom_tooltip = VRPUtS_event.513.b.tt
-		planet_event = { id = VRPUtS_event.513 months =  6 }
+		planet_event = { id = VRPUtS_event.513 days = 120 }
     }
     option = { #放棄
         name = VRPUtS_event.513.c
@@ -382,7 +381,7 @@ country_event = {
     option = {
 		name = VRPUtS_event.521.a #捕まえた！
 		root = {
-			country_event = { id = VRPUtS_event.531 months =  1 }
+			country_event = { id = VRPUtS_event.531 days = 30 }
             end_event_chain = VRPUtS_uni_chain
 		}
 	}
@@ -420,7 +419,7 @@ country_event = {
 	option = {
 		name = "VRPUtS_event.531.c"
         root = { 
-            country_event = { id = VRPUtS_event.541 months =  1 }
+            country_event = { id = VRPUtS_event.541 days = 30 }
         }
 	}
 
