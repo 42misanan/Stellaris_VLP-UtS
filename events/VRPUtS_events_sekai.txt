@@ -1,28 +1,25 @@
 namespace = VRPUtS_event
 
 country_event = {
-	id = VRPUtS_event.699
-	hide_window = yes
-	mean_time_to_happen = { months = 6 }
+    id = VRPUtS_event.699
+    hide_window = yes
+    mean_time_to_happen = { months = 6 }
 
-	trigger = {
-		any_country = {
+    trigger = {
+        any_country = {
             NOR = { 
                 has_country_flag = sekai_chance
                 has_country_flag = sekai_recruited
             }
         }
-			has_country_flag = divination_purchase #実はOverlordないと動かない
-			NOT = { 
-				has_country_flag = sekai_rolled
-			}
-			is_ai = no
-		}
-	}
-	immediate = {
-		set_country_flag = sekai_rolled
-		country_event = { id = VRPUtS_event.601 days = 1 }
-	}
+        has_country_flag = divination_purchase #実はOverlordないと動かない
+        NOT = { has_country_flag = sekai_rolled }
+        is_ai = no
+    }
+    immediate = {
+        set_country_flag = sekai_rolled
+        country_event = { id = VRPUtS_event.601 } # days=1を削除
+    }
 }
 
 planet_event = { 

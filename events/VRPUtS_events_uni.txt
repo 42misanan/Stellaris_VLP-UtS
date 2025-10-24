@@ -36,7 +36,7 @@ planet_event = {
 			set_country_flag = uni_rolled
 		}
 		root = {
-			planet_event = { id = VRPUtS_event.501 days = 1 }
+			planet_event = { id = VRPUtS_event.501 }
 		}
 	}
 }
@@ -244,7 +244,7 @@ planet_event = {
 	title = "VRPUtS_event.512"
 	desc = "VRPUtS_event.512.desc"
 	picture = GFX_evt_arena
-	show_sound = event_administrative_work_04
+	show_sound = event_administrative_work
     event_chain = VRPUtS_uni_chain
 
 	is_triggered_only = yes
