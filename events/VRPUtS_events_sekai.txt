@@ -56,10 +56,7 @@ planet_event = {
 	immediate = {
 		owner = {
 			set_country_flag = sekai_rolled
-			country_event = {
-				id = VRPUtS_event.601
-				months = 1
-			}
+			country_event = { id = VRPUtS_event.601 }
 		}
 	}
 }
