@@ -34,11 +34,15 @@ ship_event = {
 	}
     option = {
 		name = VRPUtS_event.101.b #放棄
-		trigger = { owner = { NOR = {
+		trigger = { 
+			owner = { 
+				NOR = {
 					has_ethic = ethic_fanatic_spiritualist
 					has_ethic = ethic_spiritualist
 					is_gestalt = yes
-				}}}
+				}
+			}
+		}
 		FROM = {
 			add_deposit = d_minerals_3
 		}
@@ -46,19 +50,25 @@ ship_event = {
 
     option = {
 		name = VRPUtS_event.101.c #強制放棄 - 精神主義
-		trigger = { owner = { OR = {
+		trigger = { 
+			owner = { 
+				OR = {
 					has_ethic = ethic_fanatic_spiritualist
 					has_ethic = ethic_spiritualist
-				}}}
+				}
+			}
+		}
 		FROM = {
 			add_deposit = d_minerals_3
 		}
 	}
 	option = {
 		name = VRPUtS_event.101.d #強制放棄 - ゲシュタルト意識
-		trigger = { owner = { 
+		trigger = { 
+			owner = { 
 				is_gestalt = yes 
-				}}
+			}
+		}
 		FROM = {
 			add_deposit = d_minerals_3
 		}

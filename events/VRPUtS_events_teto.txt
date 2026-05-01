@@ -56,10 +56,12 @@ country_event = {
                 has_ethic = ethic_militarist
                 is_gestalt = yes
             }
-            any_country = { NOR = {
-                has_country_flag = teto_recruited
-                has_country_flag = teto_chance
-            }}
+            any_country = { 
+				NOR = {
+                	has_country_flag = teto_recruited
+                	has_country_flag = teto_chance
+            	}
+			}
         }
         set_country_flag = teto_chance
         begin_event_chain = {
@@ -72,11 +74,13 @@ country_event = {
 	}
     option = {
 		name = VRPUtS_event.401.b #放棄
-		trigger = { NOR = {
-					has_ethic = ethic_fanatic_militarist
-					has_ethic = ethic_militarist
-					is_gestalt = yes
-				}}
+		trigger = { 
+			NOR = {
+				has_ethic = ethic_fanatic_militarist
+				has_ethic = ethic_militarist
+				is_gestalt = yes
+			}
+		}
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier1unityreward
@@ -88,10 +92,12 @@ country_event = {
 
     option = {
 		name = VRPUtS_event.401.c #強制放棄 - 軍国主義
-		trigger = { OR = {
-					has_ethic = ethic_fanatic_militarist
-					has_ethic = ethic_militarist
-				}}
+		trigger = { 
+			OR = {
+				has_ethic = ethic_fanatic_militarist
+				has_ethic = ethic_militarist
+			}
+		}
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier1unityreward
@@ -153,7 +159,10 @@ country_event = {
 			}
         }
         hidden_effect = {
-            country_event = { id = VRPUtS_event.412 days = 90 }
+            country_event = { 
+				id = VRPUtS_event.412 
+				days = 90 
+			}
         }
 	}
     option = { #放棄
@@ -201,7 +210,10 @@ country_event = {
 			}
         }
         hidden_effect = {
-            country_event = { id = VRPUtS_event.413 days = 90 }
+            country_event = { 
+				id = VRPUtS_event.413 
+				days = 90 
+			}
         }
 	}
     option = { #放棄
@@ -244,7 +256,10 @@ country_event = {
 			}
         }
         hidden_effect = {
-            country_event = { id = VRPUtS_event.421 days = 30 }
+            country_event = { 
+				id = VRPUtS_event.421 
+				days = 30 
+			}
         }
 	}
     option = { #放棄
@@ -270,7 +285,10 @@ country_event = {
     option = {
 		name = VRPUtS_event.421.a #捕まえた！
 		root = {
-			country_event = { id = VRPUtS_event.431 days = 30 }
+			country_event = { 
+				id = VRPUtS_event.431 
+				days = 30 
+			}
             end_event_chain = VRPUtS_teto_chain
 		}
 	}

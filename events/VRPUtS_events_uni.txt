@@ -99,11 +99,15 @@ planet_event = {
 	}
     option = {
 		name = VRPUtS_event.501.b #放棄 - 補填して終わり
-		trigger = { owner = { NOR = {
+		trigger = { 
+			owner = { 
+				NOR = {
 					has_ethic = ethic_fanatic_authoritarian
 					has_ethic = ethic_authoritarian
 					is_gestalt = yes
-				}}}
+				}
+			}
+		}
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -117,10 +121,14 @@ planet_event = {
 
     option = {
 		name = VRPUtS_event.501.c #強制放棄 - 軍国主義
-		trigger = { owner = { OR = {
+		trigger = { 
+			owner = { 
+				OR = {
 					has_ethic = ethic_fanatic_authoritarian
 					has_ethic = ethic_authoritarian
-				}}}
+				}
+			}
+		}
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -133,9 +141,11 @@ planet_event = {
 	}
 	option = {
 		name = VRPUtS_event.501.d #強制放棄 - ゲシュタルト意識
-		trigger = { owner = {
+		trigger = { 
+			owner = {
 				is_gestalt = yes 
-				}}
+			}
+		}
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -270,7 +280,10 @@ planet_event = {
 			}
         }
         hidden_effect = {
-            planet_event = { id = VRPUtS_event.513 days = 90 }
+            planet_event = { 
+				id = VRPUtS_event.513 
+				days = 90 
+			}
         }
 	}
 	option = { #ちょっと待ってくれ！
@@ -289,7 +302,10 @@ planet_event = {
             }
 		}
         custom_tooltip = VRPUtS_event.512.b.tt
-		planet_event = { id = VRPUtS_event.512 days = 120 }
+		planet_event = { 
+			id = VRPUtS_event.512 
+			days = 120 
+		}
     }
     option = { #放棄
         name = VRPUtS_event.512.c
@@ -334,7 +350,10 @@ planet_event = {
         }
         hidden_effect = {
 			owner = {
-           		country_event = { id = VRPUtS_event.521 days = 30 }
+				country_event = { 
+					id = VRPUtS_event.521 
+					days = 30 
+				}
 			}
         }
 	}
@@ -354,7 +373,10 @@ planet_event = {
             }
 		}
         custom_tooltip = VRPUtS_event.513.b.tt
-		planet_event = { id = VRPUtS_event.513 days = 120 }
+		planet_event = { 
+			id = VRPUtS_event.513 
+			days = 120 
+		}
     }
     option = { #放棄
         name = VRPUtS_event.513.c
@@ -381,7 +403,10 @@ country_event = {
     option = {
 		name = VRPUtS_event.521.a #捕まえた！
 		root = {
-			country_event = { id = VRPUtS_event.531 days = 30 }
+			country_event = { 
+				id = VRPUtS_event.531 
+				days = 30 
+			}
             end_event_chain = VRPUtS_uni_chain
 		}
 	}

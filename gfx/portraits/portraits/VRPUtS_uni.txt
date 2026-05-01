@@ -1,8 +1,8 @@
 portraits = {
 	uni_01 = { texturefile = "gfx/models/portraits/uni/uni_01.dds" }
 	uni_02 = { texturefile = "gfx/models/portraits/uni/uni_02.dds" }
-	#uni_03 = { texturefile = "gfx/models/portraits/uni/uni_03.dds" }
-	#uni_04 = { texturefile = "gfx/models/portraits/uni/uni_04.dds" }
+	uni_03 = { texturefile = "gfx/models/portraits/uni/uni_03.dds" }
+	uni_04 = { texturefile = "gfx/models/portraits/uni/uni_04.dds" }
 }
 
 portrait_groups = {
@@ -13,8 +13,8 @@ portrait_groups = {
 				portraits = {
 					uni_01
 					uni_02
-					#uni_03
-					#uni_04
+					uni_03
+					uni_04
 				}
 			}
 		}
@@ -23,8 +23,8 @@ portrait_groups = {
 				portraits = {
 					uni_01
 					uni_02
-					#uni_03
-					#uni_04
+					uni_03
+					uni_04
 				}
 			}
 		}		
@@ -34,8 +34,8 @@ portrait_groups = {
 				portraits = {
 					uni_01
 					uni_02
-					#uni_03
-					#uni_04
+					uni_03
+					uni_04
 				}
 			}
 		}
@@ -46,8 +46,8 @@ portrait_groups = {
 				portraits = {
 					uni_01
 					uni_02
-					#uni_03
-					#uni_04
+					uni_03
+					uni_04
 				}
 			}
 		}
@@ -59,8 +59,8 @@ portrait_groups = {
 				portraits = {
 					uni_01
 					uni_02
-					#uni_03
-					#uni_04
+					uni_03
+					uni_04
 				}
 			}
 		}

@@ -35,11 +35,15 @@ ship_event = {
 	}
     option = {
 		name = VRPUtS_event.201.b #放棄
-		trigger = { owner = { NOR = {
+		trigger = { 
+			owner = { 
+				NOR = {
 					has_ethic = ethic_fanatic_egalitarian
 					has_ethic = ethic_egalitarian
 					is_gestalt = yes
-				}}}
+				}
+			}
+		}
 		FROM = {
 			add_deposit = d_minerals_3
 		}
@@ -47,19 +51,25 @@ ship_event = {
 
     option = {
 		name = VRPUtS_event.201.c #強制放棄 - 平等主義
-		trigger = { owner = { OR = {
+		trigger = { 
+			owner = { 
+				OR = {
 					has_ethic = ethic_fanatic_egalitarian
 					has_ethic = ethic_egalitarian
-				}}}
+				}
+			}
+		}
 		FROM = {
 			add_deposit = d_minerals_3
 		}
 	}
 	option = {
 		name = VRPUtS_event.201.d #強制放棄 - ゲシュタルト意識
-		trigger = { owner = { 
+		trigger = { 
+			owner = { 
 				is_gestalt = yes 
-				}}
+			}
+		}
 		FROM = {
 			add_deposit = d_minerals_3
 		}
@@ -213,14 +223,16 @@ country_event = {
 	}
     option = {
 		name = VRPUtS_event.221.b #置いてく
-        owner = { add_monthly_resource_mult = {
+        owner = { 
+			add_monthly_resource_mult = {
 				resource = unity
 				value = @tier5unityreward
 				min = @tier5unitymin
 				max = @tier5unitymax
-			}}
+			}
 		}
 	}
+}
 
 
 ##### フィー、起動しました。

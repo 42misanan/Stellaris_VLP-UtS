@@ -8,8 +8,10 @@ country_event = {
     picture = GFX_evt_legendary_leader
     event_window_type = leader_story
 
-    mean_time_to_happen = { months = 6 }
-    
+    mean_time_to_happen = { 
+		months = 6 
+	}
+
 	picture_event_data = {
 		portrait = teto_02
 		room = ethic_spaceship_room
@@ -20,7 +22,9 @@ country_event = {
 	trigger = {
 		has_country_flag = teto_recruited
         has_country_flag = uta_recruited
-        NOT = { has_country_flag = defoteto_popped }
+        NOT = { 
+			has_country_flag = defoteto_popped 
+		}
 	}
 
 	option = {

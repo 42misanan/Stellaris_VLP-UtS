@@ -35,11 +35,15 @@ ship_event = {
 	}
     option = {
 		name = VRPUtS_event.301.b #放棄
-		trigger = { owner = { NOR = {
+		trigger = { 
+			owner = { 
+				NOR = {
 					has_ethic = ethic_fanatic_pacifist
 					has_ethic = ethic_pacifist
 					is_gestalt = yes
-				}}}
+				}
+			}
+		}
 		FROM = {
 			add_deposit = d_minerals_3
 		}
@@ -47,19 +51,25 @@ ship_event = {
 
     option = {
 		name = VRPUtS_event.301.c #強制放棄 - 平和主義
-		trigger = { owner = { OR = {
+		trigger = { 
+			owner = { 
+				OR = {
 					has_ethic = ethic_fanatic_pacifist
 					has_ethic = ethic_pacifist
-				}}}
+				}
+			}
+		}
 		FROM = {
 			add_deposit = d_minerals_3
 		}
 	}
 	option = {
 		name = VRPUtS_event.301.d #強制放棄 - ゲシュタルト意識
-		trigger = { owner = { 
+		trigger = { 
+			owner = { 
 				is_gestalt = yes 
-				}}
+			}
+		}
 		FROM = {
 			add_deposit = d_minerals_3
 		}
@@ -192,14 +202,16 @@ country_event = {
 	}
     option = {
 		name = VRPUtS_event.321.b #置いてく
-        owner = { add_monthly_resource_mult = {
+        owner = { 
+			add_monthly_resource_mult = {
 				resource = unity
 				value = @tier5unityreward
 				min = @tier5unitymin
 				max = @tier5unitymax
-			}}
+			}
 		}
 	}
+}
 
 
 ##### しょうがないな。いいよ。
