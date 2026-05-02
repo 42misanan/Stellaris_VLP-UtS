@@ -22,14 +22,14 @@ ship_event = {
 			}
 			any_country = {
 				NOT = {
-					has_country_flag = rei_rolled
+					has_global_flag = rei_rolled
 				}
 			}
 		}
 		fromfrom = {
             prevent_anomaly = yes
 			create_archaeological_site = VRPUtS_site_rei
-			set_country_flag = rei_rolled
+			set_global_flag = rei_rolled
 		}
 	}
     option = {
@@ -285,7 +285,7 @@ country_event = {
 		name = DISMISS
 		tag = dismiss_leader
 		hidden_effect = {
-			set_country_flag = rei_dismissed
+			set_global_flag = rei_dismissed
 			event_target:rei_leader = {
 				kill_leader = { show_notification = no }
 			}
@@ -295,7 +295,7 @@ country_event = {
 		name = HIRE
 		tag = hire_leader
 		hidden_effect = {
-			set_country_flag = rei_recruited
+			set_global_flag = rei_recruited
 			if = {
 				limit = {
 					is_variable_set = paragon_memory_vault
@@ -387,7 +387,7 @@ country_event = {
 		name = DISMISS
 		tag = dismiss_leader
 		hidden_effect = {
-			set_country_flag = rei_dismissed
+			set_global_flag = rei_dismissed
 			event_target:rei_leader = {
 				kill_leader = { show_notification = no }
 			}
@@ -397,7 +397,7 @@ country_event = {
 		name = HIRE
 		tag = hire_leader
 		hidden_effect = {
-			set_country_flag = rei_recruited
+			set_global_flag = rei_recruited
 			if = {
 				limit = {
 					is_variable_set = paragon_memory_vault
@@ -489,7 +489,7 @@ country_event = {
 		name = DISMISS
 		tag = dismiss_leader
 		hidden_effect = {
-			set_country_flag = rei_dismissed
+			set_global_flag = rei_dismissed
 			event_target:rei_leader = {
 				kill_leader = { show_notification = no }
 			}
@@ -499,7 +499,7 @@ country_event = {
 		name = HIRE
 		tag = hire_leader
 		hidden_effect = {
-			set_country_flag = rei_recruited
+			set_global_flag = rei_recruited
 			if = {
 				limit = {
 					is_variable_set = paragon_memory_vault

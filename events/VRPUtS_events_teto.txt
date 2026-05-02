@@ -10,18 +10,18 @@ country_event = {
 	trigger = {
 		any_country = {
             NOR = { 
-                has_country_flag = teto_chance
-                has_country_flag = teto_recruited
+                has_global_flag = teto_chance
+                has_global_flag = teto_recruited
             }
         }
-		has_country_flag = manifesti_spawned 
+		has_global_flag = manifesti_spawned 
 		NOT = { 
-			has_country_flag = teto_rolled
+			has_global_flag = teto_rolled
 		}
 		is_ai = no
 	}
 	immediate = {
-		set_country_flag = teto_rolled
+		set_global_flag = teto_rolled
 		country_event = { id = VRPUtS_event.401 days = 30 }
 	}
 }
@@ -40,11 +40,11 @@ country_event = {
 
     trigger = {
         NOR = { 
-            has_country_flag = teto_abandoned
-            has_country_flag = teto_chance
-            has_country_flag = teto_recruited
+            has_global_flag = teto_abandoned
+            has_global_flag = teto_chance
+            has_global_flag = teto_recruited
             }
-        has_country_flag = teto_rolled
+        has_global_flag = teto_rolled
         is_ai = no
     }
 
@@ -58,12 +58,12 @@ country_event = {
             }
             any_country = { 
 				NOR = {
-                	has_country_flag = teto_recruited
-                	has_country_flag = teto_chance
+                	has_global_flag = teto_recruited
+                	has_global_flag = teto_chance
             	}
 			}
         }
-        set_country_flag = teto_chance
+        set_global_flag = teto_chance
         begin_event_chain = {
             event_chain = VRPUtS_teto_chain
             target = this
@@ -87,7 +87,7 @@ country_event = {
 			min = @tier1unitymin
 			max = @tier1unitymax
 		}
-        set_country_flag = teto_abandoned
+        set_global_flag = teto_abandoned
 	}
 
     option = {
@@ -104,7 +104,7 @@ country_event = {
 			min = @tier1unitymin
 			max = @tier1unitymax
 		}
-        set_country_flag = teto_abandoned
+        set_global_flag = teto_abandoned
 	}
 	option = {
 		name = VRPUtS_event.401.d #強制放棄 - ゲシュタルト意識
@@ -117,7 +117,7 @@ country_event = {
 			min = @tier1unitymin
 			max = @tier1unitymax
 		}
-        set_country_flag = teto_abandoned
+        set_global_flag = teto_abandoned
 	}
 }
 
@@ -168,8 +168,8 @@ country_event = {
     option = { #放棄
         name = VRPUtS_event.411.b
         end_event_chain = VRPUtS_teto_chain
-        remove_country_flag = teto_chance
-        set_country_flag = teto_abandoned
+        remove_global_flag = teto_chance
+        set_global_flag = teto_abandoned
     }
 }
 
@@ -219,8 +219,8 @@ country_event = {
     option = { #放棄
         name = VRPUtS_event.412.b
         end_event_chain = VRPUtS_teto_chain
-        remove_country_flag = teto_chance
-        set_country_flag = teto_abandoned
+        remove_global_flag = teto_chance
+        set_global_flag = teto_abandoned
     }
 }
 
@@ -265,8 +265,8 @@ country_event = {
     option = { #放棄
         name = VRPUtS_event.413.b
         end_event_chain = VRPUtS_teto_chain
-        remove_country_flag = teto_chance
-        set_country_flag = teto_abandoned
+        remove_global_flag = teto_chance
+        set_global_flag = teto_abandoned
     }
 }
 
@@ -411,7 +411,7 @@ country_event = {
 		name = DISMISS
 		tag = dismiss_leader
 		hidden_effect = {
-			set_country_flag = teto_dismissed
+			set_global_flag = teto_dismissed
 			event_target:teto_leader = {
 				kill_leader = { show_notification = no }
 			}
@@ -421,7 +421,7 @@ country_event = {
 		name = HIRE
 		tag = hire_leader
 		hidden_effect = {
-			set_country_flag = teto_recruited
+			set_global_flag = teto_recruited
 			if = {
 				limit = {
 					is_variable_set = paragon_memory_vault

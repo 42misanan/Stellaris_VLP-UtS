@@ -23,14 +23,14 @@ ship_event = {
 			}
 			any_country = {
 				NOT = {
-					has_country_flag = uta_rolled
+					has_global_flag = uta_rolled
 				}
 			}
 		}
 		fromfrom = {
             prevent_anomaly = yes
 			create_archaeological_site = VRPUtS_site_uta
-			set_country_flag = uta_rolled
+			set_global_flag = uta_rolled
 		}
 	}
     option = {
@@ -296,7 +296,7 @@ country_event = {
 		name = VRPUtS_event.331.g
 		trigger = {
 			root = {
-				has_country_flag = teto_recruited
+				has_global_flag = teto_recruited
 			}
 		}
 		response_text = VRPUtS_event.331.g.response
@@ -307,7 +307,7 @@ country_event = {
 		name = DISMISS
 		tag = dismiss_leader
 		hidden_effect = {
-			set_country_flag = uta_dismissed
+			set_global_flag = uta_dismissed
 			event_target:uta_leader = {
 				kill_leader = { show_notification = no }
 			}
@@ -317,7 +317,7 @@ country_event = {
 		name = HIRE
 		tag = hire_leader
 		hidden_effect = {
-			set_country_flag = uta_recruited
+			set_global_flag = uta_recruited
 			if = {
 				limit = {
 					is_variable_set = paragon_memory_vault
