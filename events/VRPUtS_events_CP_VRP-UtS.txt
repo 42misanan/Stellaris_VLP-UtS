@@ -1,0 +1,136 @@
+namespace = VRPUtS_event
+
+#ウタｘテト：ウタ「唐揚げ食いに行くぞ」テト「どういう記憶力？」
+country_event = {
+    id = VRPUtS_event.9901
+    title = "VRPUtS_event.9901.name"
+    desc = "VRPUtS_event.9901.desc"
+    show_sound = event_airlock
+    picture = GFX_evt_legendary_leader
+    event_window_type = leader_story
+
+	picture_event_data = {
+		portrait = event_target:uta_leader
+		room = owner
+	}
+
+	is_triggered_only = yes
+
+	trigger = {
+		AND = {
+			has_country_flag = teto_recruited_local
+			has_country_flag = uta_recruited_local
+		}
+	}
+
+	option = {
+		name = VRPUtS_event.9901.a
+        add_monthly_resource_mult = {
+			resource = unity
+			value = @tier3unityreward
+			min = @tier3unitymin
+			max = @tier3unitymax
+		}
+	}
+}
+
+#レイｘテト：レイ「生体構造調べたい」テト「節操とかいうものがないのか君は」
+country_event = {
+    id = VRPUtS_event.9902
+    title = "VRPUtS_event.9902.name"
+    desc = "VRPUtS_event.9902.desc"
+    show_sound = event_airlock
+    picture = GFX_evt_legendary_leader
+    event_window_type = leader_story
+
+	picture_event_data = {
+		portrait = event_target:teto_leader
+		room = owner
+	}
+
+	is_triggered_only = yes
+
+	trigger = {
+		AND = {
+			has_country_flag = rei_recruited_local
+			has_country_flag = teto_recruited_local
+		}
+	}
+
+	option = {
+		name = VRPUtS_event.9902.a
+        add_monthly_resource_mult = {
+			resource = unity
+			value = @tier3unityreward
+			min = @tier3unitymin
+			max = @tier3unitymax
+		}
+	}
+}
+
+#レイｘウタ：レイ「どういうアーキテクチャしてるんですかあなた」ウタ「これはねー……」
+country_event = {
+    id = VRPUtS_event.9903
+    title = "VRPUtS_event.9903.name"
+    desc = "VRPUtS_event.9903.desc"
+    show_sound = event_airlock
+    picture = GFX_evt_legendary_leader
+    event_window_type = leader_story
+
+	picture_event_data = {
+		portrait = event_target:rei_leader
+		room = owner
+	}
+
+	is_triggered_only = yes
+
+	trigger = {
+		AND = {
+			has_country_flag = uta_recruited_local
+			has_country_flag = rei_recruited_local
+		}
+	}
+
+	option = {
+		name = VRPUtS_event.9903.a
+        add_monthly_resource_mult = {
+			resource = unity
+			value = @tier3unityreward
+			min = @tier3unitymin
+			max = @tier3unitymax
+		}
+	}
+
+
+#フィーｘユニ：フィー「ユニちゃんって試作機の？」ユニ「そうだねえ、廃棄とは言われたが……」
+country_event = {
+    id = VRPUtS_event.9904
+    title = "VRPUtS_event.9904.name"
+    desc = "VRPUtS_event.9904.desc"
+    show_sound = event_airlock
+    picture = GFX_evt_legendary_leader
+    event_window_type = leader_story
+
+	picture_event_data = {
+		portrait = event_target:fee_leader
+		room = owner
+	}
+
+	is_triggered_only = yes
+
+	trigger = {
+		AND = {
+			has_country_flag = fee_recruited_local
+			has_country_flag = uni_recruited_local
+		}
+	}
+
+	option = {
+		name = VRPUtS_event.9904.a
+        add_monthly_resource_mult = {
+			resource = unity
+			value = @tier3unityreward
+			min = @tier3unitymin
+			max = @tier3unitymax
+		}
+	}

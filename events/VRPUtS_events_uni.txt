@@ -568,6 +568,7 @@ country_event = {
 			hire_event_leader_effect = {
 				LEADER = uni_leader
 			}
+			country_event = { id = VRPUtS_event.9904 months = 1 }
 		}
 	}
 }

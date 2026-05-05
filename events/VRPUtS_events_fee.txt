@@ -308,6 +308,16 @@ country_event = {
 		response_text = VRPUtS_event.231.e.response
 		is_dialog_only = yes
 	}
+	option = {
+		name = VRPUtS_event.231.f
+		trigger = {
+			root = {
+				has_country_flag = uni_recruited_local
+			}
+		}
+		response_text = VRPUtS_event.231.f.response
+		is_dialog_only = yes
+	}
 
 	option = { # DISMISS
 		name = DISMISS
@@ -338,6 +348,7 @@ country_event = {
 			hire_event_leader_effect = {
 				LEADER = fee_leader
 			}
+			country_event = { id = VRPUtS_event.9904 months = 1 }
 		}
 	}
 }

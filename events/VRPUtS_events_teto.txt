@@ -437,7 +437,8 @@ country_event = {
 			hire_event_leader_effect = {
 				LEADER = teto_leader
 			}
-			country_event = { id = VRPUtS_event.9901 months = 1 }
+			country_event = { id = VRPUtS_event.9901 months = 2 }
+			country_event = { id = VRPUtS_event.9902 months = 1 }
 		}
 	}
 }
