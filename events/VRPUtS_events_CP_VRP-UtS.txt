@@ -100,7 +100,7 @@ country_event = {
 			max = @tier3unitymax
 		}
 	}
-
+}
 
 #フィーｘユニ：フィー「ユニちゃんって試作機の？」ユニ「そうだねえ、廃棄とは言われたが……」
 country_event = {
@@ -134,3 +134,4 @@ country_event = {
 			max = @tier3unitymax
 		}
 	}
+}
