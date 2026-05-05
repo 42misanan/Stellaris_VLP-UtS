@@ -16,7 +16,7 @@ planet_event = {
         }
 		owner = {
 			NOR = { 
-				has_global_flag = uni_abandoned
+				has_country_flag = uni_abandoned
 				has_global_flag = uni_rolled
 				is_at_war = yes
 				is_ai = yes
@@ -115,7 +115,7 @@ planet_event = {
 				min = @tier1unitymin
 				max = @tier1unitymax
 			}
-	        set_global_flag = uni_abandoned
+	        set_country_flag = uni_abandoned
 		}
 	}
 
@@ -136,7 +136,7 @@ planet_event = {
 				min = @tier1unitymin
 				max = @tier1unitymax
 			}
-	        set_global_flag = uni_abandoned
+	        set_country_flag = uni_abandoned
 		}
 	}
 	option = {
@@ -153,7 +153,7 @@ planet_event = {
 				min = @tier1unitymin
 				max = @tier1unitymax
 			}
-	        set_global_flag = uni_abandoned
+	        set_country_flag = uni_abandoned
 		}
 	}
 }
@@ -242,7 +242,7 @@ planet_event = {
         name = VRPUtS_event.511.c
 		owner = {
 			end_event_chain = VRPUtS_uni_chain
-			set_global_flag = uni_abandoned
+			set_country_flag = uni_abandoned
 			remove_global_flag = uni_chance
 		}
     }
@@ -311,7 +311,7 @@ planet_event = {
         name = VRPUtS_event.512.c
 		owner = {
 			end_event_chain = VRPUtS_uni_chain
-			set_global_flag = uni_abandoned
+			set_country_flag = uni_abandoned
 			remove_global_flag = uni_chance
 		}
     }
@@ -382,7 +382,7 @@ planet_event = {
         name = VRPUtS_event.513.c
 		owner = {
 			end_event_chain = VRPUtS_uni_chain
-			set_global_flag = uni_abandoned
+			set_country_flag = uni_abandoned
 			remove_global_flag = uni_chance
 		}
     }
@@ -450,7 +450,7 @@ country_event = {
 
 	option = {
 		name = "VRPUtS_event.531.d"
-		set_global_flag = uni_abandoned
+		set_country_flag = uni_abandoned
 	}
 }
 
@@ -493,6 +493,7 @@ country_event = {
 			set_age = 1895
 			set_leader_flag = immune_to_negative_traits
 			set_leader_flag = leader_death_events_blocked
+			set_leader_flag = is_uni
 			save_global_event_target_as = uni_leader
 		}
 	}
@@ -531,7 +532,7 @@ country_event = {
 		name = VRPUtS_event.541.f
 		trigger = {
 			root = {
-				has_global_flag = fee_recruited
+				has_country_flag = fee_recruited_local
 			}
 		}
 		response_text = VRPUtS_event.541.f.response
@@ -553,6 +554,8 @@ country_event = {
 		tag = hire_leader
 		hidden_effect = {
 			set_global_flag = uni_recruited
+			set_country_flag = uni_recruited_local
+			save_global_event_target_as = uni_owner
 			if = {
 				limit = {
 					is_variable_set = paragon_memory_vault

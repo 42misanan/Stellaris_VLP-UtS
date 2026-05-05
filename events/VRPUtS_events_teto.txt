@@ -40,7 +40,7 @@ country_event = {
 
     trigger = {
         NOR = { 
-            has_global_flag = teto_abandoned
+            has_country_flag = teto_abandoned
             has_global_flag = teto_chance
             has_global_flag = teto_recruited
             }
@@ -87,7 +87,7 @@ country_event = {
 			min = @tier1unitymin
 			max = @tier1unitymax
 		}
-        set_global_flag = teto_abandoned
+        set_country_flag = teto_abandoned
 	}
 
     option = {
@@ -104,7 +104,7 @@ country_event = {
 			min = @tier1unitymin
 			max = @tier1unitymax
 		}
-        set_global_flag = teto_abandoned
+        set_country_flag = teto_abandoned
 	}
 	option = {
 		name = VRPUtS_event.401.d #強制放棄 - ゲシュタルト意識
@@ -117,7 +117,7 @@ country_event = {
 			min = @tier1unitymin
 			max = @tier1unitymax
 		}
-        set_global_flag = teto_abandoned
+        set_country_flag = teto_abandoned
 	}
 }
 
@@ -169,7 +169,7 @@ country_event = {
         name = VRPUtS_event.411.b
         end_event_chain = VRPUtS_teto_chain
         remove_global_flag = teto_chance
-        set_global_flag = teto_abandoned
+        set_country_flag = teto_abandoned
     }
 }
 
@@ -220,7 +220,7 @@ country_event = {
         name = VRPUtS_event.412.b
         end_event_chain = VRPUtS_teto_chain
         remove_global_flag = teto_chance
-        set_global_flag = teto_abandoned
+        set_country_flag = teto_abandoned
     }
 }
 
@@ -266,7 +266,7 @@ country_event = {
         name = VRPUtS_event.413.b
         end_event_chain = VRPUtS_teto_chain
         remove_global_flag = teto_chance
-        set_global_flag = teto_abandoned
+        set_country_flag = teto_abandoned
     }
 }
 
@@ -372,6 +372,7 @@ country_event = {
 			set_age = 31
 			set_leader_flag = immune_to_negative_traits
 			set_leader_flag = leader_death_events_blocked
+			set_leader_flag = is_teto
 			save_global_event_target_as = teto_leader
 		}
 	}
@@ -422,6 +423,8 @@ country_event = {
 		tag = hire_leader
 		hidden_effect = {
 			set_global_flag = teto_recruited
+			set_country_flag = teto_recruited_local
+			save_global_event_target_as = teto_owner
 			if = {
 				limit = {
 					is_variable_set = paragon_memory_vault
@@ -434,6 +437,7 @@ country_event = {
 			hire_event_leader_effect = {
 				LEADER = teto_leader
 			}
+			country_event = { id = VRPUtS_event.9901 months = 1 }
 		}
 	}
 }

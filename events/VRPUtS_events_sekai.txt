@@ -38,7 +38,7 @@ planet_event = {
         }
 		owner = {
 			NOR = { 
-				has_global_flag = sekai_abandoned
+				has_country_flag = sekai_abandoned
 				has_global_flag = sekai_rolled
 				is_at_war = yes
 				is_ai = yes
@@ -110,7 +110,7 @@ country_event = {
 			min = @tier1unitymin
 			max = @tier1unitymax
 		}
-		set_global_flag = sekai_abandoned
+		set_country_flag = sekai_abandoned
 	}
 
     option = {
@@ -127,7 +127,7 @@ country_event = {
 			min = @tier1unitymin
 			max = @tier1unitymax
 		}
-		set_global_flag = sekai_abandoned
+		set_country_flag = sekai_abandoned
 	}
 	option = {
 		name = VRPUtS_event.601.d #強制放棄 - ゲシュタルト意識
@@ -140,7 +140,7 @@ country_event = {
 			min = @tier1unitymin
 			max = @tier1unitymax
 		}
-		set_global_flag = sekai_abandoned
+		set_country_flag = sekai_abandoned
 	}
 }
 
@@ -195,7 +195,7 @@ country_event = {
         name = VRPUtS_event.611.c
         end_event_chain = VRPUtS_sekai_chain
         remove_global_flag = sekai_chance
-        set_global_flag = sekai_abandoned
+        set_country_flag = sekai_abandoned
     }
 }
 
@@ -249,7 +249,7 @@ country_event = {
         name = VRPUtS_event.612.c
         end_event_chain = VRPUtS_sekai_chain
         remove_global_flag = sekai_chance
-        set_global_flag = sekai_abandoned
+        set_country_flag = sekai_abandoned
     }
 }
 
@@ -303,7 +303,7 @@ country_event = {
         name = VRPUtS_event.613.c
         end_event_chain = VRPUtS_sekai_chain
         remove_global_flag = sekai_chance
-        set_global_flag = sekai_abandoned
+        set_country_flag = sekai_abandoned
     }
 }
 
@@ -466,6 +466,7 @@ country_event = {
 			set_age = 16
 			set_leader_flag = immune_to_negative_traits
 			set_leader_flag = leader_death_events_blocked
+			set_leader_flag = is_sekai
 			save_global_event_target_as = sekai_leader
 		}
 	}
@@ -516,6 +517,7 @@ country_event = {
 		tag = hire_leader
 		hidden_effect = {
 			set_global_flag = sekai_recruited
+			set_country_flag = sekai_recruited_local
 			if = {
 				limit = {
 					is_variable_set = paragon_memory_vault

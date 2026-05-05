@@ -253,6 +253,7 @@ country_event = {
 			set_age = 3092
 			set_leader_flag = immune_to_negative_traits
 			set_leader_flag = leader_death_events_blocked
+			set_leader_flag = is_uta
 			save_global_event_target_as = uta_leader
 		}
 	}
@@ -296,7 +297,7 @@ country_event = {
 		name = VRPUtS_event.331.g
 		trigger = {
 			root = {
-				has_global_flag = teto_recruited
+				has_country_flag = teto_recruited_local
 			}
 		}
 		response_text = VRPUtS_event.331.g.response
@@ -318,6 +319,8 @@ country_event = {
 		tag = hire_leader
 		hidden_effect = {
 			set_global_flag = uta_recruited
+			set_country_flag = uta_recruited_local
+			save_global_event_target_as = uta_owner
 			if = {
 				limit = {
 					is_variable_set = paragon_memory_vault
@@ -330,6 +333,7 @@ country_event = {
 			hire_event_leader_effect = {
 				LEADER = uta_leader
 			}
+			country_event = { id = VRPUtS_event.9901 months = 1 }
 		}
 	}
 }

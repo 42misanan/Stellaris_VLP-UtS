@@ -246,6 +246,7 @@ country_event = {
 			set_age = 302
 			set_leader_flag = immune_to_negative_traits
 			set_leader_flag = leader_death_events_blocked
+			set_leader_flag = is_rei
 			save_global_event_target_as = rei_leader
 		}
 	}
@@ -296,6 +297,8 @@ country_event = {
 		tag = hire_leader
 		hidden_effect = {
 			set_global_flag = rei_recruited
+			set_country_flag = rei_recruited_local
+			save_global_event_target_as = rei_owner
 			if = {
 				limit = {
 					is_variable_set = paragon_memory_vault
@@ -348,6 +351,7 @@ country_event = {
 			set_age = 302
 			set_leader_flag = immune_to_negative_traits
 			set_leader_flag = leader_death_events_blocked
+			set_leader_flag = is_rei
 			save_global_event_target_as = rei_leader
 		}
 	}
@@ -398,6 +402,8 @@ country_event = {
 		tag = hire_leader
 		hidden_effect = {
 			set_global_flag = rei_recruited
+			set_country_flag = rei_recruited_local
+			save_global_event_target_as = rei_owner
 			if = {
 				limit = {
 					is_variable_set = paragon_memory_vault
@@ -450,6 +456,7 @@ country_event = {
 			set_age = 302
 			set_leader_flag = immune_to_negative_traits
 			set_leader_flag = leader_death_events_blocked
+			set_leader_flag = is_rei
 			save_global_event_target_as = rei_leader
 		}
 	}
@@ -500,6 +507,8 @@ country_event = {
 		tag = hire_leader
 		hidden_effect = {
 			set_global_flag = rei_recruited
+			set_country_flag = rei_recruited_local
+			save_global_event_target_as = rei_owner
 			if = {
 				limit = {
 					is_variable_set = paragon_memory_vault
