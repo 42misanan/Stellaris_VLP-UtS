@@ -12,11 +12,6 @@ shion_initializer = {
 	max_instances = 1
 	flags = { shion_system }
 
-	asteroid_belt = {
-		type = rocky_asteroid_belt
-		radius = 100 #Distance from system centre
-	}
-
 	planet = {
 		class = star
 		orbit_distance = 0
@@ -41,7 +36,6 @@ shion_initializer = {
 		home_planet = no
 		init_effect = {
 			save_global_event_target_as = shion_shroud
-			add_modifier = { modifier = "pm_shion_gardens" days = -1 }
 		}
 
 		moon = {
@@ -69,25 +63,7 @@ shion_initializer = {
 		init_effect = {
 			prevent_anomaly = yes
 			clear_deposits = yes
-			add_modifier = {
-				modifier = "terraforming_candidate" days = -1
-			}
 			save_global_event_target_as = shion_machine
-		}
-	}
-
-	planet = {
-		name = "NAME_shion_asteroid"
-		class = pc_asteroid
-
-		orbit_distance = 28
-		orbit_angle = -20
-		size = { min = 2 max = 4 }
-		has_ring = no
-
-		home_planet = yes
-		init_effect = {
-			set_deposit = d_minerals_4
 		}
 	}
 }

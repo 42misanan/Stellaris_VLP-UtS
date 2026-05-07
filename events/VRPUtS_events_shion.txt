@@ -134,10 +134,229 @@ planet_event = {
 				max = @tier2researchmax
 			}
 		}
-		enable_special_project = {
-			name = VRPUtS_project_shion
-			location = event_target:shion_moon
-			owner = root.owner
+		start_situation = {
+			type = situation_paragon_shion_rescure
+		}
+		start_situation = {
+			type = situation_paragon_shion_falling
+		}
+	}
+}
+
+
+###状況イベント
+situation_event = { #Cure not found - シオンはもういない
+	id = VRPUtS_event.711
+	title = "VRPUtS_event.711.name"
+	desc = "VRPUtS_event.711.desc"
+	picture = GFX_evt_black_hole
+	show_sound = event_life_support_fail
+
+	is_triggered_only = yes
+
+	immediate = {
+		owner = {
+			random_situation = {
+				limit = {
+					is_situation_type = situation_paragon_shion_rescue
+				}
+				destroy_situation = this
+			}
+		}
+	}
+
+	option = {
+		name = TERRIBLE
+		destroy_situation = this
+	}
+}
+
+situation_event = { #Cure not found step 1
+	id = VRPUtS_event.712
+	title = "VRPUtS_event.712.name"
+	desc = "VRPUtS_event.712.desc"
+	picture = GFX_evt_astral_rift_bleached_planet
+	show_sound = event_bad_omen
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+
+	option = {
+		name = UNFORTUNATE
+	}
+}
+
+situation_event = { #Cure not found step 2
+	id = VRPUtS_event.713
+	title = "VRPUtS_event.713.name"
+	desc = "VRPUtS_event.713.desc"
+	picture = GFX_evt_astral_rift_bleached_planet_2
+	show_sound = event_bad_omen
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+
+	option = {
+		name = WORRYING
+	}
+}
+
+situation_event = { #Cure not found step 3
+	id = VRPUtS_event.714
+	title = "VRPUtS_event.714.name"
+	desc = "VRPUtS_event.714.desc"
+	picture = GFX_evt_astral_rift_dimensional_dump
+	show_sound = event_bad_omen
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+
+	option = {
+		name = DISCONCERTING
+	}
+}
+
+situation_event = { #Cure found - シオンは助かる
+	id = VRPUtS_event.715
+	title = "VRPUtS_event.715.name"
+	desc = "VRPUtS_event.715.desc"
+	picture = GFX_evt_microscopic_life
+
+	is_triggered_only = yes
+
+	immediate = {
+		owner = {
+			random_situation = {
+				limit = {
+					is_situation_type = situation_paragon_shion_falling
+				}
+				destroy_situation = this
+			}
+		}
+	}
+
+	option = {
+		name = EXCELLENT
+		destroy_situation = this
+		hidden_effect = {
+			owner = {
+				country_event = { id = VRPUtS_event.721 }
+			}
+		}
+	}
+}
+
+
+#こんなはずではなかったんですが……助かりました。
+########## 九十九シオン - 戦略家
+country_event = {
+	id = VRPUtS_event.721
+	title = "VRPUtS_event.721"
+	desc = "VRPUtS_event.721.desc"
+	show_sound = event_ai_started
+	location = fromfromfrom
+	is_triggered_only = yes
+
+    picture = GFX_leader_recruitment_bg_renowned
+	event_window_type = leader_recruit
+	notification_event_icon = GFX_message_leader_recruitment_stplus_yukari
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = VRPUtS
+			LEADER_PORTRAIT = shion_01
+			CLASS = commander
+			TIER = leader_tier_legendary
+			NAME = VRPUtS_NAME_shion
+			LEVEL = 7
+			GENDER = indeterminable
+			IMMORTAL = yes
+			ETHIC = gestalt_consciousness
+			DESC = VRPUtS_shion_leader_desc
+			CATCH_PHRASE = VRPUtS_shion_leader_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_commander_councilor }
+			add_trait = { trait = leader_trait_ancient_knowledge }
+			add_trait = { trait = leader_trait_synthetic }
+			add_trait = { trait = leader_trait_legendary_foe_hammer }
+			add_trait = { trait = leader_trait_legendary_military_knowledge }
+			add_trait = { trait = leader_trait_maven_of_war }
+			set_age = 301
+			set_leader_flag = immune_to_negative_traits
+			set_leader_flag = leader_death_events_blocked
+			set_leader_flag = is_shion
+			save_global_event_target_as = shion_leader
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = VRPUtS_event.721.a
+		response_text = VRPUtS_event.721.a.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.721.b
+		response_text = VRPUtS_event.721.b.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.721.c
+		response_text = VRPUtS_event.721.c.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.721.d
+		response_text = VRPUtS_event.721.d.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = VRPUtS_event.721.e
+		response_text = VRPUtS_event.721.e.response
+		is_dialog_only = yes
+	}
+
+	option = { # DISMISS
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			set_global_flag = shion_dismissed
+			event_target:shion_leader = {
+				kill_leader = { show_notification = no }
+			}
+		}
+	}
+	option = { # HIRE
+		name = HIRE
+		tag = hire_leader
+		hidden_effect = {
+			set_global_flag = shion_recruited
+			set_country_flag = shion_recruited_local
+			save_global_event_target_as = shion_owner
+			if = {
+				limit = {
+					is_variable_set = paragon_memory_vault
+				}
+				change_variable = {
+					which = paragon_memory_vault
+					value = 1
+				}
+			}
+			hire_event_leader_effect = {
+				LEADER = shion_leader
+			}
+			country_event = { id = VRPUtS_event.9905 months = 1 }
 		}
 	}
 }

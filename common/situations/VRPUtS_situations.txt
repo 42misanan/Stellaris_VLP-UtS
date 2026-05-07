@@ -1,0 +1,228 @@
+# Related to paragon.3010
+# situation_paragon_skrand_sickness の丸コピ
+situation_paragon_shion_falling = { 
+	picture = GFX_evt_crystal_sphere
+	category = negative
+	complete_icon_frame = GFX_situation_outcome_frame_red
+	complete_icon = GFX_situation_outcome_negative
+	initial_progress = 4.16
+
+	on_progress_complete = {
+		custom_tooltip = situation_unknown_outcome_approach
+		hidden_effect = {
+			situation_event = { id = VRPUtS_event.711 } # もうシオンは向こう側にいる。
+		}
+		set_situation_locked = yes
+	}
+
+	stages = {
+		stage_1 = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_red
+			end = 25
+			on_first_enter = {
+			}
+			custom_tooltip = stage_unknown_effects
+		}
+		stage_2 = {
+			icon = GFX_situation_stage_2
+			icon_background = GFX_situation_stage_frame_red
+			end = 50
+			on_first_enter = {
+				situation_event = { id = VRPUtS_event.712 } # 通信強度の低下
+			}
+			custom_tooltip = stage_unknown_effects
+		}
+		stage_3 = {
+			icon = GFX_situation_stage_3
+			icon_background = GFX_situation_stage_frame_red
+			end = 75
+			on_first_enter = {
+				situation_event = { id = VRPUtS_event.713 } # 救難信号
+			}
+			custom_tooltip = stage_unknown_effects
+		}
+		stage_4 = {
+			icon = GFX_situation_stage_4
+			icon_background = GFX_situation_stage_frame_red
+			end = 100
+			on_first_enter = {
+				situation_event = { id = VRPUtS_event.714 } # 手遅れ
+			}
+			custom_tooltip = stage_unknown_effects
+		}
+	}
+
+	approach = {
+		name = situation_paragon_shion_falling_huge
+		icon = GFX_situation_approach_balance_sheet
+		icon_background = GFX_situation_approach_bg_green
+		on_select = {
+			custom_tooltip = approach_situation_paragon_shion_falling_huge_tt #できることはすべてしろ！
+		}
+		resources = {
+			category = situations
+			upkeep = {
+				energy = 100
+				alloys = 50
+			}
+		}
+	}
+	approach = {
+		name = situation_paragon_shion_falling_moderate
+		icon = GFX_situation_approach_balance_sheet
+		icon_background = GFX_situation_approach_bg_green
+		on_select = {
+			custom_tooltip = approach_situation_paragon_shion_falling_moderate_tt #最大限助けるんだ
+		}
+		resources = {
+			category = situations
+			upkeep = {
+				energy = 50
+				alloys = 20
+			}
+		}
+	}
+	approach = {
+		name = situation_paragon_shion_falling_least
+		icon = GFX_situation_approach_balance_sheet
+		icon_background = GFX_situation_approach_bg_yellow
+		on_select = {
+			custom_tooltip = approach_situation_paragon_shion_falling_least_tt #ある程度支援をしよう
+		}
+		default = yes
+		resources = {
+			category = situations
+			upkeep = {
+				energy = 20
+			}
+		}
+	}
+	approach = {
+		name = situation_paragon_shion_falling_nothing
+		icon = GFX_situation_approach_balance_sheet
+		icon_background = GFX_situation_approach_bg_red
+		on_select = {
+			custom_tooltip = approach_situation_paragon_shion_falling_nothing_tt #渡せるものなどない
+		}
+		resources = {
+			category = situations
+			upkeep = {
+				energy = 1
+			}
+		}
+	}
+
+	monthly_progress = {
+		base = 4.16 #24 months
+		modifier = {
+			add = -1.39 #36 months
+			desc = situation_paragon_shion_falling_least 
+			current_situation_approach = situation_paragon_shion_falling_understanding
+		}
+		modifier = {
+			add = -2.5 # 60 months
+			desc = situation_paragon_shion_falling_moderate 
+			current_situation_approach = situation_paragon_shion_falling_moderate
+		}
+		modifier = {
+			add = -3.33 # 120 months
+			desc = situation_paragon_shion_falling_huge 
+			current_situation_approach = situation_paragon_shion_falling_huge
+		}
+	}
+}
+
+# Related to paragon.3010
+# situation_paragon_shion_rescure の丸コピ
+situation_paragon_shion_rescure = { 
+	picture = GFX_evt_synth_fertility
+	category = positive
+	complete_icon_frame = GFX_situation_outcome_frame_green
+	complete_icon = GFX_situation_outcome_positive
+	initial_progress = 0
+
+	on_progress_complete = {
+		custom_tooltip = situation_unknown_outcome_approach
+		hidden_effect = {
+			situation_event = { id = VRPUtS_event.715 } #成功だ！
+		}
+		set_situation_locked = yes
+	}
+
+	stages = {
+		stage_1 = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_green
+			end = 100
+			on_first_enter = {
+			}
+			custom_tooltip = stage_unknown_effects
+		}
+	}
+
+	approach = {
+		name = situation_paragon_shion_rescure_huge
+		icon = GFX_situation_approach_balance_sheet
+		icon_background = GFX_situation_approach_bg_green
+		on_select = {
+			custom_tooltip = approach_situation_paragon_shion_rescure_huge_tt #すべてを注ぎ込め！
+		}
+		modifier = {
+			country_engineering_research_produces_mult = -0.50
+		}
+	}
+	approach = {
+		name = situation_paragon_shion_rescure_moderate
+		icon = GFX_situation_approach_balance_sheet
+		icon_background = GFX_situation_approach_bg_green
+		on_select = {
+			custom_tooltip = approach_situation_paragon_shion_rescure_moderate_tt #できるだけ急げ！
+		}
+		modifier = {
+			country_engineering_research_produces_mult = -0.25
+		}
+	}
+	approach = {
+		name = situation_paragon_shion_rescure_least
+		icon = GFX_situation_approach_balance_sheet
+		icon_background = GFX_situation_approach_bg_yellow
+		on_select = {
+			custom_tooltip = approach_situation_paragon_shion_rescure_least_tt #最低限でいい
+		}
+		default = yes
+		modifier = {
+			country_engineering_research_produces_mult = -0.10
+		}
+	}
+	approach = {
+		name = situation_paragon_shion_rescure_nothing
+		icon = GFX_situation_approach_balance_sheet
+		icon_background = GFX_situation_approach_bg_red
+		on_select = {
+			custom_tooltip = approach_situation_paragon_shion_rescure_nothing_tt #なぜ助ける必要が？
+		}
+		modifier = {
+			country_engineering_research_produces_mult = -0.01
+		}
+	}
+
+	monthly_progress = {
+		base = 2.08 # 48 months
+		modifier = {
+			add = 0.69 # 36 months
+			desc = situation_paragon_shion_rescure_least
+			current_situation_approach = situation_paragon_shion_rescure_least
+		}
+		modifier = {
+			add = 2.08 # 24 months
+			desc = situation_paragon_shion_rescure_moderate
+			current_situation_approach = situation_paragon_shion_rescure_moderate
+		}
+		modifier = {
+			add = 3.47 # 18 months
+			desc = situation_paragon_shion_rescure_huge
+			current_situation_approach = situation_paragon_shion_rescure_huge
+		}
+	}
+}
