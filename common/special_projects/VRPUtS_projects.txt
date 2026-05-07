@@ -52,4 +52,19 @@ special_project = {
 	}
 }
 
+##### 九十九シオン
 
+special_project = {
+	key = "VRPUtS_project_shion"
+	desc = "VRPUtS_project_shion_desc"
+	cost = 10000 #15000
+	tech_department = engineering_technology
+	picture = GFX_evt_archaeology_camp
+	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
+
+	event_scope = planet_event
+
+	on_success = {
+        planet_event = { id = VRPUtS_event.704 }
+	}
+}

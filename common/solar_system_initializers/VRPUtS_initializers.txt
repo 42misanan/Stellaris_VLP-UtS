@@ -1,0 +1,93 @@
+# シオンちゃん
+# federations_initializers に入ってる wenkwort_initializer のパクり
+shion_initializer = {
+	name = "NAME_shion"
+	class = sc_black_hole
+
+	usage = misc_system_init
+	usage_odds = {
+		base = @spawn_system_slightlycommon
+		inline_script = "solar_system_initializers/initializer_modifiers_habitable_world_systems"
+	}
+	max_instances = 1
+	flags = { shion_system }
+
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 100 #Distance from system centre
+	}
+
+	planet = {
+		class = star
+		orbit_distance = 0
+		init_effect = {
+			prevent_anomaly = yes
+		}
+        set_star_flag = shion_system # to notify Shion event exists
+	}
+
+	planet = {
+		name = "NAME_shion_prime"
+		class = pc_shrouded
+
+		orbit_distance = 65
+		orbit_angle = 45
+		size = 19
+		has_ring = yes
+		change_orbit = 4
+
+		anomaly = "VRPUtS_shion_CAT"
+
+		home_planet = no
+		init_effect = {
+			save_global_event_target_as = shion_shroud
+			add_modifier = { modifier = "pm_shion_gardens" days = -1 }
+		}
+
+		moon = {
+			name = "NAME_shion_moon"
+			class = pc_shrouded
+			orbit_distance = 15
+			size = { min = 8 max = 12 }
+			init_effect = {
+				prevent_anomaly = yes
+				save_global_event_target_as = shion_moon
+			}
+		}
+	}
+
+	planet = {
+		name = "NAME_shion_2"
+		class = pc_machine
+
+		orbit_distance = 45
+		orbit_angle = 135
+		size = { min = 18 max = 25 }
+		has_ring = no
+
+		home_planet = yes
+		init_effect = {
+			prevent_anomaly = yes
+			clear_deposits = yes
+			add_modifier = {
+				modifier = "terraforming_candidate" days = -1
+			}
+			save_global_event_target_as = shion_machine
+		}
+	}
+
+	planet = {
+		name = "NAME_shion_asteroid"
+		class = pc_asteroid
+
+		orbit_distance = 28
+		orbit_angle = -20
+		size = { min = 2 max = 4 }
+		has_ring = no
+
+		home_planet = yes
+		init_effect = {
+			set_deposit = d_minerals_4
+		}
+	}
+}

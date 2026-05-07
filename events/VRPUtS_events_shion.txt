@@ -1,0 +1,143 @@
+namespace = VRPUtS_event
+
+#シオンちゃん星系に入りましたよ通知
+ship_event = {
+	id = VRPUtS_event.701
+	title = "VRPUtS_event.701.name"
+	desc = "VRPUtS_event.701.desc"
+	picture = GFX_evt_shroud_tunnel
+	show_sound = evn_ove_shroud_tunnel
+	location = FROM
+
+	is_triggered_only = yes
+
+	trigger = {
+        AND = {
+            owner = { 
+                is_gestalt = no 
+                is_ai = no
+            }
+            FROM = { has_star_flag = shion_system }
+        }
+	}
+
+	immediate = {
+		owner = {
+			set_global_flag = encountered_shion
+		}
+	}
+
+	option = {
+		name = VRPUtS_event.701.a
+	}
+}
+
+#アノマリークリアイベント
+ship_event = {
+	id = VRPUtS_event.702
+	title = "VRPUtS_event.702.name"
+	desc = "VRPUtS_event.702.desc"
+	picture = GFX_evt_glitchy_matrix
+	show_sound = event_scanner
+	location = from
+
+	is_triggered_only = yes
+
+	option = { #派生
+		name = VRPUtS_event.702.a
+		trigger = { 
+			owner = { 
+				NOR = {
+					is_materialist = yes
+					is_gestalt = yes
+				}
+			}
+			any_country = {
+				NOT = {
+					has_global_flag = shion_rolled
+				}
+			}
+		}
+		owner = {
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = @tier2researchreward
+				min = @tier2researchmin
+				max = @tier2researchmax
+			}
+		}
+		enable_special_project = {
+			name = VRPUtS_project_shion
+			location = event_target:shion_machine #redirect to sub planet
+			owner = root.owner
+		}
+        hidden_effect = {
+            set_global_flag = shion_rolled
+        }
+    }
+    option = {
+		name = VRPUtS_event.702.b #放棄
+		trigger = { 
+			owner = { 
+				NOR = {
+					is_materialist = yes
+					is_gestalt = yes
+				}
+			}
+		}
+		FROM = {
+			add_deposit = d_minerals_3
+		}
+	}
+    option = {
+		name = VRPUtS_event.702.c #強制放棄 - 物質主義
+		trigger = { 
+			owner = { 
+				is_materialist = yes
+			}
+		}
+		FROM = {
+			add_deposit = d_minerals_3
+		}
+	}
+	option = {
+		name = VRPUtS_event.702.d #強制放棄 - ゲシュタルト意識
+		trigger = { 
+			owner = { 
+				is_gestalt = yes 
+			}
+		}
+		FROM = {
+			add_deposit = d_minerals_3
+		}
+	}
+}
+
+#プロジェクト完了
+planet_event = {
+	id = VRPUtS_event.703
+	title = "VRPUtS_event.703.name"
+	desc = "VRPUtS_event.703.desc"
+	picture = GFX_evt_machine_sapience
+	show_sound = event_ai_started
+	location = from
+    
+	is_triggered_only = yes
+    
+	option = {
+		name = VRPUtS_event.702.a
+		owner = {
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = @tier2researchreward
+				min = @tier2researchmin
+				max = @tier2researchmax
+			}
+		}
+		enable_special_project = {
+			name = VRPUtS_project_shion
+			location = event_target:shion_moon
+			owner = root.owner
+		}
+	}
+}

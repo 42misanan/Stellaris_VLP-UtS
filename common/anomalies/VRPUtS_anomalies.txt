@@ -60,3 +60,15 @@ VRPUtS_uta_category = {
 
     on_success = VRPUtS_event.301
 }
+
+VRPUtS_shion_CAT = {
+    desc = VRPUtS_shion_anomaly_desc
+	picture = GFX_evt_continental
+    level = 6
+
+    max_once_global = yes 
+
+	#Spawn set via initialisers
+
+	on_success = VRPUtS_event.702
+}

@@ -60,7 +60,7 @@ planet_event = {
 		}
 	}
 }
-			
+
 country_event = {
     id = VRPUtS_event.601
 	title = "VRPUtS_event.601"
