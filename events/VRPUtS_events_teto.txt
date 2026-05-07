@@ -326,7 +326,7 @@ country_event = {
 	option = {
 		name = "VRPUtS_event.431.c"
         root = { 
-            country_event = { id = VRPUtS_event.441 days = 30 }
+            country_event = { id = VRPUtS_event.441 days = 1 }
         }
 	}
 

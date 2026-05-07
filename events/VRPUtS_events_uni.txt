@@ -403,10 +403,7 @@ country_event = {
     option = {
 		name = VRPUtS_event.521.a #捕まえた！
 		root = {
-			country_event = { 
-				id = VRPUtS_event.531 
-				days = 30 
-			}
+			country_event = { id = VRPUtS_event.531 days = 1 }
             end_event_chain = VRPUtS_uni_chain
 		}
 	}

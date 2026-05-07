@@ -322,7 +322,7 @@ country_event = {
     option = {
 		name = VRPUtS_event.621.a #こんにちは。
 		root = {
-			country_event = { id = VRPUtS_event.631 months = 1 }
+			country_event = { id = VRPUtS_event.631 days = 1 }
             end_event_chain = VRPUtS_sekai_chain
 		}
 	}
@@ -420,7 +420,7 @@ country_event = {
 	option = {
 		name = "VRPUtS_event.633.c"
         root = { 
-            country_event = { id = VRPUtS_event.641 months = 1 }
+            country_event = { id = VRPUtS_event.641 days = 1 }
         }
 	}
 
