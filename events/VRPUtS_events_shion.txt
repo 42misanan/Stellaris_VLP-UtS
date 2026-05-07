@@ -125,19 +125,21 @@ planet_event = {
 	is_triggered_only = yes
     
 	option = {
-		name = VRPUtS_event.702.a
-		owner = {
-			add_monthly_resource_mult = {
-				resource = society_research
-				value = @tier2researchreward
-				min = @tier2researchmin
-				max = @tier2researchmax
-			}
-			start_situation = {
-				type = situation_paragon_shion_rescure
-			}
-			start_situation = {
-				type = situation_paragon_shion_falling
+		name = VRPUtS_event.703.a
+		fromfrom = { # refers to ship event
+			owner = {
+				add_monthly_resource_mult = {
+					resource = society_research
+					value = @tier2researchreward
+					min = @tier2researchmin
+					max = @tier2researchmax
+				}
+				start_situation = {
+					type = situation_paragon_shion_rescure
+				}
+				start_situation = {
+					type = situation_paragon_shion_falling
+				}
 			}
 		}
 	}
@@ -289,6 +291,7 @@ country_event = {
 			add_trait = { trait = leader_trait_legendary_military_knowledge }
 			add_trait = { trait = leader_trait_maven_of_war }
 			add_trait = { trait = leader_trait_arrested_development }
+			add_trait = { trait = leader_trait_legendary_dreamlike }
 			set_age = 301
 			set_leader_flag = immune_to_negative_traits
 			set_leader_flag = leader_death_events_blocked
