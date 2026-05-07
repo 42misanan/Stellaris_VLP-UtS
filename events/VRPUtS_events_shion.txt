@@ -274,7 +274,7 @@ country_event = {
 			CLASS = commander
 			TIER = leader_tier_legendary
 			NAME = VRPUtS_NAME_shion
-			LEVEL = 7
+			LEVEL = 5
 			GENDER = indeterminable
 			IMMORTAL = yes
 			ETHIC = gestalt_consciousness
@@ -288,6 +288,7 @@ country_event = {
 			add_trait = { trait = leader_trait_legendary_foe_hammer }
 			add_trait = { trait = leader_trait_legendary_military_knowledge }
 			add_trait = { trait = leader_trait_maven_of_war }
+			add_trait = { trait = leader_trait_arrested_development }
 			set_age = 301
 			set_leader_flag = immune_to_negative_traits
 			set_leader_flag = leader_death_events_blocked

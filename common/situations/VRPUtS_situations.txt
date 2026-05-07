@@ -5,7 +5,7 @@ situation_paragon_shion_falling = {
 	category = negative
 	complete_icon_frame = GFX_situation_outcome_frame_red
 	complete_icon = GFX_situation_outcome_negative
-	initial_progress = 4.16
+	initial_progress = 0
 
 	on_progress_complete = {
 		custom_tooltip = situation_unknown_outcome_approach
@@ -79,7 +79,7 @@ situation_paragon_shion_falling = {
 			category = situations
 			upkeep = {
 				energy = 50
-				alloys = 20
+				alloys = 25
 			}
 		}
 	}
@@ -94,7 +94,8 @@ situation_paragon_shion_falling = {
 		resources = {
 			category = situations
 			upkeep = {
-				energy = 20
+				energy = 25
+				alloys = 10
 			}
 		}
 	}
@@ -114,19 +115,19 @@ situation_paragon_shion_falling = {
 	}
 
 	monthly_progress = {
-		base = 4.16 #24 months
+		base = 8.33 # 12 months
 		modifier = {
-			add = -1.39 #36 months
+			add = -2.77 # 18 months
 			desc = situation_paragon_shion_falling_least 
 			current_situation_approach = situation_paragon_shion_falling_understanding
 		}
 		modifier = {
-			add = -2.5 # 60 months
+			add = -4.16 # 24 months
 			desc = situation_paragon_shion_falling_moderate 
 			current_situation_approach = situation_paragon_shion_falling_moderate
 		}
 		modifier = {
-			add = -3.33 # 120 months
+			add = -5.55 # 36 months
 			desc = situation_paragon_shion_falling_huge 
 			current_situation_approach = situation_paragon_shion_falling_huge
 		}
@@ -140,7 +141,7 @@ situation_paragon_shion_rescure = {
 	category = positive
 	complete_icon_frame = GFX_situation_outcome_frame_green
 	complete_icon = GFX_situation_outcome_positive
-	initial_progress = 0
+	initial_progress = 2.08
 
 	on_progress_complete = {
 		custom_tooltip = situation_unknown_outcome_approach
