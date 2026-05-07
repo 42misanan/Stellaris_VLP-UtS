@@ -1,4 +1,4 @@
-version="0.10.0 more duo events"
+version="0.11.0(0x01) shion-chan test"
 tags={
 	"Leaders"
 	"Gameplay"
