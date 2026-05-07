@@ -119,7 +119,7 @@ situation_paragon_shion_falling = {
 		modifier = {
 			add = -2.77 # 18 months
 			desc = situation_paragon_shion_falling_least 
-			current_situation_approach = situation_paragon_shion_falling_understanding
+			current_situation_approach = situation_paragon_shion_falling_least
 		}
 		modifier = {
 			add = -4.16 # 24 months

@@ -133,12 +133,12 @@ planet_event = {
 				min = @tier2researchmin
 				max = @tier2researchmax
 			}
-		}
-		start_situation = {
-			type = situation_paragon_shion_rescure
-		}
-		start_situation = {
-			type = situation_paragon_shion_falling
+			start_situation = {
+				type = situation_paragon_shion_rescure
+			}
+			start_situation = {
+				type = situation_paragon_shion_falling
+			}
 		}
 	}
 }
@@ -357,7 +357,6 @@ country_event = {
 			hire_event_leader_effect = {
 				LEADER = shion_leader
 			}
-			country_event = { id = VRPUtS_event.9905 months = 1 }
 		}
 	}
 }
