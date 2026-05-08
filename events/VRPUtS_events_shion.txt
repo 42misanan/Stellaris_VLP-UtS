@@ -164,11 +164,12 @@ situation_event = { #Cure not found - シオンはもういない
 				}
 				destroy_situation = this
 			}
+			set_country_flag = shion_rescue_failed
 		}
 	}
 
 	option = {
-		name = TERRIBLE
+		name = VRPUtS_event.711.option
 		destroy_situation = this
 	}
 }
@@ -186,7 +187,7 @@ situation_event = { #Cure not found step 1
 	}
 
 	option = {
-		name = UNFORTUNATE
+		name = VRPUtS_event.712.option
 	}
 }
 
@@ -203,7 +204,7 @@ situation_event = { #Cure not found step 2
 	}
 
 	option = {
-		name = WORRYING
+		name = VRPUtS_event.713.option
 	}
 }
 
@@ -220,7 +221,7 @@ situation_event = { #Cure not found step 3
 	}
 
 	option = {
-		name = DISCONCERTING
+		name = VRPUtS_event.714.option
 	}
 }
 
@@ -244,13 +245,25 @@ situation_event = { #Cure found - シオンは助かる
 	}
 
 	option = {
-		name = EXCELLENT
+		trigger = {
+			NOT = {
+				has_country_flag = shion_rescue_failed
+			}
+		}
+		name = VRPUtS_event.715.option
 		destroy_situation = this
 		hidden_effect = {
 			owner = {
 				country_event = { id = VRPUtS_event.721 }
 			}
 		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = shion_rescue_failed
+		}
+		name = VRPUtS_event.715.failed
+		destroy_situation = this
 	}
 }
 

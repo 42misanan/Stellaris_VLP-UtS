@@ -1,4 +1,4 @@
-version="0.11.0(0x04) shion-chan test"
+version="v4.3.* / 0.11.0(0x05)"
 tags={
 	"Leaders"
 	"Gameplay"
