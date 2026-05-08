@@ -1,4 +1,4 @@
-version="v4.3.* / 0.11.0(0x05)"
+version="v4.3.* / 0.11.0x07"
 tags={
 	"Leaders"
 	"Gameplay"

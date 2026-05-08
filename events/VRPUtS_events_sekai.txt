@@ -463,6 +463,7 @@ country_event = {
 			add_trait = { trait = trait_ruler_charismatic }
 			add_trait = { trait = leader_trait_spark_of_genius }
 			add_trait = { trait = leader_trait_adaptable }
+			add_trait = { trait = leader_trait_gullible_2 }
 			set_age = 16
 			set_leader_flag = immune_to_negative_traits
 			set_leader_flag = leader_death_events_blocked

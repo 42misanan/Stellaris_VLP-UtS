@@ -369,6 +369,7 @@ country_event = {
 			add_trait = { trait = leader_trait_explorer_cloaking_focus }
 			add_trait = { trait = leader_trait_tuner }
 			add_trait = { trait = leader_trait_adaptable }
+			add_trait = { trait = leader_trait_traumatized }
 			set_age = 31
 			set_leader_flag = immune_to_negative_traits
 			set_leader_flag = leader_death_events_blocked

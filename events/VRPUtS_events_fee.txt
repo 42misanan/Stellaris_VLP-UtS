@@ -268,8 +268,9 @@ country_event = {
 			add_trait = { trait = leader_trait_zealot }
 			add_trait = { trait = leader_trait_synthetic }
 			add_trait = { trait = trait_ruler_fertility_preacher }
-			add_trait = { trait = leader_trait_adaptable }
 			add_trait = { trait = leader_trait_pop_focused_2 }
+			add_trait = { trait = leader_trait_insider_trading }
+			add_trait = { trait = leader_trait_excessive }
 			set_age = 1874
 			set_leader_flag = immune_to_negative_traits
 			set_leader_flag = leader_death_events_blocked
