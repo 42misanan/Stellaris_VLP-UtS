@@ -10,8 +10,8 @@ special_project = {
 	event_scope = country_event
 
 	on_success = {
-    owner = {
-        country_event = { id = VRPUtS_event.121 }
+		owner = {
+			country_event = { id = VRPUtS_event.121 }
 		}
 	}
 }
@@ -28,8 +28,8 @@ special_project = {
 	event_scope = country_event
 
 	on_success = {
-    owner = {
-        country_event = { id = VRPUtS_event.221 }
+		owner = {
+			country_event = { id = VRPUtS_event.221 }
 		}
 	}
 }
@@ -46,8 +46,8 @@ special_project = {
 	event_scope = country_event
 
 	on_success = {
-    owner = {
-        country_event = { id = VRPUtS_event.321 }
+		owner = {
+			country_event = { id = VRPUtS_event.321 }
 		}
 	}
 }
@@ -64,6 +64,25 @@ special_project = {
 	event_scope = planet_event
 
 	on_success = {
-        planet_event = { id = VRPUtS_event.703 }
+		prevprev = { # somehow this refers to the country
+        	country_event = { id = VRPUtS_event.703 }
+		}
+	}
+}
+
+special_project = {
+	key = "VRPUtS_project_shion_2"
+	desc = "VRPUtS_project_shion_2_desc"
+	cost = 5000 # or 15000
+	tech_department = physics_technology
+	picture = GFX_evt_archaeology_camp
+	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
+
+	event_scope = planet_event
+
+	on_success = {
+		owner = {
+	        planet_event = { id = VRPUtS_event.722 }
+		}
 	}
 }

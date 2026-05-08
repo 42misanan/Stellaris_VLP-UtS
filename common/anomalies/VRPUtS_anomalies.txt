@@ -70,5 +70,5 @@ VRPUtS_shion_CAT = {
 
 	#Spawn set via initialisers
 
-	on_success = VRPUtS_event.703
+	on_success = VRPUtS_event.702
 }

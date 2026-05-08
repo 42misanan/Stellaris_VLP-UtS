@@ -14,8 +14,11 @@ ship_event = {
 	trigger = {
         AND = {
             owner = { 
-                is_gestalt = no 
-                is_ai = no
+				NOT = {
+                	is_gestalt = yes
+                	is_ai = yes
+					has_global_flag = shion_rescue_failed
+				}
             }
             FROM = { has_star_flag = shion_system }
         }
@@ -114,7 +117,7 @@ ship_event = {
 }
 
 #プロジェクト完了
-planet_event = {
+country_event = {
 	id = VRPUtS_event.703
 	title = "VRPUtS_event.703.name"
 	desc = "VRPUtS_event.703.desc"
@@ -126,45 +129,35 @@ planet_event = {
     
 	option = {
 		name = VRPUtS_event.703.a
-		fromfrom = { # refers to ship event
-			owner = {
-				add_monthly_resource_mult = {
-					resource = society_research
-					value = @tier2researchreward
-					min = @tier2researchmin
-					max = @tier2researchmax
-				}
-				start_situation = {
-					type = situation_paragon_shion_rescure
-				}
-				start_situation = {
-					type = situation_paragon_shion_falling
-				}
-			}
+		add_monthly_resource_mult = {
+			resource = society_research
+			value = @tier2researchreward
+			min = @tier2researchmin
+			max = @tier2researchmax
+		}
+		start_situation = {
+			type = situation_paragon_shion_rescure
+		}
+		start_situation = {
+			type = situation_paragon_shion_falling
 		}
 	}
 }
 
 
 ###状況イベント
-situation_event = { #Cure not found - シオンはもういない
+situation_event = { #サイキック干渉 - シオンは永遠に失われた
 	id = VRPUtS_event.711
 	title = "VRPUtS_event.711.name"
 	desc = "VRPUtS_event.711.desc"
 	picture = GFX_evt_black_hole
-	show_sound = event_life_support_fail
+	show_sound = event_death_cult
 
 	is_triggered_only = yes
 
 	immediate = {
 		owner = {
-			random_situation = {
-				limit = {
-					is_situation_type = situation_paragon_shion_rescue
-				}
-				destroy_situation = this
-			}
-			set_country_flag = shion_rescue_failed
+			set_global_flag = shion_rescue_failed
 		}
 	}
 
@@ -174,7 +167,7 @@ situation_event = { #Cure not found - シオンはもういない
 	}
 }
 
-situation_event = { #Cure not found step 1
+situation_event = { #サイキック干渉 - データブロック損傷
 	id = VRPUtS_event.712
 	title = "VRPUtS_event.712.name"
 	desc = "VRPUtS_event.712.desc"
@@ -191,7 +184,7 @@ situation_event = { #Cure not found step 1
 	}
 }
 
-situation_event = { #Cure not found step 2
+situation_event = { #サイキック干渉 - 通信プローブ損傷
 	id = VRPUtS_event.713
 	title = "VRPUtS_event.713.name"
 	desc = "VRPUtS_event.713.desc"
@@ -208,7 +201,7 @@ situation_event = { #Cure not found step 2
 	}
 }
 
-situation_event = { #Cure not found step 3
+situation_event = { #サイキック干渉 - 人格コア浸食
 	id = VRPUtS_event.714
 	title = "VRPUtS_event.714.name"
 	desc = "VRPUtS_event.714.desc"
@@ -225,11 +218,12 @@ situation_event = { #Cure not found step 3
 	}
 }
 
-situation_event = { #Cure found - シオンは助かる
+situation_event = { #サイキック干渉抑制アレイ - リアクター稼働開始
 	id = VRPUtS_event.715
 	title = "VRPUtS_event.715.name"
 	desc = "VRPUtS_event.715.desc"
-	picture = GFX_evt_microscopic_life
+	picture = GFX_evt_ai_planet
+	show_sound = event_dyson_sphere_build_complete
 
 	is_triggered_only = yes
 
@@ -246,8 +240,10 @@ situation_event = { #Cure found - シオンは助かる
 
 	option = {
 		trigger = {
-			NOT = {
-				has_country_flag = shion_rescue_failed
+			owner = {
+				NOT = {
+					has_global_flag = shion_rescue_failed
+				}
 			}
 		}
 		name = VRPUtS_event.715.option
@@ -256,17 +252,67 @@ situation_event = { #Cure found - シオンは助かる
 			owner = {
 				country_event = { id = VRPUtS_event.721 }
 			}
+			event_target:shion_shroud = { change_pc = pc_shattered }
+			event_target:shion_moon = { change_pc = pc_ai }
+			enable_special_project = {
+				name = VRPUtS_project_shion_2
+				location = event_target:shion_moon #redirect to moon
+				owner = root.owner
+			}
 		}
 	}
 	option = {
 		trigger = {
-			has_country_flag = shion_rescue_failed
+			owner = {
+				has_global_flag = shion_rescue_failed
+			}
 		}
 		name = VRPUtS_event.715.failed
 		destroy_situation = this
+		hidden_effect = {
+			event_target:shion_shroud = { change_pc = pc_ai }
+			event_target:shion_moon = { change_pc = pc_shattered }
+			enable_special_project = {
+				name = VRPUtS_project_shion_2
+				location = event_target:shion_moon #redirect to moon
+				owner = root.owner
+			}
+		}
 	}
 }
 
+situation_event = { #サイキック干渉抑制アレイ - リアクター修復開始
+	id = VRPUtS_event.716
+	title = "VRPUtS_event.716.name"
+	desc = "VRPUtS_event.716.desc"
+	picture = GFX_evt_cosmic_storms_calibration
+	show_sound = event_dyson_sphere_build_start
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+
+	option = {
+		name = VRPUtS_event.716.option
+	}
+}
+
+planet_event = { #最後の砦のその先で
+	id = VRPUtS_event.722
+	title = "VRPUtS_event.722.name"
+	desc = "VRPUtS_event.722.desc"
+	picture = GFX_evt_derelict_interior
+	show_sound = event_default
+	is_triggered_only = yes
+
+	option = {
+		name = VRPUtS_event.722.option #この情報は役に立つかもしれない……だが何に？
+		hidden_effect = {
+			set_global_flag = VRPUtS_overdrive_ready
+		}
+	}
+}
 
 #こんなはずではなかったんですが……助かりました。
 ########## 九十九シオン - 戦略家

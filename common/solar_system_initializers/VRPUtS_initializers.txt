@@ -52,7 +52,7 @@ shion_initializer = {
 
 	planet = {
 		name = "NAME_shion_2"
-		class = pc_machine
+		class = pc_ai
 
 		orbit_distance = 45
 		orbit_angle = 135

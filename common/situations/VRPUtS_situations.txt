@@ -155,8 +155,17 @@ situation_paragon_shion_rescure = {
 		stage_1 = {
 			icon = GFX_situation_stage_1
 			icon_background = GFX_situation_stage_frame_green
+			end = 50
+			on_first_enter = {
+			}
+			custom_tooltip = stage_unknown_effects
+		}
+		stage_2 = {
+			icon = GFX_situation_stage_2
+			icon_background = GFX_situation_stage_frame_green
 			end = 100
 			on_first_enter = {
+				situation_event = { id = VRPUtS_event.716 } #制御アレイ起動
 			}
 			custom_tooltip = stage_unknown_effects
 		}
