@@ -486,7 +486,7 @@ country_event = {
 			add_trait = { trait = leader_trait_trade_focus_2 }
 			add_trait = { trait = leader_trait_galvanizer }
 			add_trait = { trait = leader_trait_procrastinator }
-			add_trait = { trait = leader_trait_tyrannical_machine }
+			add_trait = { trait = leader_trait_tyrannical }
 			set_age = 1895
 			set_leader_flag = immune_to_negative_traits
 			set_leader_flag = leader_death_events_blocked

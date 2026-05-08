@@ -135,8 +135,8 @@ situation_paragon_shion_falling = {
 }
 
 # Related to paragon.3010
-# situation_paragon_shion_rescure の丸コピ
-situation_paragon_shion_rescure = { 
+# situation_paragon_shion_rescue の丸コピ
+situation_paragon_shion_rescue = { 
 	picture = GFX_evt_synth_fertility
 	category = positive
 	complete_icon_frame = GFX_situation_outcome_frame_green
@@ -172,33 +172,33 @@ situation_paragon_shion_rescure = {
 	}
 
 	approach = {
-		name = situation_paragon_shion_rescure_huge
+		name = situation_paragon_shion_rescue_huge
 		icon = GFX_situation_approach_balance_sheet
 		icon_background = GFX_situation_approach_bg_green
 		on_select = {
-			custom_tooltip = approach_situation_paragon_shion_rescure_huge_tt #すべてを注ぎ込め！
+			custom_tooltip = approach_situation_paragon_shion_rescue_huge_tt #すべてを注ぎ込め！
 		}
 		modifier = {
 			country_engineering_research_produces_mult = -0.50
 		}
 	}
 	approach = {
-		name = situation_paragon_shion_rescure_moderate
+		name = situation_paragon_shion_rescue_moderate
 		icon = GFX_situation_approach_balance_sheet
 		icon_background = GFX_situation_approach_bg_green
 		on_select = {
-			custom_tooltip = approach_situation_paragon_shion_rescure_moderate_tt #できるだけ急げ！
+			custom_tooltip = approach_situation_paragon_shion_rescue_moderate_tt #できるだけ急げ！
 		}
 		modifier = {
 			country_engineering_research_produces_mult = -0.25
 		}
 	}
 	approach = {
-		name = situation_paragon_shion_rescure_least
+		name = situation_paragon_shion_rescue_least
 		icon = GFX_situation_approach_balance_sheet
 		icon_background = GFX_situation_approach_bg_yellow
 		on_select = {
-			custom_tooltip = approach_situation_paragon_shion_rescure_least_tt #最低限でいい
+			custom_tooltip = approach_situation_paragon_shion_rescue_least_tt #最低限でいい
 		}
 		default = yes
 		modifier = {
@@ -206,11 +206,11 @@ situation_paragon_shion_rescure = {
 		}
 	}
 	approach = {
-		name = situation_paragon_shion_rescure_nothing
+		name = situation_paragon_shion_rescue_nothing
 		icon = GFX_situation_approach_balance_sheet
 		icon_background = GFX_situation_approach_bg_red
 		on_select = {
-			custom_tooltip = approach_situation_paragon_shion_rescure_nothing_tt #なぜ助ける必要が？
+			custom_tooltip = approach_situation_paragon_shion_rescue_nothing_tt #なぜ助ける必要が？
 		}
 		modifier = {
 			country_engineering_research_produces_mult = -0.01
@@ -221,18 +221,18 @@ situation_paragon_shion_rescure = {
 		base = 2.08 # 48 months
 		modifier = {
 			add = 0.69 # 36 months
-			desc = situation_paragon_shion_rescure_least
-			current_situation_approach = situation_paragon_shion_rescure_least
+			desc = situation_paragon_shion_rescue_least
+			current_situation_approach = situation_paragon_shion_rescue_least
 		}
 		modifier = {
 			add = 2.08 # 24 months
-			desc = situation_paragon_shion_rescure_moderate
-			current_situation_approach = situation_paragon_shion_rescure_moderate
+			desc = situation_paragon_shion_rescue_moderate
+			current_situation_approach = situation_paragon_shion_rescue_moderate
 		}
 		modifier = {
 			add = 3.47 # 18 months
-			desc = situation_paragon_shion_rescure_huge
-			current_situation_approach = situation_paragon_shion_rescure_huge
+			desc = situation_paragon_shion_rescue_huge
+			current_situation_approach = situation_paragon_shion_rescue_huge
 		}
 	}
 }

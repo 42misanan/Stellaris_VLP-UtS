@@ -81,8 +81,8 @@ special_project = {
 	event_scope = planet_event
 
 	on_success = {
-		owner = {
-	        planet_event = { id = VRPUtS_event.722 }
+		prev = {
+	        country_event = { id = VRPUtS_event.722 }
 		}
 	}
 }

@@ -5,7 +5,7 @@ ship_event = {
 	id = VRPUtS_event.701
 	title = "VRPUtS_event.701.name"
 	desc = "VRPUtS_event.701.desc"
-	picture = GFX_evt_shroud_tunnel
+	picture = GFX_evt_shroud_end_of_the_cycle
 	show_sound = evn_ove_shroud_tunnel
 	location = FROM
 
@@ -136,7 +136,7 @@ country_event = {
 			max = @tier2researchmax
 		}
 		start_situation = {
-			type = situation_paragon_shion_rescure
+			type = situation_paragon_shion_rescue
 		}
 		start_situation = {
 			type = situation_paragon_shion_falling
@@ -298,7 +298,7 @@ situation_event = { #サイキック干渉抑制アレイ - リアクター修�
 	}
 }
 
-planet_event = { #最後の砦のその先で
+country_event = { #最後の砦のその先で
 	id = VRPUtS_event.722
 	title = "VRPUtS_event.722.name"
 	desc = "VRPUtS_event.722.desc"
