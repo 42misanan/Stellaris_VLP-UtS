@@ -346,8 +346,8 @@ country_event = {
 			add_trait = { trait = subclass_commander_councilor }
 			add_trait = { trait = leader_trait_ancient_knowledge }
 			add_trait = { trait = leader_trait_synthetic }
-			add_trait = { trait = leader_trait_legendary_foe_hammer }
-			add_trait = { trait = leader_trait_legendary_military_knowledge }
+			add_trait = { trait = leader_trait_legendary_foe_hammer_2 }
+			add_trait = { trait = leader_trait_legendary_military_knowledge_2 }
 			add_trait = { trait = leader_trait_maven_of_war }
 			add_trait = { trait = leader_trait_arrested_development }
 			add_trait = { trait = leader_trait_legendary_dreamlike }
