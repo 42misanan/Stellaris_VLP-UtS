@@ -49,9 +49,8 @@ ship_event = {
 	option = { #派生
 		name = VRPUtS_event.702.a
 		trigger = { 
-			owner = { 
-				NOR = {
-					is_materialist = yes
+			owner = {
+				NOT = {
 					is_gestalt = yes
 				}
 			}

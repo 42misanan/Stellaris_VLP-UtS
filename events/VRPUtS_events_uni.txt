@@ -58,9 +58,7 @@ planet_event = {
 		name = VRPUtS_event.501.a #派生 - 泳がしておいて犯人捜しを始める
 		trigger = {
             owner = { 
-				NOR = {
-					has_ethic = ethic_fanatic_authoritarian
-					has_ethic = ethic_authoritarian
+				NOT = {
 					is_gestalt = yes
             	}
 			}

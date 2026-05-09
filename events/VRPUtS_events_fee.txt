@@ -14,10 +14,8 @@ ship_event = {
     option = {
 		name = VRPUtS_event.201.a #派生
 		trigger = { 
-			owner = { 
-				NOR = {
-					has_ethic = ethic_fanatic_egalitarian
-					has_ethic = ethic_egalitarian
+			owner = {
+				NOT = {
 					is_gestalt = yes
 				}
 			}

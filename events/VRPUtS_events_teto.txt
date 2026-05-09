@@ -51,9 +51,7 @@ country_event = {
     option = {
 		name = VRPUtS_event.401.a #派生
 		trigger = {
-            NOR = {
-                has_ethic = ethic_fanatic_militarist
-                has_ethic = ethic_militarist
+            NOT = {
                 is_gestalt = yes
             }
             any_country = { 
