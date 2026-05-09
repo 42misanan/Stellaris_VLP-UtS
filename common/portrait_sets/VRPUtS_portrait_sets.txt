@@ -7,5 +7,6 @@ VRPUtS_portrait_sets = {
         "teto"
         "uni"
         "sekai"
+        "shion"
     }
 }

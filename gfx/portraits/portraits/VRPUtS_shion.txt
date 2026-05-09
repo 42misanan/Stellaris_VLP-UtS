@@ -1,0 +1,68 @@
+portraits = {
+	shion_01 = { texturefile = "gfx/models/portraits/shion/shion_01.dds" }
+	#shion_02 = { texturefile = "gfx/models/portraits/shion/shion_02.dds" }
+	#shion_03 = { texturefile = "gfx/models/portraits/shion/shion_03.dds" }
+	#shion_04 = { texturefile = "gfx/models/portraits/shion/shion_04.dds" }
+}
+
+portrait_groups = {
+	shion = {
+		default = shion_01
+		game_setup = { #will run with a limited country scope. species and government is set but the country does not actually exist
+			add = {
+				portraits = {
+					shion_01
+					#shion_02
+					#shion_03
+					#shion_04
+				}
+			}
+		}
+		species = { #generic portrait for a species
+			add = {
+				portraits = {
+					shion_01
+					#shion_02
+					#shion_03
+					#shion_04
+				}
+			}
+		}		
+		
+		pop = { #for a specific pop
+			add = {
+				portraits = {
+					shion_01
+					#shion_02
+					#shion_03
+					#shion_04
+				}
+			}
+		}
+		
+		#leader scope
+		leader = { #scientists, generals, admirals, governor
+			add = {
+				portraits = {
+					shion_01
+					#shion_02
+					#shion_03
+					#shion_04
+				}
+			}
+		}
+
+			
+		#leader scope 
+		ruler = {
+			add = {
+				portraits = {
+					shion_01
+					#shion_02
+					#shion_03
+					#shion_04
+				}
+			}
+		}
+	}
+}
