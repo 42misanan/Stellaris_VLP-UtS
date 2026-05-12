@@ -3,9 +3,10 @@ namespace = VRPUtS_event
 ##### イベント、トリガー元：連鎖イベント「マニフェスティの隆盛」 id = manifesti.1
 ##### country_flag の manifesti_spawned を参照
 country_event = {
+	# monthly triggered from common/on_actions/VRPUtS_on_actions
 	id = VRPUtS_event.400
 	hide_window = yes
-	mean_time_to_happen = { months = 6 } #本当は良くない処理だが、こうするしかない
+	is_triggered_only = yes
 
 	trigger = {
 		any_country = {

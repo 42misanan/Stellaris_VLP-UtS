@@ -1,10 +1,17 @@
-#5年周期のユニちゃん・せかちゃんトリガーイベント。それぞれ確率20, 15%
+#5年周期のユニちゃん・せかちゃんトリガーイベント。それぞれ確率20%, 5%
 #ここでtrigger使ったらダメっぽい
 on_colony_5_year_pulse = {
 	random_events = {
-		20 = VRPUtS_event.500
-		15 = VRPUtS_event.600
-		65 = 0
+		20 = VRPUtS_event.500 #ユニちゃん
+		5 = VRPUtS_event.600 #せかちゃん
+		75 = 0
+	}
+}
+
+on_monthly_pulse_country = { # is_triggered_onlyな発火点イベントたちを呼ぶ
+	events = {
+		VRPUtS_event.699 # せかちゃん
+		VRPUtS_event.400 # 31歳キメラ
 	}
 }
 

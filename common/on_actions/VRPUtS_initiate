@@ -1,0 +1,5 @@
+on_game_start = { #no scope
+	events = {
+		VRPUtS_event.1
+	}
+}

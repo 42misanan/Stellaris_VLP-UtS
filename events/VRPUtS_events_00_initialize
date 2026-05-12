@@ -1,0 +1,12 @@
+namespace = VRPUtS_event
+
+### Hidden Game Start Event
+event = {
+	id = VRPUtS_event.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = exists_mishamod_VLPUtS
+    }
+}
